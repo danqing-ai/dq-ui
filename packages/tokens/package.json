@@ -1,0 +1,11 @@
+{
+  "name": "@danqing/dq-tokens",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./dq-mac.css": "./src/dq-mac.css"
+  },
+  "files": ["src"]
+}

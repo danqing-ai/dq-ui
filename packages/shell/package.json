@@ -1,0 +1,23 @@
+{
+  "name": "@danqing/dq-shell",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "exports": {
+    ".": "./src/index.ts",
+    "./style.css": "./src/style.css"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0",
+    "@danqing/dq-ui": "^0.1.0"
+  },
+  "dependencies": {
+    "@danqing/dq-ui": "file:../ui"
+  },
+  "devDependencies": {
+    "vue": "^3.5.13",
+    "typescript": "^5.6.3"
+  },
+  "files": ["src"]
+}

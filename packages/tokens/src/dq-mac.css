@@ -1,0 +1,78 @@
+/**
+ * DanQing macOS desktop tokens — single source for Web/Tauri apps.
+ * Import once in app entry before product styles.
+ */
+:root,
+html.dark {
+  --dq-font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --dq-font-weight-medium: 500;
+
+  --dq-accent: #0a84ff;
+  --dq-accent-hover: #409cff;
+  --dq-accent-muted: #339dff;
+  --dq-accent-tint: rgba(10, 132, 255, 0.14);
+  --dq-accent-tint-strong: rgba(10, 132, 255, 0.22);
+
+  --dq-bg-page: #000000;
+  --dq-bg-base: #1c1c1e;
+  --dq-bg-elevated: #2c2c2e;
+  --dq-surface-elevated: #242426;
+  --dq-surface-grouped: #1c1c1e;
+
+  --dq-fill-control: #1c1c1e;
+  --dq-fill-secondary: #2c2c2e;
+  --dq-fill-tertiary: #3a3a3c;
+  --dq-fill-quaternary: #48484a;
+  --dq-fill-control-hover: rgba(120, 120, 128, 0.32);
+  --dq-fill-control-selected: rgba(120, 120, 128, 0.56);
+  --dq-fill-dim: #161617;
+  --dq-fill-dimmer: #0e0e0f;
+
+  --dq-label-primary: rgba(255, 255, 255, 0.92);
+  --dq-label-secondary: rgba(255, 255, 255, 0.72);
+  --dq-label-tertiary: rgba(255, 255, 255, 0.48);
+  --dq-label-quaternary: rgba(255, 255, 255, 0.32);
+  --dq-label-disabled: rgba(255, 255, 255, 0.22);
+
+  --dq-border: rgba(255, 255, 255, 0.1);
+  --dq-border-subtle: rgba(255, 255, 255, 0.06);
+  --dq-border-strong: rgba(255, 255, 255, 0.16);
+  --dq-separator: rgba(84, 84, 88, 0.65);
+  --dq-separator-light: rgba(84, 84, 88, 0.35);
+
+  --dq-radius-group: 10px;
+  --dq-radius-control: 10px;
+  --dq-radius-control-sm: 8px;
+  --dq-radius-button: 6px;
+  --dq-radius-pill: 9999px;
+  --dq-radius-input: 8px;
+  --dq-radius-menu: 10px;
+
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.32);
+  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4);
+  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --dq-mask: rgba(0, 0, 0, 0.48);
+  --dq-mask-light: rgba(0, 0, 0, 0.28);
+
+  --dq-focus-ring: 0 0 0 3px rgba(10, 132, 255, 0.35);
+
+  --dq-success: #32d74b;
+  --dq-warning: #ff9f0a;
+  --dq-danger: #ff453a;
+  --dq-info: #64d2ff;
+  --dq-color-white: #ffffff;
+
+  --dq-system-green: var(--dq-success);
+  --dq-system-orange: var(--dq-warning);
+  --dq-system-red: var(--dq-danger);
+  --dq-system-blue: var(--dq-accent);
+}
+
+html.dq-mac-ui {
+  font-family: var(--dq-font-sans);
+}
