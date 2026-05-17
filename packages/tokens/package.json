@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./dq-mac.css": "./src/dq-mac.css"
+    "./dq-mac.css": "./src/dq-mac.css",
+    "./dq-glass.css": "./src/dq-glass.css",
+    "./dq-tauri-macos.css": "./src/dq-tauri-macos.css"
   },
   "files": ["src"]
 }

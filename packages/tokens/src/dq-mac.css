@@ -1,5 +1,6 @@
 /**
  * DanQing macOS desktop tokens — single source for Web/Tauri apps.
+ * macOS 26 (Tahoe) Liquid Glass semantics + Sequoia-compatible solids.
  * Import once in app entry before product styles.
  */
 :root,
@@ -17,13 +18,18 @@ html.dark {
   --dq-accent-tint: rgba(10, 132, 255, 0.14);
   --dq-accent-tint-strong: rgba(10, 132, 255, 0.22);
 
-  --dq-bg-page: #000000;
-  --dq-bg-base: #1c1c1e;
-  --dq-bg-elevated: #2c2c2e;
-  --dq-surface-elevated: #242426;
-  --dq-surface-grouped: #1c1c1e;
+  /* Opaque material bases (fallback when blur is off or unsupported) */
+  --dq-material-chrome: #1c1c1e;
+  --dq-material-elevated: #2c2c2e;
+  --dq-material-grouped: #1c1c1e;
 
-  --dq-fill-control: #1c1c1e;
+  --dq-bg-page: #000000;
+  --dq-bg-base: var(--dq-material-chrome);
+  --dq-bg-elevated: var(--dq-material-elevated);
+  --dq-surface-elevated: #242426;
+  --dq-surface-grouped: var(--dq-material-grouped);
+
+  --dq-fill-control: var(--dq-material-chrome);
   --dq-fill-secondary: #2c2c2e;
   --dq-fill-tertiary: #3a3a3c;
   --dq-fill-quaternary: #48484a;
@@ -31,6 +37,7 @@ html.dark {
   --dq-fill-control-selected: rgba(120, 120, 128, 0.56);
   --dq-fill-dim: #161617;
   --dq-fill-dimmer: #0e0e0f;
+  --dq-fill-grouped: var(--dq-glass-grouped-bg);
 
   --dq-label-primary: rgba(255, 255, 255, 0.92);
   --dq-label-secondary: rgba(255, 255, 255, 0.72);
@@ -41,21 +48,126 @@ html.dark {
   --dq-border: rgba(255, 255, 255, 0.1);
   --dq-border-subtle: rgba(255, 255, 255, 0.06);
   --dq-border-strong: rgba(255, 255, 255, 0.16);
-  --dq-separator: rgba(84, 84, 88, 0.65);
+  --dq-border-hairline: rgba(255, 255, 255, 0.08);
+  --dq-separator: rgba(84, 84, 88, 0.45);
+  --dq-separator-strong: rgba(84, 84, 88, 0.55);
   --dq-separator-light: rgba(84, 84, 88, 0.35);
 
-  --dq-radius-group: 10px;
+  /* Liquid Glass — translucent chrome (Tahoe 26) */
+  --dq-glass-bar-bg: rgba(28, 28, 30, 0.72);
+  --dq-glass-bar-bg-strong: rgba(28, 28, 30, 0.82);
+  --dq-glass-sidebar-bg: rgba(28, 28, 30, 0.68);
+  --dq-glass-popover-bg: color-mix(in srgb, var(--dq-bg-elevated) 55%, transparent);
+  --dq-glass-grouped-bg: rgba(28, 28, 30, 0.78);
+  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
+  --dq-glass-panel-bg: rgba(28, 28, 30, 0.82);
+  --dq-glass-control-bg: color-mix(in srgb, var(--dq-bg-elevated) 68%, transparent);
+  --dq-glass-control-bg-solid: var(--dq-fill-secondary);
+  --dq-glass-tooltip-bg: rgba(28, 28, 30, 0.92);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.35);
+  --dq-glass-floating-bar-bg: rgba(44, 44, 46, 0.92);
+
+  /* Inset lists & grouped settings blocks */
+  --dq-surface-inset: rgba(255, 255, 255, 0.03);
+  --dq-surface-inset-hover: rgba(255, 255, 255, 0.05);
+  --dq-surface-inset-pressed: rgba(255, 255, 255, 0.04);
+  --dq-surface-list-selected: rgba(10, 132, 255, 0.1);
+  --dq-surface-list-selected-strong: rgba(10, 132, 255, 0.14);
+  --dq-fill-muted-surface: rgba(120, 120, 128, 0.12);
+  --dq-fill-muted-surface-hover: rgba(120, 120, 128, 0.18);
+  --dq-fill-muted-control: rgba(120, 120, 128, 0.24);
+  --dq-fill-muted-control-hover: rgba(120, 120, 128, 0.36);
+  --dq-fill-muted-control-active: rgba(120, 120, 128, 0.56);
+  --dq-accent-surface: rgba(10, 132, 255, 0.08);
+  --dq-accent-surface-border: rgba(10, 132, 255, 0.28);
+  --dq-success-surface: rgba(50, 215, 75, 0.06);
+  --dq-success-surface-border: rgba(50, 215, 75, 0.28);
+  --dq-scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --dq-scrollbar-thumb-hover: rgba(255, 255, 255, 0.22);
+
+  --dq-overlay-light: rgba(0, 0, 0, 0.25);
+  --dq-overlay-medium: rgba(0, 0, 0, 0.35);
+  --dq-overlay-heavy: rgba(0, 0, 0, 0.65);
+  --dq-overlay-scrim: rgba(0, 0, 0, 0.88);
+  --dq-overlay-card: rgba(0, 0, 0, 0.55);
+  --dq-overlay-gradient-end: rgba(0, 0, 0, 0.78);
+
+  --dq-accent-glow: rgba(10, 132, 255, 0.35);
+  --dq-accent-glow-strong: rgba(10, 132, 255, 0.5);
+  --dq-accent-ring-subtle: rgba(10, 132, 255, 0.2);
+  --dq-accent-border-hover: rgba(10, 132, 255, 0.45);
+  --dq-accent-shadow-cta: rgba(10, 132, 255, 0.28);
+
+  --dq-warning-surface: rgba(255, 159, 10, 0.12);
+  --dq-warning-surface-strong: rgba(255, 159, 10, 0.16);
+  --dq-warning-surface-border: rgba(255, 159, 10, 0.22);
+  --dq-warning-border-hover: rgba(255, 159, 10, 0.35);
+
+  --dq-danger-surface: rgba(255, 69, 58, 0.12);
+  --dq-danger-surface-strong: rgba(255, 69, 58, 0.14);
+  --dq-danger-surface-border: rgba(255, 69, 58, 0.22);
+  --dq-danger-border-hover: rgba(255, 69, 58, 0.35);
+  --dq-danger-icon-muted: rgba(255, 69, 58, 0.42);
+
+  --dq-success-surface-strong: rgba(50, 215, 75, 0.14);
+  --dq-success-border: rgba(50, 215, 75, 0.22);
+  --dq-success-tag: rgba(50, 215, 75, 0.14);
+
+  --dq-tag-neutral-bg: rgba(120, 120, 128, 0.28);
+  --dq-fill-control-strong: rgba(120, 120, 128, 0.44);
+  --dq-label-on-media: rgba(255, 255, 255, 0.88);
+  --dq-label-footnote: rgba(235, 235, 245, 0.45);
+  --dq-label-chevron: rgba(235, 235, 245, 0.28);
+  --dq-label-block-title: rgba(235, 235, 245, 0.5);
+  --dq-label-desc: rgba(235, 235, 245, 0.56);
+  --dq-label-emphasis: rgba(235, 235, 245, 0.95);
+  --dq-label-muted-strong: rgba(235, 235, 245, 0.55);
+
+  --dq-fill-faint: rgba(255, 255, 255, 0.07);
+  --dq-fill-faint-hover: rgba(255, 255, 255, 0.11);
+  --dq-fill-subtle: rgba(255, 255, 255, 0.2);
+  --dq-fill-muted-row: rgba(120, 120, 128, 0.2);
+  --dq-fill-muted-surface-light: rgba(120, 120, 128, 0.08);
+  --dq-fill-muted-surface-medium: rgba(120, 120, 128, 0.1);
+  --dq-overlay-deep: rgba(0, 0, 0, 0.72);
+  --dq-accent-gradient-start: rgba(10, 132, 255, 0.05);
+  --dq-success-highlight: rgba(50, 215, 75, 0.18);
+  --dq-warning-highlight: rgba(255, 159, 10, 0.18);
+  --dq-lightbox-info-bg: rgba(28, 28, 30, 0.85);
+
+  --dq-glass-border: var(--dq-border-hairline);
+  --dq-glass-border-strong: rgba(255, 255, 255, 0.12);
+  --dq-glass-highlight: rgba(255, 255, 255, 0.06);
+
+  --dq-glass-blur: saturate(180%) blur(20px);
+  --dq-glass-blur-light: saturate(180%) blur(12px);
+  --dq-glass-blur-heavy: saturate(180%) blur(24px);
+
+  --dq-fill-on-glass: rgba(255, 255, 255, 0.08);
+  --dq-fill-on-glass-hover: rgba(255, 255, 255, 0.12);
+  --dq-fill-on-glass-pressed: rgba(255, 255, 255, 0.14);
+  --dq-fill-on-glass-subtle: rgba(255, 255, 255, 0.06);
+
+  --dq-bg-page-glow: radial-gradient(
+    ellipse 130% 240px at 50% -4%,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 58%
+  );
+
+  --dq-radius-group: 12px;
   --dq-radius-control: 10px;
   --dq-radius-control-sm: 8px;
   --dq-radius-button: 6px;
   --dq-radius-pill: 9999px;
   --dq-radius-input: 8px;
-  --dq-radius-menu: 10px;
+  --dq-radius-menu: 12px;
+  --dq-radius-glass: 12px;
 
   --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
   --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.32);
   --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4);
   --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.36);
   --dq-mask: rgba(0, 0, 0, 0.48);
   --dq-mask-light: rgba(0, 0, 0, 0.28);
 

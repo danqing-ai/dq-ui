@@ -3,9 +3,11 @@
 .dq-inspector-stack {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--dq-separator-light, rgba(84, 84, 88, 0.35));
-  border-radius: var(--dq-radius-group, 10px);
-  background: var(--dq-fill-grouped, rgba(30, 30, 32, 0.92));
+  border: 0.5px solid var(--dq-separator);
+  border-radius: var(--dq-radius-group);
+  background: var(--dq-glass-grouped-bg);
+  -webkit-backdrop-filter: var(--dq-glass-blur-light);
+  backdrop-filter: var(--dq-glass-blur-light);
   overflow: hidden;
 }
 
@@ -291,10 +293,30 @@
 
 /* macOS 偏好设置面板容器 */
 .dq-pref-pane {
-  border: 1px solid var(--dq-separator-light);
+  border: 0.5px solid var(--dq-separator);
   border-radius: var(--dq-radius-group);
-  background: var(--dq-fill-grouped);
+  background: var(--dq-glass-grouped-bg);
+  -webkit-backdrop-filter: var(--dq-glass-blur-light);
+  backdrop-filter: var(--dq-glass-blur-light);
   overflow: visible;
+}
+
+.dq-surface-card {
+  border: 0.5px solid var(--dq-separator);
+  border-radius: var(--dq-radius-group);
+  background: var(--dq-glass-grouped-bg);
+  -webkit-backdrop-filter: var(--dq-glass-blur-light);
+  backdrop-filter: var(--dq-glass-blur-light);
+  overflow: hidden;
+}
+
+.dq-surface-card__header {
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--dq-separator-light);
+}
+
+.dq-surface-card__body {
+  padding: 16px;
 }
 
 .dq-pref-pane .dq-pref-row + .dq-pref-row {

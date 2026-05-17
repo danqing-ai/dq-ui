@@ -1,0 +1,32 @@
+/**
+ * Tauri macOS desktop shell — transparent window + overlay title bar.
+ * Add class `dq-tauri-macos` on <html> when running in Tauri on Mac.
+ */
+html.dq-tauri-macos,
+html.dq-tauri-macos body {
+  background: transparent !important;
+}
+
+html.dq-tauri-macos .main-container {
+  background: var(--dq-bg-page);
+}
+
+html.dq-tauri-macos .app-header.dq-app-header {
+  padding-top: calc(28px + env(safe-area-inset-top, 0px));
+  padding-left: max(20px, 78px);
+}
+
+html.dq-tauri-macos .app-header [data-tauri-drag-region] {
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+
+html.dq-tauri-macos .app-header [data-tauri-drag-region] button,
+html.dq-tauri-macos .app-header [data-tauri-drag-region] a,
+html.dq-tauri-macos .app-header [data-tauri-drag-region] input,
+html.dq-tauri-macos .app-header [data-tauri-drag-region] select,
+html.dq-tauri-macos .app-header [data-tauri-drag-region] .dq-btn,
+html.dq-tauri-macos .app-header [data-tauri-drag-region] .dq-icon-btn {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
