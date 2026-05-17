@@ -26,6 +26,16 @@ Same checks from Studio: `make check-ep-boundary` and `make check-theme-legacy`.
 - Only `packages/ui` may import `reka-ui` directly.
 - Style changes: tokens + `Dq*`, not third-party component-library overrides.
 
+## Repository
+
+https://github.com/danqing-ai/dq-ui
+
+Clone next to Studio (sibling directory) so `file:../../dq-ui/packages/*` resolves:
+
+```bash
+git clone https://github.com/danqing-ai/dq-ui.git
+```
+
 ## Develop with Studio
 
 ```bash
