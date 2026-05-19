@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { X } from 'lucide-vue-next';
+
 withDefaults(
   defineProps<{
     type?: 'success' | 'warning' | 'info' | 'error';
@@ -46,7 +48,7 @@ function onClose() {
       aria-label="Close"
       @click="onClose"
     >
-      ×
+      <X :size="14" stroke-width="2" aria-hidden="true" />
     </button>
   </div>
 </template>

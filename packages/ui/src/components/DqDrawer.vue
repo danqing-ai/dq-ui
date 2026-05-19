@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
+import { X } from 'lucide-vue-next';
 import {
   DialogClose,
   DialogContent,
@@ -56,7 +57,9 @@ function blockDismiss(event: Event) {
             {{ title }}
           </DialogTitle>
           <slot name="header" />
-          <DialogClose v-if="closable" class="dq-drawer-close" aria-label="Close">×</DialogClose>
+          <DialogClose v-if="closable" class="dq-drawer-close" aria-label="Close">
+            <X :size="16" stroke-width="2" aria-hidden="true" />
+          </DialogClose>
         </header>
 
         <div class="dq-drawer-body">
