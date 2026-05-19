@@ -3,7 +3,7 @@
 .dq-inspector-stack {
   display: flex;
   flex-direction: column;
-  border: 0.5px solid var(--dq-separator);
+  border: 1px solid var(--dq-glass-border);
   border-radius: var(--dq-radius-group);
   background: var(--dq-glass-grouped-bg);
   -webkit-backdrop-filter: var(--dq-glass-blur-light);
@@ -107,8 +107,8 @@
 }
 
 .dq-inspector-callout--success {
-  background: rgba(48, 209, 88, 0.12);
-  border: 1px solid rgba(48, 209, 88, 0.28);
+  background: var(--dq-success-surface);
+  border: 1px solid var(--dq-success-surface-border);
 }
 
 .dq-inspector-callout--success .dq-inspector-callout__title {
@@ -116,8 +116,8 @@
 }
 
 .dq-inspector-callout--warn {
-  background: rgba(255, 69, 58, 0.12);
-  border: 1px solid rgba(255, 69, 58, 0.28);
+  background: var(--dq-danger-surface);
+  border: 1px solid var(--dq-danger-surface-border);
 }
 
 .dq-inspector-callout--warn .dq-inspector-callout__title {
@@ -293,7 +293,7 @@
 
 /* macOS 偏好设置面板容器 */
 .dq-pref-pane {
-  border: 0.5px solid var(--dq-separator);
+  border: 1px solid var(--dq-glass-border);
   border-radius: var(--dq-radius-group);
   background: var(--dq-glass-grouped-bg);
   -webkit-backdrop-filter: var(--dq-glass-blur-light);
@@ -302,7 +302,7 @@
 }
 
 .dq-surface-card {
-  border: 0.5px solid var(--dq-separator);
+  border: 1px solid var(--dq-glass-border);
   border-radius: var(--dq-radius-group);
   background: var(--dq-glass-grouped-bg);
   -webkit-backdrop-filter: var(--dq-glass-blur-light);
@@ -312,7 +312,7 @@
 
 .dq-surface-card__header {
   padding: 12px 16px;
-  border-bottom: 0.5px solid var(--dq-separator-light);
+  border-bottom: 1px solid var(--dq-separator-light);
 }
 
 .dq-surface-card__body {

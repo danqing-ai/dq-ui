@@ -180,6 +180,8 @@ html.dark {
   --dq-shadow-toast: 0 4px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.15);
 
   --dq-transition-hover: background 0.08s ease, color 0.08s ease, border-color 0.08s ease;
+  --dq-transition-field:
+    border-color 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
   --dq-transition-active: transform 0.08s cubic-bezier(0.25, 0.1, 0.25, 1);
   --dq-transition-panel: opacity 0.3s cubic-bezier(0.32, 0.72, 0, 1),
     transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
