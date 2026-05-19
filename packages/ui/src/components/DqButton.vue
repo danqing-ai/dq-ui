@@ -30,13 +30,15 @@ const cls = computed(() => {
   const attrClass = attrs.class;
   const classStr = typeof attrClass === 'string' ? attrClass : '';
   const legacyPlain = props.plain || classStr.includes('is-plain');
-  const legacyCircle = props.circle || props.round || classStr.includes('is-circle');
+  const legacyCircle = props.circle || classStr.includes('is-circle');
+  const legacyRound = props.round || legacyCircle;
   return [
     'dq-btn',
     `dq-btn--${props.type}`,
     props.size === 'sm' ? 'dq-btn--sm' : '',
     legacyPlain ? 'dq-btn--plain is-plain' : '',
-    legacyCircle ? 'dq-btn--round is-circle' : '',
+    legacyRound ? 'dq-btn--round' : '',
+    legacyCircle ? 'is-circle' : '',
     attrClass,
   ];
 });
