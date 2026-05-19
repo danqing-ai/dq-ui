@@ -13,7 +13,7 @@
 
 .dq-inspector-section {
   padding: 12px 14px;
-  border-bottom: 1px solid var(--dq-separator-light, rgba(84, 84, 88, 0.35));
+  border-bottom: 1px solid var(--dq-separator-light);
 }
 
 .dq-inspector-section--last {
@@ -38,7 +38,7 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--dq-label-tertiary, rgba(235, 235, 245, 0.55));
+  color: var(--dq-label-tertiary);
 }
 
 .dq-inspector-section__actions {
@@ -52,7 +52,7 @@
   margin: 0;
   font-size: 12px;
   line-height: 1.45;
-  color: var(--dq-label-secondary, rgba(235, 235, 245, 0.72));
+  color: var(--dq-label-secondary);
 }
 
 .dq-inspector-list {
@@ -63,7 +63,7 @@
 
 .dq-inspector-list__item {
   padding: 10px 0;
-  border-bottom: 1px solid var(--dq-separator-light, rgba(84, 84, 88, 0.25));
+  border-bottom: 1px solid var(--dq-separator-light);
 }
 
 .dq-inspector-list__item:last-child {
@@ -112,7 +112,7 @@
 }
 
 .dq-inspector-callout--success .dq-inspector-callout__title {
-  color: var(--dq-success, #30d158);
+  color: var(--dq-success);
 }
 
 .dq-inspector-callout--warn {
@@ -121,7 +121,7 @@
 }
 
 .dq-inspector-callout--warn .dq-inspector-callout__title {
-  color: var(--dq-danger, #ff453a);
+  color: var(--dq-danger);
 }
 
 /* Pref form row */

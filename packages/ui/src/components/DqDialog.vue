@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { X } from 'lucide-vue-next';
 import {
   DialogClose,
   DialogContent,
@@ -56,7 +57,7 @@ const contentStyle = computed(() => ({
           </DialogTitle>
           <slot name="header" />
           <DialogClose v-if="closable" class="dq-dialog-close" aria-label="Close">
-            ×
+            <X :size="16" stroke-width="2" aria-hidden="true" />
           </DialogClose>
         </header>
 

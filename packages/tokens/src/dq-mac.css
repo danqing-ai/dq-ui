@@ -5,6 +5,7 @@
  */
 :root,
 html.dark {
+  accent-color: var(--dq-accent);
   --dq-font-sans:
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', ui-sans-serif, system-ui,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
@@ -168,6 +169,20 @@ html.dark {
   --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4);
   --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45);
   --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.36);
+  --dq-shadow-popover-elevated:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 16px 48px rgba(0, 0, 0, 0.25);
+  --dq-shadow-modal:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 32px 64px rgba(0, 0, 0, 0.3);
+  --dq-shadow-toast: 0 4px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.15);
+
+  --dq-transition-hover: background 0.08s ease, color 0.08s ease, border-color 0.08s ease;
+  --dq-transition-active: transform 0.08s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dq-transition-panel: opacity 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
   --dq-mask: rgba(0, 0, 0, 0.48);
   --dq-mask-light: rgba(0, 0, 0, 0.28);
 

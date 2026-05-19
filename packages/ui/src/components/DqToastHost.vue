@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { X } from 'lucide-vue-next';
 import { toastState, dismissToast } from '../feedback/toastState';
 </script>
 
@@ -18,7 +19,7 @@ import { toastState, dismissToast } from '../feedback/toastState';
           aria-label="Close"
           @click="dismissToast(item.id)"
         >
-          ×
+          <X :size="14" stroke-width="2" aria-hidden="true" />
         </button>
         <p v-if="item.title" class="dq-toast__title">{{ item.title }}</p>
         <p class="dq-toast__message">{{ item.message }}</p>

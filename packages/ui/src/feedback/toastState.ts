@@ -5,6 +5,9 @@ export const toastState = reactive({
   items: [] as ToastItem[],
 });
 
+/** Drop oldest toasts when the stack grows too large (avoids unbounded memory). */
+const MAX_TOASTS = 5;
+
 let nextId = 1;
 const timers = new Map<number, ReturnType<typeof setTimeout>>();
 
@@ -23,6 +26,10 @@ export function pushToast(
     duration,
   };
   toastState.items.push(item);
+  while (toastState.items.length > MAX_TOASTS) {
+    const oldest = toastState.items[0];
+    if (oldest) dismissToast(oldest.id);
+  }
   const timer = setTimeout(() => dismissToast(id), duration);
   timers.set(id, timer);
   return id;
