@@ -79,6 +79,8 @@ export {
   Microphone,
   Monitor,
   MoreFilled,
+  Pause,
+  Play,
   Picture,
   PictureFilled,
   Plus,

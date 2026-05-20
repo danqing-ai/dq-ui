@@ -26,6 +26,7 @@ export {
   Mic as Microphone,
   Monitor,
   MoreHorizontal as MoreFilled,
+  Pause,
   Pencil,
   Play,
   Plus,
