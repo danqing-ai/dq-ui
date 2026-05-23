@@ -3,11 +3,20 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "exports": {
-    ".": "./src/index.ts",
-    "./dq-mac.css": "./src/dq-mac.css",
-    "./dq-glass.css": "./src/dq-glass.css",
-    "./dq-tauri-macos.css": "./src/dq-tauri-macos.css"
+  "scripts": {
+    "build": "npm run clean && node ./scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf dist"
   },
-  "files": ["src"]
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./dq-mac.css": "./dist/dq-mac.css",
+    "./dq-glass.css": "./dist/dq-glass.css",
+    "./dq-tauri-macos.css": "./dist/dq-tauri-macos.css"
+  },
+  "files": ["dist"]
 }

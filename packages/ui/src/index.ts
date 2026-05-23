@@ -31,7 +31,7 @@ export { default as DqIcon } from './components/DqIcon.vue';
 export { default as DqDropdown } from './components/DqDropdown.vue';
 export { default as DqDropdownMenu } from './components/DqDropdownMenu.vue';
 export { default as DqDropdownItem } from './components/DqDropdownItem.vue';
-export type { DqSegmentOption } from './components/DqSegmented.vue';
+export type { DqSegmentOption } from './components/segmentedTypes';
 export { default as DqSectionTabs } from './components/DqSectionTabs.vue';
 export { default as DqSectionTabTrigger } from './components/DqSectionTabTrigger.vue';
 export { default as DqSectionTabPanel } from './components/DqSectionTabPanel.vue';

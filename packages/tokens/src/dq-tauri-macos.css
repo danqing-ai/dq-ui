@@ -30,3 +30,20 @@ html.dq-tauri-macos .app-header [data-tauri-drag-region] .dq-icon-btn {
   -webkit-app-region: no-drag;
   app-region: no-drag;
 }
+
+/* Optional inactive window state (host app toggles .is-inactive on <html>). */
+html.dq-tauri-macos.is-inactive {
+  --dq-accent: color-mix(in srgb, #0a84ff 65%, #7f7f82);
+}
+
+html.dq-tauri-macos.is-inactive .app-header.dq-app-header,
+html.dq-tauri-macos.is-inactive .dq-glass--bar,
+html.dq-tauri-macos.is-inactive .dq-glass--sidebar {
+  opacity: 0.92;
+}
+
+html.dq-tauri-macos.is-inactive .dq-section-tabs__trigger[data-state='active'],
+html.dq-tauri-macos.is-inactive .dq-btn--primary,
+html.dq-tauri-macos.is-inactive .dq-switch[data-state='checked'] {
+  filter: saturate(0.8) brightness(0.95);
+}

@@ -12,6 +12,31 @@ export { default as DqPrefForm } from './components/DqPrefForm.vue';
 export { default as DqPrefPane } from './components/DqPrefPane.vue';
 export { default as DqPrefRow } from './components/DqPrefRow.vue';
 export { default as DqSurfaceCard } from './components/DqSurfaceCard.vue';
+export { default as DqCommandPalette } from './components/DqCommandPalette.vue';
+export { default as DqDesktopHost } from './components/DqDesktopHost.vue';
+export type { DqCommandAction } from './components/commandPaletteTypes';
+export { useDqDesktopExperience } from './composables/useDqDesktopExperience';
+export type { UseDqDesktopExperienceOptions } from './composables/useDqDesktopExperience';
+export {
+  createDqDefaultCommandActions,
+  useDqCommandActions,
+} from './composables/useDqCommandActions';
+export type {
+  DqDefaultCommandOptions,
+  UseDqCommandActionsOptions,
+} from './composables/useDqCommandActions';
+export { useDqRecentCommands } from './composables/useDqRecentCommands';
+export type { UseDqRecentCommandsOptions } from './composables/useDqRecentCommands';
+export {
+  createDqCommandRegistry,
+  provideDqCommandRegistry,
+  useDqCommandRegistry,
+} from './composables/useDqCommandRegistry';
+export type { DqCommandRegistry } from './composables/useDqCommandRegistry';
+export { useDqRegisterCommands } from './composables/useDqRegisterCommands';
+export type { UseDqRegisterCommandsOptions } from './composables/useDqRegisterCommands';
+export { useDqWindowActivity } from './composables/useDqWindowActivity';
+export type { UseDqWindowActivityOptions } from './composables/useDqWindowActivity';
 
 export {
   DqButton,

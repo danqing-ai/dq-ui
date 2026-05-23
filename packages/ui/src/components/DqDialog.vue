@@ -33,6 +33,7 @@ function blockDismiss(event: Event) {
 }
 
 const open = defineModel<boolean>('open', { required: true });
+const titleId = `dq-dialog-title-${Math.random().toString(36).slice(2, 8)}`;
 
 const contentStyle = computed(() => ({
   width: props.width,
@@ -48,11 +49,13 @@ const contentStyle = computed(() => ({
         class="dq-dialog-content"
         :class="{ 'dq-dialog-content--center': center }"
         :style="contentStyle"
+        :aria-modal="true"
+        :aria-labelledby="title ? titleId : undefined"
         @interact-outside="blockDismiss"
         @escape-key-down="blockDismiss"
       >
         <header v-if="title || $slots.header" class="dq-dialog-header">
-          <DialogTitle v-if="title" class="dq-dialog-title">
+          <DialogTitle v-if="title" :id="titleId" class="dq-dialog-title">
             {{ title }}
           </DialogTitle>
           <slot name="header" />

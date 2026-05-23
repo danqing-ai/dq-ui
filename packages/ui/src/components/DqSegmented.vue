@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
-export type DqSegmentOption = {
-  label: string;
-  value: string | number;
-  disabled?: boolean;
-};
+import type { DqSegmentOption } from './segmentedTypes';
 
 const props = withDefaults(
   defineProps<{

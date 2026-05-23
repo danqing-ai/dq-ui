@@ -5,35 +5,35 @@
 
 .dq-glass {
   background: var(--dq-glass-popover-bg);
-  border: 0.5px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-border);
   -webkit-backdrop-filter: var(--dq-glass-blur);
   backdrop-filter: var(--dq-glass-blur);
 }
 
 .dq-glass--bar {
   background: var(--dq-glass-bar-bg);
-  border-bottom: 0.5px solid var(--dq-glass-border);
+  border-bottom: 1px solid var(--dq-glass-border);
   -webkit-backdrop-filter: var(--dq-glass-blur);
   backdrop-filter: var(--dq-glass-blur);
 }
 
 .dq-glass--bar-strong {
   background: var(--dq-glass-bar-bg-strong);
-  border-bottom: 0.5px solid var(--dq-glass-border);
+  border-bottom: 1px solid var(--dq-glass-border);
   -webkit-backdrop-filter: var(--dq-glass-blur);
   backdrop-filter: var(--dq-glass-blur);
 }
 
 .dq-glass--sidebar {
   background: var(--dq-glass-sidebar-bg);
-  border-right: 0.5px solid var(--dq-glass-border);
+  border-right: 1px solid var(--dq-glass-border);
   -webkit-backdrop-filter: var(--dq-glass-blur);
   backdrop-filter: var(--dq-glass-blur);
 }
 
 .dq-glass--grouped {
   background: var(--dq-glass-grouped-bg);
-  border: 0.5px solid var(--dq-separator);
+  border: 1px solid var(--dq-separator);
   border-radius: var(--dq-radius-group);
   -webkit-backdrop-filter: var(--dq-glass-blur-light);
   backdrop-filter: var(--dq-glass-blur-light);
@@ -41,7 +41,7 @@
 
 .dq-glass--popover {
   background: var(--dq-glass-popover-bg);
-  border: 0.5px solid var(--dq-glass-border-strong);
+  border: 1px solid var(--dq-glass-border-strong);
   border-radius: var(--dq-radius-menu);
   box-shadow: var(--dq-shadow-glass);
   -webkit-backdrop-filter: var(--dq-glass-blur-heavy);
@@ -50,7 +50,7 @@
 
 .dq-glass--panel {
   background: var(--dq-glass-panel-bg);
-  border: 0.5px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-border);
   border-radius: var(--dq-radius-group);
   box-shadow: var(--dq-shadow-glass);
   -webkit-backdrop-filter: var(--dq-glass-blur-heavy);

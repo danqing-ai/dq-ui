@@ -28,6 +28,7 @@ const props = withDefaults(
 
 const open = defineModel<boolean>('open', { required: true });
 const attrs = useAttrs();
+const titleId = `dq-drawer-title-${Math.random().toString(36).slice(2, 8)}`;
 
 const panelStyle = computed(() => ({
   width: props.size,
@@ -49,11 +50,13 @@ function blockDismiss(event: Event) {
         class="dq-drawer-panel"
         :class="[`dq-drawer-panel--${direction}`, attrs.class]"
         :style="panelStyle"
+        :aria-modal="true"
+        :aria-labelledby="title ? titleId : undefined"
         @interact-outside="blockDismiss"
         @escape-key-down="blockDismiss"
       >
         <header v-if="title || $slots.header" class="dq-drawer-header">
-          <DialogTitle v-if="title" class="dq-drawer-title">
+          <DialogTitle v-if="title" :id="titleId" class="dq-drawer-title">
             {{ title }}
           </DialogTitle>
           <slot name="header" />
