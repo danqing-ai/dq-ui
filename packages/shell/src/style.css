@@ -169,8 +169,42 @@
   font-variant-numeric: tabular-nums;
 }
 
+.dq-inspector-kv__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--dq-label-secondary);
+}
+
+.dq-inspector-meter {
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 8px;
+  align-items: stretch;
+}
+
+.dq-inspector-meter .dq-inspector-kv {
+  grid-row: 1;
+  line-height: 1.35;
+  flex-shrink: 0;
+}
+
+.dq-inspector-meter .dq-inspector-progress {
+  grid-row: 2;
+  margin: 0;
+  width: 100%;
+}
+
+.dq-inspector-meter + .dq-inspector-meter {
+  margin-top: 4px;
+}
+
+.dq-inspector-meter--stacked {
+  row-gap: 4px;
+}
+
 .dq-inspector-progress {
-  margin-top: -2px;
+  margin-top: 0;
+  width: 100%;
 }
 
 .dq-inspector-callout__body {

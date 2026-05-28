@@ -2,6 +2,12 @@
  * Tauri macOS desktop shell — transparent window + overlay title bar.
  * Add class `dq-tauri-macos` on <html> when running in Tauri on Mac.
  */
+html.dq-tauri-macos {
+  /* Overlay title bar inset (traffic lights). Shell height = 60px nav + inset. */
+  --dq-shell-titlebar-inset: 28px;
+  --dq-shell-header-height: calc(60px + var(--dq-shell-titlebar-inset));
+}
+
 html.dq-tauri-macos,
 html.dq-tauri-macos body {
   background: transparent !important;
@@ -11,24 +17,57 @@ html.dq-tauri-macos .main-container {
   background: var(--dq-bg-page);
 }
 
-html.dq-tauri-macos .app-header.dq-app-header {
-  padding-top: calc(28px + env(safe-area-inset-top, 0px));
-  padding-left: max(20px, 78px);
+/* Hidden in browser; shown only under html.dq-tauri-macos */
+.dq-tauri-titlebar-inset {
+  display: none;
 }
 
-html.dq-tauri-macos .app-header [data-tauri-drag-region] {
+html.dq-tauri-macos .app-header.dq-app-header {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  height: var(--dq-shell-header-height);
+  box-sizing: border-box;
+}
+
+html.dq-tauri-macos .dq-tauri-titlebar-inset {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  height: var(--dq-shell-titlebar-inset);
   -webkit-app-region: drag;
   app-region: drag;
 }
 
-html.dq-tauri-macos .app-header [data-tauri-drag-region] button,
-html.dq-tauri-macos .app-header [data-tauri-drag-region] a,
-html.dq-tauri-macos .app-header [data-tauri-drag-region] input,
-html.dq-tauri-macos .app-header [data-tauri-drag-region] select,
-html.dq-tauri-macos .app-header [data-tauri-drag-region] .dq-btn,
-html.dq-tauri-macos .app-header [data-tauri-drag-region] .dq-icon-btn {
-  -webkit-app-region: no-drag;
-  app-region: no-drag;
+html.dq-tauri-macos .app-header .dq-top-nav-bar {
+  flex-shrink: 0;
+  width: 100%;
+  height: 60px;
+  min-height: 60px;
+  padding-left: max(20px, 78px);
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+html.dq-tauri-macos .app-header .dq-top-nav-bar .header-brand {
+  height: 60px;
+}
+
+/* Viewport math below assumes ~60px chrome; extend by title bar inset on desktop. */
+@media (min-width: 992px) {
+  html.dq-tauri-macos .preview-panel {
+    max-height: calc(100vh - 108px - var(--dq-shell-titlebar-inset));
+  }
+}
+
+html.dq-tauri-macos .models-page {
+  height: calc(100vh - 120px - var(--dq-shell-titlebar-inset));
+}
+
+html.dq-tauri-macos.dark .models-page {
+  height: calc(100vh - 76px - var(--dq-shell-titlebar-inset));
+  min-height: 480px;
 }
 
 /* Optional inactive window state (host app toggles .is-inactive on <html>). */
