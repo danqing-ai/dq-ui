@@ -3,3 +3,7 @@ dist
 *.log
 .DS_Store
 .idea
+
+# Rust / Iced
+/target/
+Cargo.lock

@@ -1,0 +1,37 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/dq-tokens",
+    "crates/dq-theme",
+    "crates/dq-components",
+    "crates/dq-layout",
+    "crates/dq-api",
+    "examples/studio-create",
+    "examples/teams-inbox",
+    "examples/mail-tri",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/danqing-ai/dq-ui"
+
+[workspace.dependencies]
+iced = { version = "0.14", features = ["wgpu", "tokio", "image", "canvas"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "multipart", "stream"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "fs"] }
+
+# Extra deps for studio-create
+rfd = "0.14"
+chrono = "0.4"
+sysinfo = "0.30"
+base64 = "0.22"
+
+dq-tokens = { path = "crates/dq-tokens" }
+dq-theme = { path = "crates/dq-theme" }
+dq-components = { path = "crates/dq-components" }
+dq-layout = { path = "crates/dq-layout" }
+dq-api = { path = "crates/dq-api" }

@@ -1,0 +1,13 @@
+[package]
+name = "mail-tri"
+description = "Mail tri-pane demo — shared dq-ui components"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+dq-components.workspace = true
+dq-layout.workspace = true
+dq-theme.workspace = true
+dq-tokens.workspace = true
+iced.workspace = true

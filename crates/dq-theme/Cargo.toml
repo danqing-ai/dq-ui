@@ -1,0 +1,10 @@
+[package]
+name = "dq-theme"
+description = "Iced themes — Linear dark productivity aesthetic"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+dq-tokens.workspace = true
+iced.workspace = true

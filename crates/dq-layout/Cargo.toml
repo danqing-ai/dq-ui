@@ -1,0 +1,12 @@
+[package]
+name = "dq-layout"
+description = "Linear layout shell — sidebar, top nav, page frame"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+dq-components.workspace = true
+dq-tokens.workspace = true
+dq-theme.workspace = true
+iced.workspace = true

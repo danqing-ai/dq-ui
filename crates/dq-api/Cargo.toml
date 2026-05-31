@@ -1,0 +1,15 @@
+[package]
+name = "dq-api"
+description = "HTTP REST client for DanQing FastAPI backends (Studio / Teams / Mail)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+thiserror = "2"
+urlencoding = "2"
+futures = "0.3"
