@@ -1,0 +1,452 @@
+/**
+ * Linear/Figma-inspired dark productivity theme for DanQing UI.
+ * 
+ * Design philosophy:
+ * - Pure black background with subtle elevation layers
+ * - Purple/indigo accent (Linear's signature)
+ * - High contrast text hierarchy (92%/72%/48%/32% white opacity)
+ * - Minimal visual noise — borders are almost invisible
+ * - Compact density for productivity workflows
+ * - Opacity-based depth system (no harsh shadows)
+ * 
+ * Usage: Add `class="dq-linear-dark"` on <html> or <body>.
+ */
+
+html.dq-linear-dark,
+.dq-linear-dark {
+  /* ─── Core Palette ─── */
+  --dq-accent: #7c3aed;                    /* Violet-600 */
+  --dq-accent-hover: #8b5cf6;              /* Violet-500 */
+  --dq-accent-muted: #a78bfa;              /* Violet-400 */
+  --dq-accent-tint: rgba(124, 58, 237, 0.12);
+  --dq-accent-tint-strong: rgba(124, 58, 237, 0.2);
+
+  /* ─── Typography ─── */
+  --dq-font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --dq-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --dq-font-weight-medium: 500;
+
+  /* ─── Background Hierarchy ───
+   * Elevation levels: page < base < elevated < panel < modal
+   */
+  --dq-bg-page: #000000;                   /* Deepest — pure black */
+  --dq-bg-base: #0a0a0a;                   /* App chrome */
+  --dq-bg-elevated: #111111;               /* Cards, lists */
+  --dq-surface-elevated: #161616;          /* Hover states on elevated */
+  --dq-surface-grouped: #141414;           /* Grouped sections */
+
+  /* ─── Fills ─── */
+  --dq-fill-control: #1a1a1a;
+  --dq-fill-secondary: #1e1e1e;
+  --dq-fill-tertiary: #262626;
+  --dq-fill-quaternary: #333333;
+  --dq-fill-control-hover: rgba(255, 255, 255, 0.06);
+  --dq-fill-control-selected: rgba(124, 58, 237, 0.15);
+  --dq-fill-dim: #0d0d0d;
+  --dq-fill-dimmer: #080808;
+  --dq-fill-grouped: var(--dq-surface-grouped);
+
+  /* ─── Text Hierarchy ───
+   * Primary: titles, important labels
+   * Secondary: body text, descriptions
+   * Tertiary: placeholders, hints
+   * Quaternary: disabled, metadata
+   */
+  --dq-label-primary: rgba(255, 255, 255, 0.92);
+  --dq-label-secondary: rgba(255, 255, 255, 0.65);
+  --dq-label-tertiary: rgba(255, 255, 255, 0.42);
+  --dq-label-quaternary: rgba(255, 255, 255, 0.28);
+  --dq-label-disabled: rgba(255, 255, 255, 0.18);
+
+  /* ─── Borders ───
+   * Nearly invisible — creates structure without noise
+   */
+  --dq-border: rgba(255, 255, 255, 0.06);
+  --dq-border-subtle: rgba(255, 255, 255, 0.04);
+  --dq-border-strong: rgba(255, 255, 255, 0.1);
+  --dq-border-hairline: rgba(255, 255, 255, 0.05);
+  --dq-separator: rgba(255, 255, 255, 0.06);
+  --dq-separator-strong: rgba(255, 255, 255, 0.1);
+  --dq-separator-light: rgba(255, 255, 255, 0.04);
+
+  /* ─── Glass / Translucency ───
+   * Reduced blur — cleaner, sharper aesthetic
+   */
+  --dq-glass-bar-bg: rgba(10, 10, 10, 0.85);
+  --dq-glass-bar-bg-strong: rgba(10, 10, 10, 0.92);
+  --dq-glass-sidebar-bg: rgba(10, 10, 10, 0.82);
+  --dq-glass-popover-bg: rgba(17, 17, 17, 0.95);
+  --dq-glass-grouped-bg: rgba(20, 20, 20, 0.9);
+  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
+  --dq-glass-panel-bg: rgba(17, 17, 17, 0.96);
+  --dq-glass-control-bg: rgba(26, 26, 26, 0.8);
+  --dq-glass-control-bg-solid: var(--dq-fill-control);
+  --dq-glass-tooltip-bg: rgba(17, 17, 17, 0.98);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.6);
+  --dq-glass-floating-bar-bg: rgba(17, 17, 17, 0.95);
+
+  /* ─── Surface States ─── */
+  --dq-surface-inset: rgba(255, 255, 255, 0.02);
+  --dq-surface-inset-hover: rgba(255, 255, 255, 0.04);
+  --dq-surface-inset-pressed: rgba(255, 255, 255, 0.03);
+  --dq-surface-list-selected: rgba(124, 58, 237, 0.1);
+  --dq-surface-list-selected-strong: rgba(124, 58, 237, 0.15);
+  --dq-fill-muted-surface: rgba(255, 255, 255, 0.05);
+  --dq-fill-muted-surface-hover: rgba(255, 255, 255, 0.08);
+  --dq-fill-muted-control: rgba(255, 255, 255, 0.1);
+  --dq-fill-muted-control-hover: rgba(255, 255, 255, 0.14);
+  --dq-fill-muted-control-active: rgba(255, 255, 255, 0.2);
+  --dq-accent-surface: rgba(124, 58, 237, 0.08);
+  --dq-accent-surface-border: rgba(124, 58, 237, 0.3);
+  --dq-success-surface: rgba(34, 197, 94, 0.08);
+  --dq-success-surface-border: rgba(34, 197, 94, 0.25);
+  --dq-scrollbar-thumb: rgba(255, 255, 255, 0.08);
+  --dq-scrollbar-thumb-hover: rgba(255, 255, 255, 0.15);
+
+  /* ─── Overlays ─── */
+  --dq-overlay-light: rgba(0, 0, 0, 0.3);
+  --dq-overlay-medium: rgba(0, 0, 0, 0.5);
+  --dq-overlay-heavy: rgba(0, 0, 0, 0.75);
+  --dq-overlay-scrim: rgba(0, 0, 0, 0.92);
+  --dq-overlay-card: rgba(0, 0, 0, 0.7);
+  --dq-overlay-gradient-end: rgba(0, 0, 0, 0.85);
+
+  /* ─── Accent Glow ─── */
+  --dq-accent-glow: rgba(124, 58, 237, 0.3);
+  --dq-accent-glow-strong: rgba(124, 58, 237, 0.45);
+  --dq-accent-ring-subtle: rgba(124, 58, 237, 0.18);
+  --dq-accent-border-hover: rgba(124, 58, 237, 0.4);
+  --dq-accent-shadow-cta: rgba(124, 58, 237, 0.25);
+
+  /* ─── Semantic Colors ─── */
+  --dq-warning-surface: rgba(234, 179, 8, 0.1);
+  --dq-warning-surface-strong: rgba(234, 179, 8, 0.14);
+  --dq-warning-surface-border: rgba(234, 179, 8, 0.2);
+  --dq-warning-border-hover: rgba(234, 179, 8, 0.3);
+
+  --dq-danger-surface: rgba(239, 68, 68, 0.1);
+  --dq-danger-surface-strong: rgba(239, 68, 68, 0.12);
+  --dq-danger-surface-border: rgba(239, 68, 68, 0.2);
+  --dq-danger-border-hover: rgba(239, 68, 68, 0.3);
+  --dq-danger-icon-muted: rgba(239, 68, 68, 0.4);
+
+  --dq-success-surface-strong: rgba(34, 197, 94, 0.12);
+  --dq-success-border: rgba(34, 197, 94, 0.2);
+  --dq-success-tag: rgba(34, 197, 94, 0.12);
+
+  /* ─── Utility Colors ─── */
+  --dq-tag-neutral-bg: rgba(255, 255, 255, 0.08);
+  --dq-fill-control-strong: rgba(255, 255, 255, 0.12);
+  --dq-label-on-media: rgba(255, 255, 255, 0.9);
+  --dq-label-footnote: rgba(255, 255, 255, 0.38);
+  --dq-label-chevron: rgba(255, 255, 255, 0.25);
+  --dq-label-block-title: rgba(255, 255, 255, 0.45);
+  --dq-label-desc: rgba(255, 255, 255, 0.5);
+  --dq-label-emphasis: rgba(255, 255, 255, 0.95);
+  --dq-label-muted-strong: rgba(255, 255, 255, 0.5);
+
+  --dq-fill-faint: rgba(255, 255, 255, 0.04);
+  --dq-fill-faint-hover: rgba(255, 255, 255, 0.07);
+  --dq-fill-subtle: rgba(255, 255, 255, 0.14);
+  --dq-fill-muted-row: rgba(255, 255, 255, 0.06);
+  --dq-fill-muted-surface-light: rgba(255, 255, 255, 0.04);
+  --dq-fill-muted-surface-medium: rgba(255, 255, 255, 0.06);
+  --dq-overlay-deep: rgba(0, 0, 0, 0.8);
+  --dq-accent-gradient-start: rgba(124, 58, 237, 0.04);
+  --dq-success-highlight: rgba(34, 197, 94, 0.12);
+  --dq-warning-highlight: rgba(234, 179, 8, 0.12);
+  --dq-lightbox-info-bg: rgba(10, 10, 10, 0.9);
+
+  /* ─── Glass Properties ─── */
+  --dq-glass-border: var(--dq-border-hairline);
+  --dq-glass-border-strong: rgba(255, 255, 255, 0.08);
+  --dq-glass-highlight: rgba(255, 255, 255, 0.04);
+
+  --dq-glass-blur: saturate(150%) blur(16px);
+  --dq-glass-blur-light: saturate(150%) blur(10px);
+  --dq-glass-blur-heavy: saturate(150%) blur(20px);
+
+  --dq-fill-on-glass: rgba(255, 255, 255, 0.05);
+  --dq-fill-on-glass-hover: rgba(255, 255, 255, 0.09);
+  --dq-fill-on-glass-pressed: rgba(255, 255, 255, 0.11);
+  --dq-fill-on-glass-subtle: rgba(255, 255, 255, 0.03);
+
+  /* ─── Background Glow ───
+   * Subtle top glow for depth
+   */
+  --dq-bg-page-glow: radial-gradient(
+    ellipse 140% 280px at 50% -6%,
+    rgba(124, 58, 237, 0.04) 0%,
+    transparent 60%
+  );
+
+  /* ─── Radius ───
+   * Slightly smaller — sharper productivity feel
+   */
+  --dq-radius-group: 10px;
+  --dq-radius-control: 8px;
+  --dq-radius-control-sm: 6px;
+  --dq-radius-button: 6px;
+  --dq-radius-pill: 9999px;
+  --dq-radius-input: 6px;
+  --dq-radius-menu: 10px;
+  --dq-radius-glass: 10px;
+
+  /* ─── Shadows ───
+   * Deeper, more dramatic shadows on pure black
+   */
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.6);
+  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.65);
+  --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --dq-shadow-popover-elevated:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 16px 48px rgba(0, 0, 0, 0.4);
+  --dq-shadow-modal:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 32px 64px rgba(0, 0, 0, 0.45);
+  --dq-shadow-toast: 0 4px 16px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.25);
+
+  /* ─── Transitions ─── */
+  --dq-transition-hover: background 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+  --dq-transition-field:
+    border-color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  --dq-transition-active: transform 0.06s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dq-transition-panel: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  --dq-transition-switch:
+    background 0.15s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.15s cubic-bezier(0.32, 0.72, 0, 1);
+
+  --dq-switch-thumb-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  --dq-mask: rgba(0, 0, 0, 0.6);
+  --dq-mask-light: rgba(0, 0, 0, 0.35);
+
+  --dq-focus-ring: 0 0 0 3px rgba(124, 58, 237, 0.3);
+
+  /* ─── System Colors ─── */
+  --dq-success: #22c55e;
+  --dq-warning: #eab308;
+  --dq-danger: #ef4444;
+  --dq-danger-hover: #f87171;
+  --dq-info: #60a5fa;
+  --dq-color-white: #ffffff;
+
+  --dq-system-green: var(--dq-success);
+  --dq-system-orange: var(--dq-warning);
+  --dq-system-red: var(--dq-danger);
+  --dq-system-blue: var(--dq-accent);
+
+  /* Apply font */
+  font-family: var(--dq-font-sans);
+  background: var(--dq-bg-page);
+  color: var(--dq-label-primary);
+}
+
+/* ─── Linear Dark Specific Components ─── */
+
+/* Sidebar — inverted L-shape left chrome */
+html.dq-linear-dark .dq-linear-sidebar,
+.dq-linear-dark .dq-linear-sidebar {
+  background: var(--dq-glass-sidebar-bg);
+  border-right: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur);
+  -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+
+/* Top bar — inverted L-shape top chrome */
+html.dq-linear-dark .dq-linear-topbar,
+.dq-linear-dark .dq-linear-topbar {
+  background: var(--dq-glass-bar-bg);
+  border-bottom: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur);
+  -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+
+/* Command palette / quick action bar */
+html.dq-linear-dark .dq-linear-command-bar,
+.dq-linear-dark .dq-linear-command-bar {
+  background: var(--dq-glass-floating-bar-bg);
+  border: 1px solid var(--dq-border-strong);
+  box-shadow: var(--dq-shadow-lg);
+  border-radius: var(--dq-radius-control);
+}
+
+/* Activity / status indicators */
+html.dq-linear-dark .dq-linear-indicator,
+.dq-linear-dark .dq-linear-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dq-accent);
+  box-shadow: 0 0 8px var(--dq-accent-glow);
+}
+
+html.dq-linear-dark .dq-linear-indicator--success,
+.dq-linear-dark .dq-linear-indicator--success {
+  background: var(--dq-success);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.3);
+}
+
+html.dq-linear-dark .dq-linear-indicator--warning,
+.dq-linear-dark .dq-linear-indicator--warning {
+  background: var(--dq-warning);
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
+}
+
+html.dq-linear-dark .dq-linear-indicator--danger,
+.dq-linear-dark .dq-linear-indicator--danger {
+  background: var(--dq-danger);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Keyboard shortcuts */
+html.dq-linear-dark .dq-linear-kbd,
+.dq-linear-dark .dq-linear-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-family: var(--dq-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dq-label-secondary);
+  background: var(--dq-fill-secondary);
+  border: 1px solid var(--dq-border);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Timeline / progress track */
+html.dq-linear-dark .dq-linear-track,
+.dq-linear-dark .dq-linear-track {
+  height: 3px;
+  background: var(--dq-fill-tertiary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+html.dq-linear-dark .dq-linear-track__fill,
+.dq-linear-dark .dq-linear-track__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--dq-accent), var(--dq-accent-hover));
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Selection highlight */
+html.dq-linear-dark ::selection,
+.dq-linear-dark ::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: var(--dq-label-primary);
+}
+
+/* Scrollbar styling */
+html.dq-linear-dark ::-webkit-scrollbar,
+.dq-linear-dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.dq-linear-dark ::-webkit-scrollbar-track,
+.dq-linear-dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dq-linear-dark ::-webkit-scrollbar-thumb,
+.dq-linear-dark ::-webkit-scrollbar-thumb {
+  background: var(--dq-scrollbar-thumb);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+html.dq-linear-dark ::-webkit-scrollbar-thumb:hover,
+.dq-linear-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--dq-scrollbar-thumb-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html.dq-linear-dark,
+  .dq-linear-dark {
+    --dq-transition-hover: none;
+    --dq-transition-field: none;
+    --dq-transition-active: none;
+    --dq-transition-panel: none;
+    --dq-transition-switch: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  html.dq-linear-dark,
+  .dq-linear-dark {
+    --dq-label-primary: rgba(255, 255, 255, 0.98);
+    --dq-label-secondary: rgba(255, 255, 255, 0.85);
+    --dq-label-tertiary: rgba(255, 255, 255, 0.65);
+    --dq-border: rgba(255, 255, 255, 0.15);
+    --dq-border-strong: rgba(255, 255, 255, 0.25);
+    --dq-focus-ring: 0 0 0 4px rgba(124, 58, 237, 0.5);
+  }
+}
+
+/* Reduced transparency */
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-linear-dark .dq-glass,
+  html.dq-linear-dark .dq-glass--bar,
+  html.dq-linear-dark .dq-glass--bar-strong,
+  html.dq-linear-dark .dq-glass--sidebar,
+  html.dq-linear-dark .dq-glass--grouped,
+  html.dq-linear-dark .dq-glass--popover,
+  html.dq-linear-dark .dq-glass--panel,
+  html.dq-linear-dark .dq-linear-sidebar,
+  html.dq-linear-dark .dq-linear-topbar,
+  .dq-linear-dark .dq-glass,
+  .dq-linear-dark .dq-glass--bar,
+  .dq-linear-dark .dq-glass--bar-strong,
+  .dq-linear-dark .dq-glass--sidebar,
+  .dq-linear-dark .dq-glass--grouped,
+  .dq-linear-dark .dq-glass--popover,
+  .dq-linear-dark .dq-glass--panel,
+  .dq-linear-dark .dq-linear-sidebar,
+  .dq-linear-dark .dq-linear-topbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  
+  html.dq-linear-dark .dq-glass--bar,
+  html.dq-linear-dark .dq-glass--bar-strong,
+  html.dq-linear-dark .dq-linear-topbar,
+  .dq-linear-dark .dq-glass--bar,
+  .dq-linear-dark .dq-glass--bar-strong,
+  .dq-linear-dark .dq-linear-topbar {
+    background: var(--dq-glass-bar-bg-strong);
+  }
+  
+  html.dq-linear-dark .dq-glass--sidebar,
+  html.dq-linear-dark .dq-linear-sidebar,
+  .dq-linear-dark .dq-glass--sidebar,
+  .dq-linear-dark .dq-linear-sidebar {
+    background: var(--dq-bg-base);
+  }
+  
+  html.dq-linear-dark .dq-glass--popover,
+  html.dq-linear-dark .dq-glass--panel,
+  .dq-linear-dark .dq-glass--popover,
+  .dq-linear-dark .dq-glass--panel {
+    background: var(--dq-bg-elevated);
+  }
+}
