@@ -7,4 +7,5 @@ export const themes = {
   glass: 'dq-glass.css',
   tauriMacos: 'dq-tauri-macos.css',
   linearDark: 'dq-linear-dark.css',
+  chinaRedDark: 'dq-china-red-dark.css',
 } as const;
