@@ -45,11 +45,11 @@ impl TaskStatus {
 
     fn status_color(&self) -> iced::Color {
         match self {
-            TaskStatus::Pending | TaskStatus::Queued { .. } => color::ACCENT,
-            TaskStatus::Running { .. } => color::WARNING,
-            TaskStatus::Completed => color::SUCCESS,
-            TaskStatus::Failed { .. } => color::DANGER,
-            TaskStatus::Cancelled => color::TEXT_TERTIARY,
+            TaskStatus::Pending | TaskStatus::Queued { .. } => color::accent(),
+            TaskStatus::Running { .. } => color::warning(),
+            TaskStatus::Completed => color::success(),
+            TaskStatus::Failed { .. } => color::danger(),
+            TaskStatus::Cancelled => color::text_tertiary(),
         }
     }
 
@@ -196,7 +196,7 @@ impl TaskQueue {
         let header = row![
             text("任务队列")
                 .size(typography::BODY)
-                .color(color::TEXT_PRIMARY),
+                .color(color::text_primary()),
             Space::new().width(Length::Fill),
             icon_button(PhosphorIcon::X, 12.0, Some(TaskQueueMessage::CloseWindow)),
         ]
@@ -217,13 +217,13 @@ impl TaskQueue {
         let task_list: Element<'_ , TaskQueueMessage> = if self.tasks.is_empty() {
             container(
                 column![
-                    phosphor_icon(PhosphorIcon::Queue, 32.0, color::TEXT_TERTIARY),
+                    phosphor_icon(PhosphorIcon::Queue, 32.0, color::text_tertiary()),
                     text("暂无任务")
                         .size(typography::BODY)
-                        .color(color::TEXT_SECONDARY),
+                        .color(color::text_secondary()),
                     text("提交生成任务后将显示在这里")
                         .size(typography::CAPTION)
-                        .color(color::TEXT_TERTIARY),
+                        .color(color::text_tertiary()),
                 ]
                 .spacing(spacing::SM)
                 .align_x(Alignment::Center),
@@ -260,7 +260,7 @@ impl TaskQueue {
                 .width(Length::Fill)
                 .height(Length::Fixed(1.0))
                 .style(|_theme| container::Style {
-                    background: Some(iced::Background::Color(color::SEPARATOR)),
+                    background: Some(iced::Background::Color(color::separator())),
                     ..Default::default()
                 }),
             task_list,
@@ -276,9 +276,9 @@ impl TaskQueue {
             .width(Length::Fixed(360.0))
             .height(Length::Fill)
             .style(|_theme| container::Style {
-                background: Some(iced::Background::Color(color::BG_SURFACE)),
+                background: Some(iced::Background::Color(color::bg_surface())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
                     radius: spacing::RADIUS_MD.into(),
                 },
@@ -296,7 +296,7 @@ fn icon_button<'a, Message: Clone + 'a>(
     on_press: Option<Message>,
 ) -> Element<'a, Message> {
     button(
-        container(phosphor_icon(icon, size, color::TEXT_SECONDARY))
+        container(phosphor_icon(icon, size, color::text_secondary()))
             .width(Length::Fixed(24.0))
             .height(Length::Fixed(24.0))
             .align_x(Alignment::Center)
@@ -318,10 +318,10 @@ fn icon_text_button<'a, Message: Clone + 'a>(
 ) -> Element<'a, Message> {
     button(
         row![
-            phosphor_icon(icon, 12.0, color::TEXT_TERTIARY),
+            phosphor_icon(icon, 12.0, color::text_tertiary()),
             text(label)
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         ]
         .spacing(4.0)
         .align_y(Alignment::Center),
@@ -330,14 +330,14 @@ fn icon_text_button<'a, Message: Clone + 'a>(
     .style(|_theme, status| {
         let base = button::Style {
             background: None,
-            text_color: color::TEXT_SECONDARY,
+            text_color: color::text_secondary(),
             ..Default::default()
         };
         match status {
             button::Status::Hovered => button::Style {
-                background: Some(iced::Background::Color(color::FILL_HOVER)),
+                background: Some(iced::Background::Color(color::fill_hover())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
                     radius: spacing::RADIUS_SM.into(),
                 },
@@ -355,17 +355,17 @@ fn filter_tab<'a>(label: &'a str, count: usize, active: bool) -> Element<'a, Tas
     container(
         text(format!("{}{}", label, count_text))
             .size(typography::CAPTION)
-            .color(if active { color::TEXT_PRIMARY } else { color::TEXT_TERTIARY }),
+            .color(if active { color::text_primary() } else { color::text_tertiary() }),
     )
     .padding([4.0, 10.0])
     .style(move |_theme| container::Style {
         background: if active {
-            Some(iced::Background::Color(color::FILL_SELECTED))
+            Some(iced::Background::Color(color::fill_selected()))
         } else {
             None
         },
         border: iced::Border {
-            color: if active { color::BORDER_SUBTLE } else { Color::TRANSPARENT },
+            color: if active { color::border_subtle() } else { Color::TRANSPARENT },
             width: 1.0,
             radius: spacing::RADIUS_SM.into(),
         },
@@ -418,7 +418,7 @@ fn task_card<'a>(task: &'a TaskItem) -> Element<'a, TaskQueueMessage> {
                 status_dot(&task.status),
                 text(&task.title)
                     .size(typography::BODY)
-                    .color(color::TEXT_PRIMARY),
+                    .color(color::text_primary()),
             ]
             .spacing(spacing::SM)
             .align_y(Alignment::Center),
@@ -431,11 +431,11 @@ fn task_card<'a>(task: &'a TaskItem) -> Element<'a, TaskQueueMessage> {
         row![
             text(format!("{} · {}", task.mode, task.model))
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
             Space::new().width(Length::Fill),
             text(task.duration_text())
                 .size(typography::CAPTION)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
         ]
         .spacing(spacing::SM)
         .align_y(Alignment::Center)
@@ -453,9 +453,9 @@ fn task_card<'a>(task: &'a TaskItem) -> Element<'a, TaskQueueMessage> {
         .width(Length::Fill)
         .padding(spacing::SM)
         .style(|_theme| container::Style {
-            background: Some(iced::Background::Color(color::BG_INSET)),
+            background: Some(iced::Background::Color(color::bg_inset())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
                 radius: spacing::RADIUS_SM.into(),
             },

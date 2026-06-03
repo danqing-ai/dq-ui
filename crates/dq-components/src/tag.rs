@@ -21,11 +21,11 @@ pub fn tag<'a, Message: Clone + 'a>(
     tag_type: TagType,
 ) -> Element<'a, Message> {
     let (bg, fg, border) = match tag_type {
-        TagType::Success => (color::SUCCESS, Color::WHITE, Color::TRANSPARENT),
-        TagType::Danger => (color::DANGER, Color::WHITE, Color::TRANSPARENT),
-        TagType::Warning => (color::WARNING, Color::BLACK, Color::TRANSPARENT),
-        TagType::Info => (color::ACCENT_TINT, color::ACCENT, Color::TRANSPARENT),
-        TagType::Default => (color::BG_SURFACE, color::TEXT_SECONDARY, color::BORDER_SUBTLE),
+        TagType::Success => (color::success(), Color::WHITE, Color::TRANSPARENT),
+        TagType::Danger => (color::danger(), Color::WHITE, Color::TRANSPARENT),
+        TagType::Warning => (color::warning(), Color::BLACK, Color::TRANSPARENT),
+        TagType::Info => (color::accent_tint(), color::accent(), Color::TRANSPARENT),
+        TagType::Default => (color::bg_surface(), color::text_secondary(), color::border_subtle()),
     };
 
     container(
@@ -39,7 +39,7 @@ pub fn tag<'a, Message: Clone + 'a>(
         border: iced::Border {
             color: border,
             width: 1.0,
-            radius: spacing::RADIUS_SM.into(),
+            radius: spacing::radius_control_sm().into(),
         },
         ..Default::default()
     })

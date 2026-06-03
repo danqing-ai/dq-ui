@@ -24,7 +24,7 @@ pub fn phosphor_icon_button<'a, Message: Clone + 'a>(
     on_press: Option<Message>,
 ) -> Element<'a, Message> {
     button(
-        container(phosphor_icon(icon, icon_size, color::TEXT_SECONDARY))
+        container(phosphor_icon(icon, icon_size, color::text_secondary()))
             .width(Length::Fill)
             .height(Length::Fill)
             .align_x(Alignment::Center)
@@ -40,20 +40,20 @@ pub fn phosphor_icon_button<'a, Message: Clone + 'a>(
 
 fn icon_button_style(_theme: &iced::Theme, status: iced::widget::button::Status) -> iced::widget::button::Style {
     let base = button::Style {
-        background: Some(iced::Background::Color(color::BG_INSET)),
-        text_color: color::TEXT_SECONDARY,
+        background: Some(iced::Background::Color(color::bg_inset())),
+        text_color: color::text_secondary(),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
-            radius: spacing::RADIUS_MD.into(),
+            radius: spacing::radius_control().into(),
         },
         ..Default::default()
     };
     match status {
         button::Status::Hovered => button::Style {
-            background: Some(iced::Background::Color(color::BG_ELEVATED)),
+            background: Some(iced::Background::Color(color::bg_elevated())),
             border: iced::Border {
-                color: color::BORDER_STRONG,
+                color: color::border_strong(),
                 ..base.border
             },
             ..base

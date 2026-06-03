@@ -127,7 +127,7 @@ impl<'a, Message: Clone + 'a> canvas::Program<Message> for DividerProgram<'a, Me
             &line,
             canvas::Stroke::default()
                 .with_width(1.0)
-                .with_color(color::SEPARATOR),
+                .with_color(color::separator()),
         );
 
         // Draw grip indicator (3 dots)
@@ -140,9 +140,9 @@ impl<'a, Message: Clone + 'a> canvas::Program<Message> for DividerProgram<'a, Me
             frame.fill(
                 &dot,
                 if self.state.dragging {
-                    color::ACCENT
+                    color::accent()
                 } else {
-                    color::TEXT_TERTIARY
+                    color::text_tertiary()
                 },
             );
         }

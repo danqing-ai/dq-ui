@@ -105,7 +105,7 @@ impl App {
 
         let brand = text("DanQing Mail")
             .size(typography::BODY)
-            .color(color::TEXT_PRIMARY);
+            .color(color::text_primary());
 
         let studio_nav = dq_studio_nav(
             brand.into(),
@@ -191,7 +191,7 @@ impl App {
             row![
                 text("Re: dq-ui v2 设计评审")
                     .size(typography::TITLE)
-                    .color(color::TEXT_PRIMARY),
+                    .color(color::text_primary()),
                 Space::new().width(Length::Fill),
                 badge("未读"),
             ]
@@ -199,16 +199,16 @@ impl App {
             .width(Length::Fill),
             text("Karri Saarinen <karri@linear.app>")
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
             container(
                 column![
                     text("色彩系统看起来不错，特别是 LCH 的生成逻辑。建议把 contrast 变量的范围再测试一下，确保在 0.3 和 1.0 两端都有良好的可读性。")
                         .size(typography::BODY)
-                        .color(color::TEXT_SECONDARY),
+                        .color(color::text_secondary()),
                     Space::new().height(spacing::MD),
                     text("另外，Panel 的去边框化效果比预期好，但是否需要在 hover 时显示微妙的边框？")
                         .size(typography::BODY)
-                        .color(color::TEXT_SECONDARY),
+                        .color(color::text_secondary()),
                 ]
                 .spacing(spacing::SM)
                 .width(Length::Fill),
@@ -264,7 +264,7 @@ fn placeholder_page(nav: NavId) -> Element<'static, Message> {
         NavId::Settings => "设置 — 即将推出",
         NavId::Inbox => unreachable!(),
     };
-    container(text(label).color(color::TEXT_SECONDARY))
+    container(text(label).color(color::text_secondary()))
         .padding(32)
         .into()
 }

@@ -20,11 +20,11 @@ pub fn image_viewer<'a, Message: Clone + 'a>(
             .width(Length::Fill)
             .height(Length::Fill)
             .style(|_theme| iced::widget::container::Style {
-                background: Some(iced::Background::Color(color::BG_INSET)),
+                background: Some(iced::Background::Color(color::bg_inset())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_MD.into(),
+                    radius: spacing::radius_control().into(),
                 },
                 ..Default::default()
             })
@@ -35,7 +35,7 @@ pub fn image_viewer<'a, Message: Clone + 'a>(
                 column![
                     text(placeholder_label)
                         .size(typography::BODY)
-                        .color(color::TEXT_TERTIARY),
+                        .color(color::text_tertiary()),
                 ]
                 .spacing(spacing::XS)
                 .align_x(Alignment::Center),
@@ -45,11 +45,11 @@ pub fn image_viewer<'a, Message: Clone + 'a>(
             .align_x(Alignment::Center)
             .align_y(Alignment::Center)
             .style(|_theme| iced::widget::container::Style {
-                background: Some(iced::Background::Color(color::BG_INSET)),
+                background: Some(iced::Background::Color(color::bg_inset())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_MD.into(),
+                    radius: spacing::radius_control().into(),
                 },
                 ..Default::default()
             })
@@ -76,7 +76,7 @@ pub fn image_preview_with_meta<'a, Message: Clone + 'a>(
                         .content_fit(iced::ContentFit::Contain),
                     text(meta)
                         .size(typography::CAPTION)
-                        .color(color::TEXT_QUATERNARY),
+                        .color(color::text_quaternary()),
                 ]
                 .spacing(spacing::XS)
                 .width(Length::Fill)
@@ -85,11 +85,11 @@ pub fn image_preview_with_meta<'a, Message: Clone + 'a>(
             .width(width)
             .height(height)
             .style(|_theme| iced::widget::container::Style {
-                background: Some(iced::Background::Color(color::BG_INSET)),
+                background: Some(iced::Background::Color(color::bg_inset())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_MD.into(),
+                    radius: spacing::radius_control().into(),
                 },
                 ..Default::default()
             })
@@ -100,7 +100,7 @@ pub fn image_preview_with_meta<'a, Message: Clone + 'a>(
                 column![
                     text(meta)
                         .size(typography::CAPTION)
-                        .color(color::TEXT_QUATERNARY),
+                        .color(color::text_quaternary()),
                 ]
                 .spacing(spacing::XS)
                 .align_x(Alignment::Center),
@@ -110,11 +110,11 @@ pub fn image_preview_with_meta<'a, Message: Clone + 'a>(
             .align_x(Alignment::Center)
             .align_y(Alignment::Center)
             .style(|_theme| iced::widget::container::Style {
-                background: Some(iced::Background::Color(color::BG_INSET)),
+                background: Some(iced::Background::Color(color::bg_inset())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_MD.into(),
+                    radius: spacing::radius_control().into(),
                 },
                 ..Default::default()
             })

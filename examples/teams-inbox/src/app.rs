@@ -97,7 +97,7 @@ impl App {
 
         let brand = text("DanQing Teams")
             .size(typography::BODY)
-            .color(color::TEXT_PRIMARY);
+            .color(color::text_primary());
 
         let studio_nav = dq_studio_nav(
             brand.into(),
@@ -180,10 +180,10 @@ impl App {
                     column![
                         text("Karri Saarinen")
                             .size(typography::BODY)
-                            .color(color::TEXT_PRIMARY),
+                            .color(color::text_primary()),
                         text("滑动条的交互需要再细化一下，特别是拖拽时的反馈。另外，Focus ring 的颜色在高对比度模式下需要调整。")
                             .size(typography::BODY)
-                            .color(color::TEXT_SECONDARY),
+                            .color(color::text_secondary()),
                         row![
                             dq_button(
                                 "回复",
@@ -228,7 +228,7 @@ fn placeholder_page(nav: NavId) -> Element<'static, Message> {
         NavId::Settings => "设置 — 即将推出",
         NavId::Inbox => unreachable!(),
     };
-    container(text(label).color(color::TEXT_SECONDARY))
+    container(text(label).color(color::text_secondary()))
         .padding(32)
         .into()
 }

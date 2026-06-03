@@ -40,11 +40,11 @@ fn container_row<'a, Message: 'a>(children: Vec<Element<'a, Message>>) -> Elemen
         .padding(2)
         .width(Length::Fill)
         .style(|_theme| container::Style {
-            background: Some(iced::Background::Color(color::BG_ELEVATED)),
+            background: Some(iced::Background::Color(color::bg_elevated())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
-                radius: dq_tokens::spacing::RADIUS_MD.into(),
+                radius: dq_tokens::spacing::radius_control().into(),
             },
             ..Default::default()
         })

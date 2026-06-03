@@ -8,8 +8,8 @@ use iced::{Alignment, Element, Length};
 pub fn loading_state<'a, Message: Clone + 'a>(message: &'a str) -> Element<'a, Message> {
     container(
         column![
-            crate::phosphor_icon(crate::PhosphorIcon::CircleNotch, 32.0, color::TEXT_TERTIARY),
-            text(message).size(typography::BODY).color(color::TEXT_SECONDARY),
+            crate::phosphor_icon(crate::PhosphorIcon::CircleNotch, 32.0, color::text_tertiary()),
+            text(message).size(typography::BODY).color(color::text_secondary()),
         ]
         .spacing(spacing::SM)
         .align_x(Alignment::Center),
@@ -28,9 +28,9 @@ pub fn error_state<'a, Message: Clone + 'a>(
 ) -> Element<'a, Message> {
     container(
         column![
-            crate::phosphor_icon(crate::PhosphorIcon::WarningCircle, 32.0, color::DANGER),
-            text("出错了").size(typography::BODY).color(color::TEXT_SECONDARY),
-            text(message).size(typography::CAPTION).color(color::TEXT_TERTIARY),
+            crate::phosphor_icon(crate::PhosphorIcon::WarningCircle, 32.0, color::danger()),
+            text("出错了").size(typography::BODY).color(color::text_secondary()),
+            text(message).size(typography::CAPTION).color(color::text_tertiary()),
             if let Some(r) = retry {
                 crate::dq_button("重试", crate::ButtonVariant::Primary, crate::ButtonSize::Sm, crate::ButtonWidth::Hug, Some(r))
             } else {

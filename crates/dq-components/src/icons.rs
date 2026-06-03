@@ -27,14 +27,14 @@ pub enum SectionIcon {
 
 fn stroke(active: bool) -> iced::Color {
     if active {
-        color::ICON_PRIMARY
+        color::icon_primary()
     } else {
-        color::ICON_SECONDARY
+        color::icon_secondary()
     }
 }
 
 fn section_stroke() -> iced::Color {
-    color::ICON_SECONDARY
+    color::icon_secondary()
 }
 
 /// Fixed-size box — never use `center_x(Fill)` or the node expands to row width.
@@ -53,11 +53,11 @@ fn icon_box<'a, Message: 'a>(
 /// Brand logo — clean sparkle icon, no border/background.
 pub fn brand_logo<'a, Message: 'a>() -> Element<'a, Message> {
     use crate::phosphor::phosphor_icon;
-    phosphor_icon(crate::phosphor::PhosphorIcon::Sparkle, 22.0, color::ACCENT)
+    phosphor_icon(crate::phosphor::PhosphorIcon::Sparkle, 22.0, color::accent())
 }
 
 pub fn list_icon<'a, Message: 'a>() -> Element<'a, Message> {
-    phosphor_icon(PhosphorIcon::List, 14.0, color::ICON_SECONDARY)
+    phosphor_icon(PhosphorIcon::List, 14.0, color::icon_secondary())
 }
 
 pub fn sparkle_icon<'a, Message: 'a>(tint: iced::Color) -> Element<'a, Message> {
@@ -79,7 +79,7 @@ pub fn section_icon<'a, Message: 'a>(icon: SectionIcon) -> Element<'a, Message> 
 }
 
 pub fn image_placeholder_icon<'a, Message: 'a>() -> Element<'a, Message> {
-    phosphor_icon_box(PhosphorIcon::Image, 20.0, color::TEXT_QUATERNARY, 24.0)
+    phosphor_icon_box(PhosphorIcon::Image, 20.0, color::text_quaternary(), 24.0)
 }
 
 /// 20×20 Phosphor icons for sidebar navigation.
@@ -100,15 +100,15 @@ pub fn studio_icon<'a, Message: 'a>(icon: StudioIcon, active: bool) -> Element<'
 /// Chevron arrow for expand/collapse
 pub fn chevron_icon<'a, Message: 'a>(down: bool) -> Element<'a, Message> {
     let icon = if down { PhosphorIcon::CaretDown } else { PhosphorIcon::CaretRight };
-    phosphor_icon(icon, 10.0, color::ICON_SECONDARY)
+    phosphor_icon(icon, 10.0, color::icon_secondary())
 }
 
 /// Refresh / reload
 pub fn refresh_icon<'a, Message: 'a>() -> Element<'a, Message> {
-    phosphor_icon(PhosphorIcon::ArrowsClockwise, 14.0, color::ICON_TERTIARY)
+    phosphor_icon(PhosphorIcon::ArrowsClockwise, 14.0, color::icon_tertiary())
 }
 
 /// Small accent thumbnail placeholder.
 pub fn thumb_icon<'a, Message: 'a>() -> Element<'a, Message> {
-    phosphor_icon_box(PhosphorIcon::Image, 16.0, color::ACCENT, 16.0)
+    phosphor_icon_box(PhosphorIcon::Image, 16.0, color::accent(), 16.0)
 }

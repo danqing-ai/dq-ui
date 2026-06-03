@@ -10,6 +10,8 @@ pub mod typography;
 pub use color::*;
 pub use generate::{generate, ThemeInput};
 pub use layout::*;
-pub use semantic::{SemanticPalette, LINEAR_DARK};
+pub use semantic::{
+    active_metrics, active_palette, set_active_theme, SemanticPalette, ThemeMetrics, LINEAR_DARK,
+};
 pub use spacing::*;
 pub use typography::*;

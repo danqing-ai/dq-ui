@@ -31,6 +31,35 @@ pub const EDITOR_HEIGHT_NEGATIVE: f32 = 72.0;
 /// Compact numeric fields in advanced panel.
 pub const FIELD_WIDTH_SEED: f32 = 88.0;
 pub const FIELD_WIDTH_STEPS: f32 = 64.0;
+
+#[inline]
+pub fn radius_group() -> f32 {
+    crate::semantic::active_metrics().radius_group
+}
+#[inline]
+pub fn radius_control() -> f32 {
+    crate::semantic::active_metrics().radius_control
+}
+#[inline]
+pub fn radius_control_sm() -> f32 {
+    crate::semantic::active_metrics().radius_control_sm
+}
+#[inline]
+pub fn radius_button() -> f32 {
+    crate::semantic::active_metrics().radius_button
+}
+#[inline]
+pub fn radius_input() -> f32 {
+    crate::semantic::active_metrics().radius_input
+}
+#[inline]
+pub fn row_gutter() -> f32 {
+    crate::semantic::active_metrics().row_gutter
+}
+
+/// @deprecated use `radius_control_sm()`
 pub const RADIUS_SM: f32 = 4.0;
+/// @deprecated use `radius_control()`
 pub const RADIUS_MD: f32 = 6.0;
+/// @deprecated use `radius_group()`
 pub const RADIUS_LG: f32 = 8.0;

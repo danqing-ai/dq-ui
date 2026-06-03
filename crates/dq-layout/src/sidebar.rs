@@ -46,7 +46,7 @@ where
             .width(Length::Fill)
             .height(Length::Fixed(1.0))
             .style(|_theme| container::Style {
-                background: Some(iced::Background::Color(color::SEPARATOR)),
+                background: Some(iced::Background::Color(color::separator())),
                 ..Default::default()
             }),
     );
@@ -66,7 +66,7 @@ where
             .width(Length::Fill)
             .height(Length::Fixed(1.0))
             .style(|_theme| container::Style {
-                background: Some(iced::Background::Color(color::SEPARATOR)),
+                background: Some(iced::Background::Color(color::separator())),
                 ..Default::default()
             }),
     );

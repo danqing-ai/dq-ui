@@ -89,7 +89,7 @@ pub fn dq_preview_canvas<'a, Message: 'a>(
         PreviewState::Idle => container(
             text("暂无预览")
                 .size(dq_tokens::typography::CAPTION)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
         )
         .center_x(Length::Fill)
         .center_y(Length::Fill)
@@ -100,7 +100,7 @@ pub fn dq_preview_canvas<'a, Message: 'a>(
             column![
                 text(format!("生成中 {progress}%"))
                     .size(dq_tokens::typography::LABEL)
-                    .color(color::TEXT_PRIMARY),
+                    .color(color::text_primary()),
                 dq_progress_bar(progress as f32 / 100.0, 3.0),
             ]
             .spacing(8.0)
@@ -115,22 +115,22 @@ pub fn dq_preview_canvas<'a, Message: 'a>(
         .into(),
         PreviewState::Done => container(
             column![
-                container(sparkle_icon::<Message>(color::ACCENT))
+                container(sparkle_icon::<Message>(color::accent()))
                 .padding([6.0, 10.0])
                 .style(|_theme| container::Style {
                     background: Some(iced::Background::Color(Color::from_rgba(
                         0.0, 0.0, 0.0, 0.45,
                     ))),
                     border: iced::Border {
-                        color: color::BORDER_SUBTLE,
+                        color: color::border_subtle(),
                         width: 1.0,
-                        radius: dq_tokens::spacing::RADIUS_MD.into(),
+                        radius: dq_tokens::spacing::radius_control().into(),
                     },
                     ..Default::default()
                 }),
                 text("生成完成")
                     .size(dq_tokens::typography::CAPTION)
-                    .color(color::TEXT_SECONDARY),
+                    .color(color::text_secondary()),
             ]
             .spacing(6.0)
             .align_x(Alignment::Center),

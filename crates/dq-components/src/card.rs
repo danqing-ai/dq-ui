@@ -31,11 +31,11 @@ pub fn surface_card<'a, Message: Clone + 'a>(
         .padding(spacing::MD)
         .width(Length::Fill)
         .style(|_theme: &iced::Theme| container::Style {
-            background: Some(iced::Background::Color(color::BG_PANEL)),
+            background: Some(iced::Background::Color(color::bg_panel())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
-                radius: spacing::RADIUS_LG.into(),
+                radius: spacing::radius_group().into(),
             },
             shadow: iced::Shadow {
                 color: iced::Color::from_rgba(0.0, 0.0, 0.0, 0.30),
@@ -53,7 +53,7 @@ pub fn section_card<'a, Message: Clone + 'a>(
     body: Element<'a, Message>,
 ) -> Element<'a, Message> {
     surface_card(
-        Some(text(title).size(typography::TITLE).color(color::TEXT_PRIMARY).into()),
+        Some(text(title).size(typography::TITLE).color(color::text_primary()).into()),
         None,
         Some(body),
     )

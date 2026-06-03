@@ -9,25 +9,25 @@ pub fn dq_toast<'a, Message: Clone + 'a>(
     variant: ToastVariant,
 ) -> Element<'a, Message> {
     let tint = match variant {
-        ToastVariant::Success => color::SUCCESS,
-        ToastVariant::Error => color::DANGER,
-        ToastVariant::Warning => color::WARNING,
-        ToastVariant::Info => color::ACCENT,
+        ToastVariant::Success => color::success(),
+        ToastVariant::Error => color::danger(),
+        ToastVariant::Warning => color::warning(),
+        ToastVariant::Info => color::accent(),
     };
 
     container(
         text(message)
             .size(typography::CAPTION)
-            .color(color::TEXT_PRIMARY),
+            .color(color::text_primary()),
     )
     .padding([spacing::SM, spacing::MD])
     .width(Length::Shrink)
     .style(move |_theme| iced::widget::container::Style {
-        background: Some(iced::Background::Color(color::BG_ELEVATED)),
+        background: Some(iced::Background::Color(color::bg_elevated())),
         border: iced::Border {
             color: tint,
             width: 1.0,
-            radius: spacing::RADIUS_MD.into(),
+            radius: spacing::radius_control().into(),
         },
         shadow: iced::Shadow {
             color: iced::Color::from_rgba(0.0, 0.0, 0.0, 0.30),

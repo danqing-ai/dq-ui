@@ -11,42 +11,42 @@ pub fn dq_topnav<'a, Message: 'a>(
 ) -> Element<'a, Message> {
     let title_block: Element<Message> = if let Some(sub) = subtitle {
         row![
-            text(title).size(typography::TITLE).color(color::TEXT_PRIMARY),
+            text(title).size(typography::TITLE).color(color::text_primary()),
             text("›")
                 .size(typography::BODY)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
             text(sub)
                 .size(typography::BODY)
-                .color(color::TEXT_SECONDARY),
+                .color(color::text_secondary()),
         ]
         .spacing(spacing::SM)
         .align_y(Alignment::Center)
         .into()
     } else {
-        text(title).size(typography::TITLE).color(color::TEXT_PRIMARY).into()
+        text(title).size(typography::TITLE).color(color::text_primary()).into()
     };
 
     let search = container(
         row![
             text("⌕")
                 .size(typography::BODY)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
             text(search_hint)
                 .size(typography::LABEL)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
             Space::new().width(Length::Fill),
             container(
                 text(search_shortcut)
                     .size(typography::CAPTION)
-                    .color(color::TEXT_TERTIARY),
+                    .color(color::text_tertiary()),
             )
             .padding([2.0, 5.0])
             .style(|_theme| container::Style {
-                background: Some(iced::Background::Color(color::BG_SURFACE)),
+                background: Some(iced::Background::Color(color::bg_surface())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_SM.into(),
+                    radius: spacing::radius_control_sm().into(),
                 },
                 ..Default::default()
             }),
@@ -60,11 +60,11 @@ pub fn dq_topnav<'a, Message: 'a>(
     .padding([0.0, spacing::SM])
     .center_y(Length::Fill)
     .style(|_theme| container::Style {
-        background: Some(iced::Background::Color(color::BG_INSET)),
+        background: Some(iced::Background::Color(color::bg_inset())),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
-            radius: spacing::RADIUS_MD.into(),
+            radius: spacing::radius_control().into(),
         },
         ..Default::default()
     });

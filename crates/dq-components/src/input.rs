@@ -57,7 +57,7 @@ pub fn dq_text_editor_with_counter<'a, Message: Clone + 'a>(
     let counter = iced::widget::container(
         text(count_label)
             .size(typography::MINI)
-            .color(color::TEXT_QUATERNARY),
+            .color(color::text_quaternary()),
     )
     .width(Length::Fill)
     .height(Length::Fixed(height))

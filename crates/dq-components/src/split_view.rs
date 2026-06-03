@@ -49,7 +49,7 @@ fn divider<'a, Message: 'a>() -> iced::Element<'a, Message> {
         .width(Length::Fixed(1.0))
         .height(Length::Fill)
         .style(|_theme| iced::widget::container::Style {
-            background: Some(iced::Background::Color(color::SEPARATOR)),
+            background: Some(iced::Background::Color(color::separator())),
             ..Default::default()
         })
         .into()

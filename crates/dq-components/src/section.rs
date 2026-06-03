@@ -16,7 +16,7 @@ pub fn dq_section<'a, Message: Clone + 'a>(
         section_icon(icon),
         text(title)
             .size(typography::LABEL)
-            .color(color::TEXT_SECONDARY),
+            .color(color::text_secondary()),
     ]
     .spacing(6.0)
     .align_y(Alignment::Center)
@@ -42,7 +42,7 @@ pub fn dq_section<'a, Message: Clone + 'a>(
                 .width(Length::Fill)
                 .height(Length::Fixed(1.0))
                 .style(|_theme| container::Style {
-                    background: Some(iced::Background::Color(color::BORDER_SUBTLE)),
+                    background: Some(iced::Background::Color(color::border_subtle())),
                     ..Default::default()
                 }),
             container(content)
@@ -61,11 +61,11 @@ pub fn dq_section<'a, Message: Clone + 'a>(
     container(panel_content)
         .width(Length::Fill)
         .style(|_theme| container::Style {
-            background: Some(iced::Background::Color(color::BG_PANEL)),
+            background: Some(iced::Background::Color(color::bg_panel())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
-                radius: spacing::RADIUS_MD.into(),
+                radius: spacing::radius_control().into(),
             },
             ..Default::default()
         })

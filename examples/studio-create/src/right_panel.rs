@@ -55,14 +55,14 @@ fn turbo_hint<'a, Message: Clone + 'a>() -> Element<'a, Message> {
     container(
         text("Turbo 模型已启用：步数与 CFG 已自动优化，适合快速预览。")
             .size(typography::CAPTION)
-            .color(color::TEXT_SECONDARY),
+            .color(color::text_secondary()),
     )
     .padding(spacing::SM)
     .width(Length::Fill)
     .style(|_theme| iced::widget::container::Style {
-        background: Some(iced::Background::Color(color::ACCENT_TINT)),
+        background: Some(iced::Background::Color(color::accent_tint())),
         border: iced::Border {
-            color: color::ACCENT_MUTED,
+            color: color::accent_muted(),
             width: 1.0,
             radius: spacing::RADIUS_MD.into(),
         },
@@ -113,11 +113,11 @@ fn resource_bar_live<'a, Message: Clone + 'a>(
         row![
             text(label)
                 .size(typography::LABEL)
-                .color(color::TEXT_SECONDARY),
+                .color(color::text_secondary()),
             Space::new().width(Length::Fill),
             text(format!("{:.1} / {:.1} GB", used, total))
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         ]
         .align_y(Alignment::Center)
         .width(Length::Fill),
@@ -158,7 +158,7 @@ fn current_preview<'a, Message: Clone + 'a>(
                     dq_components::phosphor_icon(
                         dq_components::PhosphorIcon::Image,
                         48.0,
-                        color::TEXT_QUATERNARY,
+                        color::text_quaternary(),
                     )
                 )
                 .width(Length::Fill)
@@ -166,9 +166,9 @@ fn current_preview<'a, Message: Clone + 'a>(
                 .align_x(Alignment::Center)
                 .align_y(Alignment::Center)
                 .style(|_theme| iced::widget::container::Style {
-                    background: Some(iced::Background::Color(color::BG_INSET)),
+                    background: Some(iced::Background::Color(color::bg_inset())),
                     border: iced::Border {
-                        color: color::BORDER_SUBTLE,
+                        color: color::border_subtle(),
                         width: 1.0,
                         radius: spacing::RADIUS_MD.into(),
                     },
@@ -210,7 +210,7 @@ fn current_preview<'a, Message: Clone + 'a>(
         square_wrapper,
         text(meta)
             .size(typography::CAPTION)
-            .color(color::TEXT_QUATERNARY),
+            .color(color::text_quaternary()),
     ]
     .spacing(spacing::SM)
     .width(Length::Fill)
@@ -247,7 +247,7 @@ fn recent_generations<'a, Message: Clone + 'a>(
         container(
             text("暂无生成记录")
                 .size(typography::LABEL)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         )
         .width(Length::Fill)
         .padding(spacing::LG)
@@ -283,7 +283,7 @@ fn recent_list_item<'a, Message: Clone + 'a>(
             dq_components::phosphor_icon(
                 dq_components::PhosphorIcon::Image,
                 20.0,
-                color::TEXT_QUATERNARY,
+                color::text_quaternary(),
             )
         )
         .width(Length::Fixed(48.0))
@@ -291,9 +291,9 @@ fn recent_list_item<'a, Message: Clone + 'a>(
         .align_x(Alignment::Center)
         .align_y(Alignment::Center)
         .style(|_theme| iced::widget::container::Style {
-            background: Some(iced::Background::Color(color::BG_INSET)),
+            background: Some(iced::Background::Color(color::bg_inset())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
                 radius: spacing::RADIUS_SM.into(),
             },
@@ -301,7 +301,7 @@ fn recent_list_item<'a, Message: Clone + 'a>(
         }),
         text(item.title.as_str())
             .size(typography::BODY)
-            .color(color::TEXT_PRIMARY),
+            .color(color::text_primary()),
     ]
     .spacing(spacing::SM)
     .align_y(Alignment::Center)

@@ -31,7 +31,7 @@ pub fn log_panel<'a, Message: Clone + 'a>(
     on_clear: Option<Message>,
 ) -> Element<'a, Message> {
     // Ghost icon button — no background, just the icon.
-    let clear = button(phosphor_icon(PhosphorIcon::Trash, 14.0, color::TEXT_TERTIARY))
+    let clear = button(phosphor_icon(PhosphorIcon::Trash, 14.0, color::text_tertiary()))
         .padding(4)
         .style(|_theme, _status| button::Style {
             background: None,
@@ -44,7 +44,7 @@ pub fn log_panel<'a, Message: Clone + 'a>(
         container(
             text("暂无日志")
                 .size(typography::LABEL)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         )
         .width(Length::Fill)
         .padding(spacing::MD)
@@ -57,10 +57,10 @@ pub fn log_panel<'a, Message: Clone + 'a>(
                 row![
                     text(format!("[{}]", line.time))
                         .size(typography::MINI)
-                        .color(color::TEXT_QUATERNARY),
+                        .color(color::text_quaternary()),
                     text(line.message.as_str())
                         .size(typography::CAPTION)
-                        .color(color::ACCENT),
+                        .color(color::accent()),
                 ]
                 .spacing(spacing::SM)
                 .align_y(Alignment::Start)
@@ -71,11 +71,11 @@ pub fn log_panel<'a, Message: Clone + 'a>(
             .padding(spacing::SM)
             .width(Length::Fill)
             .style(|_theme| iced::widget::container::Style {
-                background: Some(iced::Background::Color(color::BG_INSET)),
+                background: Some(iced::Background::Color(color::bg_inset())),
                 border: iced::Border {
-                    color: color::BORDER_SUBTLE,
+                    color: color::border_subtle(),
                     width: 1.0,
-                    radius: spacing::RADIUS_MD.into(),
+                    radius: spacing::radius_control().into(),
                 },
                 ..Default::default()
             })

@@ -20,6 +20,8 @@
 
 html.dq-china-red-dark,
 .dq-china-red-dark {
+  accent-color: var(--dq-accent);
+
   /* ═══ 核心色彩 (Core Palette) ═══ */
   
   /* 朱砂红 — 主强调色，源自天然矿物颜料 */
@@ -44,16 +46,20 @@ html.dq-china-red-dark,
 
   /* ═══ 背景层次 (Background Hierarchy) ═══
    * 玄黑 → 墨黑 → 漆灰 → 檀木
-   * 灵感：中国传统漆器、紫檀木、宣纸
+   * Aligned with Iced `SemanticPalette::china_red_dark()` (web CSS is source of truth).
    */
-  --dq-bg-page: #0C0A0A;                   /* 玄黑 — 最深背景，宇宙本源色 */
-  --dq-bg-base: #141010;                   /* 墨黑 — 应用框架 */
-  --dq-bg-elevated: #1C1616;               /* 漆灰 — 卡片、面板 */
-  --dq-surface-elevated: #241C1C;          /* 檀木 — 悬停状态 */
-  --dq-surface-grouped: #1E1818;           /* 暗红灰 — 分组区域 */
+  --dq-material-chrome: #141010;
+  --dq-material-elevated: #241c1c;
+  --dq-material-grouped: #1c1616;
+
+  --dq-bg-page: #0c0a0a;
+  --dq-bg-base: var(--dq-material-chrome);
+  --dq-bg-elevated: #1c1616;
+  --dq-surface-elevated: #241c1c;
+  --dq-surface-grouped: var(--dq-material-grouped);
 
   /* ═══ 填充色 (Fills) ═══ */
-  --dq-fill-control: #241C1C;
+  --dq-fill-control: #2c2222;
   --dq-fill-secondary: #2A2020;
   --dq-fill-tertiary: #362828;
   --dq-fill-quaternary: #443030;
@@ -262,10 +268,20 @@ html.dq-china-red-dark,
   --dq-system-red: var(--dq-danger);
   --dq-system-blue: var(--dq-info);
 
+  --dq-row-gutter: 16px;
+
   /* Apply */
   font-family: var(--dq-font-sans);
-  background: var(--dq-bg-page);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
   color: var(--dq-label-primary);
+}
+
+html.dq-china-red-dark body {
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
 }
 
 /* ═══ 中国红主题专用组件 ═══ */

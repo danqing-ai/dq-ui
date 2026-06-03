@@ -1,6 +1,7 @@
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, copyFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
 const packageDir = resolve(rootDir, '..');
@@ -19,26 +20,4 @@ for (const name of [
   await copyFile(resolve(srcDir, name), resolve(distDir, name));
 }
 
-const indexTs = await readFile(resolve(srcDir, 'index.ts'), 'utf8');
-const matchedVersion = indexTs.match(/DQ_TOKENS_VERSION\s*=\s*['"]([^'"]+)['"]/);
-const version = matchedVersion?.[1] ?? '0.1.0';
-
-await writeFile(
-  resolve(distDir, 'index.js'),
-  [
-    "/** Import in app entry: `import '@danqing/dq-tokens/dq-mac.css'` */",
-    `export const DQ_TOKENS_VERSION = '${version}';`,
-    '',
-  ].join('\n'),
-  'utf8',
-);
-
-await writeFile(
-  resolve(distDir, 'index.d.ts'),
-  [
-    "/** Import in app entry: `import '@danqing/dq-tokens/dq-mac.css'` */",
-    `export declare const DQ_TOKENS_VERSION: '${version}';`,
-    '',
-  ].join('\n'),
-  'utf8',
-);
+execSync('tsc -p tsconfig.json', { cwd: packageDir, stdio: 'inherit' });

@@ -12,7 +12,7 @@ pub fn field<'a, Message: 'a>(
     let mut col = column![
         text(label)
             .size(typography::CAPTION)
-            .color(color::TEXT_TERTIARY),
+            .color(color::text_tertiary()),
         content,
     ]
     .spacing(FIELD_LABEL_GAP)
@@ -20,7 +20,7 @@ pub fn field<'a, Message: 'a>(
     .align_x(Alignment::Start);
 
     if let Some(h) = hint {
-        col = col.push(text(h).size(typography::CAPTION).color(color::TEXT_TERTIARY));
+        col = col.push(text(h).size(typography::CAPTION).color(color::text_tertiary()));
     }
 
     col.into()
@@ -36,7 +36,7 @@ pub fn field_inline<'a, Message: 'a>(
         row![
             text(label)
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
             iced::widget::Space::new().width(Length::Fill),
             trail,
         ]
@@ -45,7 +45,7 @@ pub fn field_inline<'a, Message: 'a>(
     } else {
         row![text(label)
             .size(typography::CAPTION)
-            .color(color::TEXT_TERTIARY)]
+            .color(color::text_tertiary())]
         .width(Length::Fill)
     };
 

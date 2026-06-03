@@ -16,7 +16,7 @@ pub fn dq_param_row<'a, Message: 'a>(
         body = body.push(
             text(h)
                 .size(typography::MINI)
-                .color(color::TEXT_QUATERNARY),
+                .color(color::text_quaternary()),
         );
     }
 
@@ -24,7 +24,7 @@ pub fn dq_param_row<'a, Message: 'a>(
         container(
             text(label)
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         )
         .width(Length::Fixed(80.0))
         .padding([control_padding_y(), 0.0])

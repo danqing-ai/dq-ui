@@ -411,12 +411,12 @@ pub fn brush_size_selector<'a, Message: Clone + 'a>(
     on_change: impl Fn(f32) -> Message + 'a,
 ) -> iced::Element<'a, Message> {
     row![
-        text("画笔大小").size(dq_tokens::typography::LABEL).color(color::TEXT_SECONDARY),
+        text("画笔大小").size(dq_tokens::typography::LABEL).color(color::text_secondary()),
         iced::widget::slider(1.0..=100.0, current_size, on_change)
             .width(Length::Fixed(120.0)),
         text(format!("{:.0}px", current_size))
             .size(dq_tokens::typography::CAPTION)
-            .color(color::TEXT_TERTIARY),
+            .color(color::text_tertiary()),
     ]
     .spacing(dq_tokens::spacing::SM)
     .align_y(Alignment::Center)
@@ -441,19 +441,19 @@ pub fn tool_selector<'a, Message: Clone + 'a>(
         let btn = button(
             text(label)
                 .size(dq_tokens::typography::CAPTION)
-                .color(if active { color::TEXT_PRIMARY } else { color::TEXT_TERTIARY }),
+                .color(if active { color::text_primary() } else { color::text_tertiary() }),
         )
         .padding([4.0, 12.0])
         .style(move |_theme: &Theme, _status: button::Status| button::Style {
             background: if active {
-                Some(iced::Background::Color(color::FILL_SELECTED))
+                Some(iced::Background::Color(color::fill_selected()))
             } else {
                 None
             },
             border: iced::Border {
-                color: if active { color::BORDER_SUBTLE } else { Color::TRANSPARENT },
+                color: if active { color::border_subtle() } else { Color::TRANSPARENT },
                 width: 1.0,
-                radius: dq_tokens::spacing::RADIUS_SM.into(),
+                radius: dq_tokens::spacing::radius_control_sm().into(),
             },
             ..Default::default()
         })
@@ -475,19 +475,19 @@ pub fn zoom_controls<'a, Message: Clone + 'a>(
     use crate::phosphor::{phosphor_icon, PhosphorIcon};
 
     row![
-        button(phosphor_icon(PhosphorIcon::MagnifyingGlassPlus, 14.0, color::TEXT_SECONDARY))
+        button(phosphor_icon(PhosphorIcon::MagnifyingGlassPlus, 14.0, color::text_secondary()))
             .padding(4)
             .style(tool_button_style)
             .on_press(on_zoom_in),
-        button(phosphor_icon(PhosphorIcon::MagnifyingGlass, 14.0, color::TEXT_SECONDARY))
+        button(phosphor_icon(PhosphorIcon::MagnifyingGlass, 14.0, color::text_secondary()))
             .padding(4)
             .style(tool_button_style)
             .on_press(on_reset),
-        button(phosphor_icon(PhosphorIcon::Minus, 14.0, color::TEXT_SECONDARY))
+        button(phosphor_icon(PhosphorIcon::Minus, 14.0, color::text_secondary()))
             .padding(4)
             .style(tool_button_style)
             .on_press(on_zoom_out),
-        button(phosphor_icon(PhosphorIcon::Trash, 14.0, color::TEXT_SECONDARY))
+        button(phosphor_icon(PhosphorIcon::Trash, 14.0, color::text_secondary()))
             .padding(4)
             .style(tool_button_style)
             .on_press(on_clear),
@@ -498,11 +498,11 @@ pub fn zoom_controls<'a, Message: Clone + 'a>(
 
 fn tool_button_style(_theme: &Theme, _status: button::Status) -> button::Style {
     button::Style {
-        background: Some(iced::Background::Color(color::BG_INSET)),
+        background: Some(iced::Background::Color(color::bg_inset())),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
-            radius: dq_tokens::spacing::RADIUS_SM.into(),
+            radius: dq_tokens::spacing::radius_control_sm().into(),
         },
         ..Default::default()
     }

@@ -14,11 +14,11 @@ pub fn empty_state<'a, Message: Clone + 'a>(
     let mut col = column![].spacing(spacing::MD).align_x(Alignment::Center);
 
     if let Some(ic) = icon {
-        col = col.push(crate::phosphor_icon(ic, 40.0, color::TEXT_TERTIARY));
+        col = col.push(crate::phosphor_icon(ic, 40.0, color::text_tertiary()));
     }
 
-    col = col.push(text(title).size(typography::BODY).color(color::TEXT_SECONDARY));
-    col = col.push(text(description).size(typography::CAPTION).color(color::TEXT_TERTIARY));
+    col = col.push(text(title).size(typography::BODY).color(color::text_secondary()));
+    col = col.push(text(description).size(typography::CAPTION).color(color::text_tertiary()));
 
     if let Some(a) = action {
         col = col.push(a);

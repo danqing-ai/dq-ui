@@ -6,7 +6,7 @@ Shared **macOS-native desktop** UI for DanQing product suite (Web + Tauri). **No
 
 | Package | Description |
 |---------|-------------|
-| `@danqing/dq-tokens` | Design tokens (`dq-mac.css`, `--dq-*`) |
+| `@danqing/dq-tokens` | Design tokens (`dq-mac.css`, `--dq-*`) and productivity themes |
 | `@danqing/dq-ui` | Primitives (`Dq*`) |
 | `@danqing/dq-shell` | App chrome: tabs, inspector, pref forms, toast/confirm |
 
@@ -27,7 +27,37 @@ npm run build
 npm run typecheck
 ```
 
-## Rules
+## Themes
+
+`@danqing/dq-tokens` ships macOS defaults plus two productivity dark themes for web apps:
+
+| Theme | CSS import | `<html>` class |
+|-------|------------|----------------|
+| macOS (default) | `@danqing/dq-tokens/dq-mac.css` | — (also set `dq-mac-ui` on `<html>` for font) |
+| Linear Dark | `@danqing/dq-tokens/dq-linear-dark.css` | `dq-linear-dark` |
+| China Red Dark | `@danqing/dq-tokens/dq-china-red-dark.css` | `dq-china-red-dark` |
+
+Import glass surface utilities after the base theme:
+
+```ts
+import '@danqing/dq-tokens/dq-linear-dark.css';
+import '@danqing/dq-tokens/dq-glass.css';
+import '@danqing/dq-ui/style.css';
+```
+
+Programmatic theme switching:
+
+```ts
+import { applyDqTheme } from '@danqing/dq-tokens';
+
+applyDqTheme('linearDark');
+applyDqTheme('chinaRedDark');
+```
+
+Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-theme demo pages in the same folder.
+
+Iced (`dq-tokens` / `dq-theme`) reads the same values at runtime via `theme_from_palette()` — **web CSS is the source of truth**; call `dq_theme::china_red_dark_theme()` or `dq_theme::linear_theme()` to install the matching palette.
+
 
 - Product apps: `@/utils/feedback` for toasts/confirms; `Dq*` in templates only.
 - Only `packages/ui` may import `reka-ui` directly.

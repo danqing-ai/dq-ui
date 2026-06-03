@@ -25,11 +25,11 @@ pub fn pref_row<'a, Message: Clone + 'a>(
     hint: Option<&'a str>,
     stacked: bool,
 ) -> Element<'a, Message> {
-    let label_el = text(label).size(typography::LABEL).color(color::TEXT_SECONDARY);
+    let label_el = text(label).size(typography::LABEL).color(color::text_secondary());
 
     let body: Element<'a, Message> = if stacked {
         let hint_el: Element<'a, Message> = if let Some(h) = hint {
-            text(h).size(typography::MINI).color(color::TEXT_QUATERNARY).into()
+            text(h).size(typography::MINI).color(color::text_quaternary()).into()
         } else {
             Space::new().height(0).into()
         };
@@ -43,7 +43,7 @@ pub fn pref_row<'a, Message: Clone + 'a>(
         .into()
     } else {
         let hint_el: Element<'a, Message> = if let Some(h) = hint {
-            text(h).size(typography::MINI).color(color::TEXT_QUATERNARY).into()
+            text(h).size(typography::MINI).color(color::text_quaternary()).into()
         } else {
             Space::new().width(0).into()
         };

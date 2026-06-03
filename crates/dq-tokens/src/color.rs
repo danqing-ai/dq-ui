@@ -1,50 +1,151 @@
-//! Flat color aliases — backward-compatible re-exports from the active palette.
-//!
-//! Prefer `semantic::LINEAR_DARK` or `generate()` for new code.
+//! Runtime color accessors — always read the active theme palette.
 
-use crate::semantic::LINEAR_DARK;
+use crate::semantic::active_palette;
 use iced::Color;
 
-// Surfaces
-pub const BG_PAGE: Color = LINEAR_DARK.bg_page;
-pub const BG_BASE: Color = LINEAR_DARK.bg_base;
-pub const BG_ELEVATED: Color = LINEAR_DARK.bg_elevated;
-pub const BG_PANEL: Color = LINEAR_DARK.bg_panel;
-pub const BG_SURFACE: Color = LINEAR_DARK.bg_surface;
-pub const BG_INSET: Color = LINEAR_DARK.bg_inset;
-pub const BG_OVERLAY: Color = LINEAR_DARK.bg_overlay;
-pub const BG_TRANSLUCENT: Color = LINEAR_DARK.bg_translucent;
+#[inline]
+pub fn bg_page() -> Color {
+    active_palette().bg_page
+}
+#[inline]
+pub fn bg_base() -> Color {
+    active_palette().bg_base
+}
+#[inline]
+pub fn bg_elevated() -> Color {
+    active_palette().bg_elevated
+}
+#[inline]
+pub fn bg_panel() -> Color {
+    active_palette().bg_panel
+}
+#[inline]
+pub fn bg_surface() -> Color {
+    active_palette().bg_surface
+}
+#[inline]
+pub fn bg_inset() -> Color {
+    active_palette().bg_inset
+}
+#[inline]
+pub fn bg_overlay() -> Color {
+    active_palette().bg_overlay
+}
+#[inline]
+pub fn bg_translucent() -> Color {
+    active_palette().bg_translucent
+}
 
-// Accent
-pub const ACCENT: Color = LINEAR_DARK.accent;
-pub const ACCENT_HOVER: Color = LINEAR_DARK.accent_hover;
-pub const ACCENT_MUTED: Color = LINEAR_DARK.accent_muted;
-pub const ACCENT_TINT: Color = LINEAR_DARK.accent_tint;
+#[inline]
+pub fn accent() -> Color {
+    active_palette().accent
+}
+#[inline]
+pub fn accent_hover() -> Color {
+    active_palette().accent_hover
+}
+#[inline]
+pub fn accent_muted() -> Color {
+    active_palette().accent_muted
+}
+#[inline]
+pub fn accent_tint() -> Color {
+    active_palette().accent_tint
+}
 
-// Labels
-pub const TEXT_PRIMARY: Color = LINEAR_DARK.text_primary;
-pub const TEXT_SECONDARY: Color = LINEAR_DARK.text_secondary;
-pub const TEXT_TERTIARY: Color = LINEAR_DARK.text_tertiary;
-pub const TEXT_QUATERNARY: Color = LINEAR_DARK.text_quaternary;
+#[inline]
+pub fn text_primary() -> Color {
+    active_palette().text_primary
+}
+#[inline]
+pub fn text_secondary() -> Color {
+    active_palette().text_secondary
+}
+#[inline]
+pub fn text_tertiary() -> Color {
+    active_palette().text_tertiary
+}
+#[inline]
+pub fn text_quaternary() -> Color {
+    active_palette().text_quaternary
+}
 
-// Icons
-pub const ICON_PRIMARY: Color = LINEAR_DARK.icon_primary;
-pub const ICON_SECONDARY: Color = LINEAR_DARK.icon_secondary;
-pub const ICON_TERTIARY: Color = LINEAR_DARK.icon_tertiary;
+#[inline]
+pub fn icon_primary() -> Color {
+    active_palette().icon_primary
+}
+#[inline]
+pub fn icon_secondary() -> Color {
+    active_palette().icon_secondary
+}
+#[inline]
+pub fn icon_tertiary() -> Color {
+    active_palette().icon_tertiary
+}
 
-// Borders
-pub const BORDER_SUBTLE: Color = LINEAR_DARK.border_subtle;
-pub const BORDER_STRONG: Color = LINEAR_DARK.border_strong;
-pub const BORDER_FOCUS: Color = LINEAR_DARK.border_focus;
-pub const SEPARATOR: Color = LINEAR_DARK.separator;
+#[inline]
+pub fn border_subtle() -> Color {
+    active_palette().border_subtle
+}
+#[inline]
+pub fn border_strong() -> Color {
+    active_palette().border_strong
+}
+#[inline]
+pub fn border_focus() -> Color {
+    active_palette().border_focus
+}
+#[inline]
+pub fn separator() -> Color {
+    active_palette().separator
+}
 
-// Fills
-pub const FILL_HOVER: Color = LINEAR_DARK.fill_hover;
-pub const FILL_ACTIVE: Color = LINEAR_DARK.fill_active;
-pub const FILL_SELECTED: Color = LINEAR_DARK.fill_selected;
-pub const FILL_NAV_ACTIVE: Color = LINEAR_DARK.fill_selected;
+#[inline]
+pub fn fill_hover() -> Color {
+    active_palette().fill_hover
+}
+#[inline]
+pub fn fill_active() -> Color {
+    active_palette().fill_active
+}
+#[inline]
+pub fn fill_selected() -> Color {
+    active_palette().fill_selected
+}
+#[inline]
+pub fn fill_nav_active() -> Color {
+    active_palette().fill_selected
+}
 
-// Status
-pub const DANGER: Color = LINEAR_DARK.danger;
-pub const SUCCESS: Color = LINEAR_DARK.success;
-pub const WARNING: Color = LINEAR_DARK.warning;
+#[inline]
+pub fn danger() -> Color {
+    active_palette().danger
+}
+#[inline]
+pub fn success() -> Color {
+    active_palette().success
+}
+#[inline]
+pub fn warning() -> Color {
+    active_palette().warning
+}
+#[inline]
+pub fn success_surface() -> Color {
+    active_palette().success_surface
+}
+#[inline]
+pub fn warning_surface() -> Color {
+    active_palette().warning_surface
+}
+#[inline]
+pub fn danger_surface() -> Color {
+    active_palette().danger_surface
+}
+#[inline]
+pub fn scrollbar_thumb() -> Color {
+    active_palette().scrollbar_thumb
+}
+#[inline]
+pub fn scrollbar_thumb_hover() -> Color {
+    active_palette().scrollbar_thumb_hover
+}

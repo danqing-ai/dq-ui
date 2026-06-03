@@ -1541,9 +1541,9 @@ impl CreatePage {
                 .width(Length::Fill)
                 .height(Length::Fixed(300.0))
                 .style(|_theme| iced::widget::container::Style {
-                    background: Some(iced::Background::Color(color::BG_INSET)),
+                    background: Some(iced::Background::Color(color::bg_inset())),
                     border: iced::Border {
-                        color: color::BORDER_SUBTLE,
+                        color: color::border_subtle(),
                         width: 1.0,
                         radius: spacing::RADIUS_MD.into(),
                     },
@@ -1859,7 +1859,7 @@ impl CreatePage {
                 container(
                     text("×")
                         .size(typography::BODY)
-                        .color(color::TEXT_TERTIARY),
+                        .color(color::text_tertiary()),
                 )
                 .align_y(Alignment::Center),
                 container(dq_pick_list(
@@ -1893,7 +1893,7 @@ impl CreatePage {
                 container(
                     text("×")
                         .size(typography::BODY)
-                        .color(color::TEXT_TERTIARY),
+                        .color(color::text_tertiary()),
                 )
                 .align_y(Alignment::Center),
                 container(dq_pick_list(
@@ -2022,7 +2022,7 @@ impl CreatePage {
             section = section.push(
                 text(err.as_str())
                     .size(typography::CAPTION)
-                    .color(color::DANGER),
+                    .color(color::danger()),
             );
         }
 
@@ -2030,10 +2030,10 @@ impl CreatePage {
             GenerateState::Submitting => {
                 section = section.push(
                     row![
-                        iced::widget::text("⟳").size(typography::BODY).color(color::WARNING),
+                        iced::widget::text("⟳").size(typography::BODY).color(color::warning()),
                         text("正在提交任务…")
                             .size(typography::CAPTION)
-                            .color(color::TEXT_SECONDARY),
+                            .color(color::text_secondary()),
                     ]
                     .spacing(spacing::SM)
                     .align_y(Alignment::Center),
@@ -2056,11 +2056,11 @@ impl CreatePage {
                     row![
                         text(status)
                             .size(typography::CAPTION)
-                            .color(color::TEXT_SECONDARY),
+                            .color(color::text_secondary()),
                         Space::new().width(Length::Fill),
                         text(format!("{}%", progress))
                             .size(typography::CAPTION)
-                            .color(color::TEXT_TERTIARY),
+                            .color(color::text_tertiary()),
                     ]
                     .align_y(Alignment::Center)
                     .width(Length::Fill),
@@ -2071,7 +2071,7 @@ impl CreatePage {
                     row![
                         text("✓ 已完成 · 已加入最近生成")
                             .size(typography::CAPTION)
-                            .color(color::SUCCESS),
+                            .color(color::success()),
                     ]
                     .align_y(Alignment::Center)
                     .width(Length::Fill),
@@ -2085,11 +2085,11 @@ impl CreatePage {
             row![
                 text(self.queue_hint_idle())
                     .size(typography::CAPTION)
-                    .color(color::TEXT_TERTIARY),
+                    .color(color::text_tertiary()),
                 Space::new().width(Length::Fill),
                 text("⌘ + Enter 提交")
                     .size(typography::MINI)
-                    .color(color::TEXT_QUATERNARY),
+                    .color(color::text_quaternary()),
             ]
             .align_y(Alignment::Center)
             .width(Length::Fill),
@@ -2124,7 +2124,7 @@ impl CreatePage {
                         row![
                             text(label)
                                 .size(typography::BODY)
-                                .color(color::TEXT_PRIMARY),
+                                .color(color::text_primary()),
                             Space::new().width(Length::Fill),
                             dq_control_button("更换", Some(Message::UploadSourceImage)),
                             dq_control_button("清除", Some(Message::ClearSourceImage)),
@@ -2139,9 +2139,9 @@ impl CreatePage {
                 .padding(spacing::SM)
                 .width(Length::Fill)
                 .style(|_theme| iced::widget::container::Style {
-                    background: Some(iced::Background::Color(color::BG_INSET)),
+                    background: Some(iced::Background::Color(color::bg_inset())),
                     border: iced::Border {
-                        color: color::BORDER_SUBTLE,
+                        color: color::border_subtle(),
                         width: 1.0,
                         radius: spacing::RADIUS_MD.into(),
                     },
@@ -2229,7 +2229,7 @@ impl CreatePage {
                         row![
                             text("ControlNet 控制图")
                                 .size(typography::BODY)
-                                .color(color::TEXT_PRIMARY),
+                                .color(color::text_primary()),
                             Space::new().width(Length::Fill),
                             dq_control_button("更换", Some(Message::UploadControlImage)),
                             dq_control_button("清除", Some(Message::ClearControlImage)),
@@ -2244,9 +2244,9 @@ impl CreatePage {
                 .padding(spacing::SM)
                 .width(Length::Fill)
                 .style(|_theme| iced::widget::container::Style {
-                    background: Some(iced::Background::Color(color::BG_INSET)),
+                    background: Some(iced::Background::Color(color::bg_inset())),
                     border: iced::Border {
-                        color: color::BORDER_SUBTLE,
+                        color: color::border_subtle(),
                         width: 1.0,
                         radius: spacing::RADIUS_MD.into(),
                     },
@@ -2273,12 +2273,12 @@ impl CreatePage {
                 row![
                     text("已上传")
                         .size(typography::BODY)
-                        .color(color::SUCCESS),
+                        .color(color::success()),
                     Space::new().width(Length::Fill),
                     iced::widget::button(
                         text("清除")
                             .size(typography::CAPTION)
-                            .color(color::DANGER),
+                            .color(color::danger()),
                     )
                     .on_press(on_clear)
                     .style(|_theme: &iced::Theme, _status| iced::widget::button::Style {
@@ -2298,7 +2298,7 @@ impl CreatePage {
                 image_placeholder_icon(),
                 text(label)
                     .size(typography::CAPTION)
-                    .color(color::TEXT_TERTIARY),
+                    .color(color::text_tertiary()),
             ]
             .spacing(spacing::SM)
             .align_x(Alignment::Center)

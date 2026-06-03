@@ -31,9 +31,9 @@ where
                 text(opt.label.as_str())
                     .size(typography::LABEL)
                     .color(if is_active {
-                        color::TEXT_PRIMARY
+                        color::text_primary()
                     } else {
-                        color::TEXT_SECONDARY
+                        color::text_secondary()
                     }),
             )
             .padding([6.0, 10.0])

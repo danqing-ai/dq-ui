@@ -778,7 +778,7 @@ impl App {
                 // Other pages still have a title bar
                 let page_title = text(self.nav.label())
                     .size(typography::HEADING)
-                    .color(color::TEXT_PRIMARY);
+                    .color(color::text_primary());
                 let top_bar = dq_studio_nav(page_title.into());
                 column![
                     top_bar,
@@ -832,7 +832,7 @@ fn placeholder_page(nav: NavId) -> iced::Element<'static, Message> {
         NavId::Settings => "设置 — 即将推出",
         NavId::ImageCreate => unreachable!(),
     };
-    container(text(label).color(color::TEXT_SECONDARY))
+    container(text(label).color(color::text_secondary()))
         .padding(32)
         .into()
 }

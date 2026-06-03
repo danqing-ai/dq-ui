@@ -21,10 +21,10 @@ pub fn alert<'a, Message: Clone + 'a>(
     action: Option<Element<'a, Message>>,
 ) -> Element<'a, Message> {
     let (bg, fg, border_color) = match alert_type {
-        AlertType::Info => (color::ACCENT_TINT, color::ACCENT, color::ACCENT_MUTED),
-        AlertType::Success => (Color::from_rgba(0.24, 0.70, 0.46, 0.10), color::SUCCESS, color::SUCCESS),
-        AlertType::Warning => (Color::from_rgba(0.96, 0.76, 0.17, 0.10), color::WARNING, color::WARNING),
-        AlertType::Danger => (Color::from_rgba(0.94, 0.27, 0.27, 0.10), color::DANGER, color::DANGER),
+        AlertType::Info => (color::accent_tint(), color::accent(), color::accent_muted()),
+        AlertType::Success => (color::success_surface(), color::success(), color::success()),
+        AlertType::Warning => (color::warning_surface(), color::warning(), color::warning()),
+        AlertType::Danger => (color::danger_surface(), color::danger(), color::danger()),
     };
 
     let mut row = row![]
@@ -50,11 +50,9 @@ pub fn alert<'a, Message: Clone + 'a>(
             border: iced::Border {
                 color: border_color,
                 width: 1.0,
-                radius: spacing::RADIUS_MD.into(),
+                radius: spacing::radius_control().into(),
             },
             ..Default::default()
         })
         .into()
 }
-
-use iced::Color;

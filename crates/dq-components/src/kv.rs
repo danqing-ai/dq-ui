@@ -11,9 +11,9 @@ pub fn kv_row<'a, Message: Clone + 'a>(
     value: &'a str,
 ) -> Element<'a, Message> {
     row![
-        text(key).size(typography::LABEL).color(color::TEXT_SECONDARY),
+        text(key).size(typography::LABEL).color(color::text_secondary()),
         Space::new().width(Length::Fill),
-        text(value).size(typography::BODY).color(color::TEXT_PRIMARY),
+        text(value).size(typography::BODY).color(color::text_primary()),
     ]
     .spacing(spacing::SM)
     .align_y(Alignment::Center)

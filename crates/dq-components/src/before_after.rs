@@ -83,11 +83,11 @@ pub fn before_after_slider<'a, Message: Clone + 'a>(
         .width(Length::Fill)
         .height(Length::Fixed(300.0))
         .style(|_theme| iced::widget::container::Style {
-            background: Some(iced::Background::Color(color::BG_INSET)),
+            background: Some(iced::Background::Color(color::bg_inset())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
-                radius: dq_tokens::spacing::RADIUS_MD.into(),
+                radius: dq_tokens::spacing::radius_control().into(),
             },
             ..Default::default()
         })

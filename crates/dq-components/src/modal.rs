@@ -13,7 +13,7 @@ pub fn dq_modal<'a, Message: Clone + 'a>(
             row![
                 text(title)
                     .size(typography::TITLE)
-                    .color(color::TEXT_PRIMARY),
+                    .color(color::text_primary()),
                 Space::new().width(Length::Fill),
             ]
             .align_y(Alignment::Center)
@@ -29,11 +29,11 @@ pub fn dq_modal<'a, Message: Clone + 'a>(
     .padding(spacing::XL)
     .width(Length::Fixed(440.0))
     .style(|_theme| iced::widget::container::Style {
-        background: Some(iced::Background::Color(color::BG_ELEVATED)),
+        background: Some(iced::Background::Color(color::bg_elevated())),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
-            radius: spacing::RADIUS_LG.into(),
+            radius: spacing::radius_group().into(),
         },
         shadow: iced::Shadow {
             color: iced::Color::from_rgba(0.0, 0.0, 0.0, 0.50),
@@ -49,7 +49,7 @@ pub fn dq_modal<'a, Message: Clone + 'a>(
         .center_x(Length::Fill)
         .center_y(Length::Fill)
         .style(|_theme| iced::widget::container::Style {
-            background: Some(iced::Background::Color(color::BG_OVERLAY)),
+            background: Some(iced::Background::Color(color::bg_overlay())),
             ..Default::default()
         })
         .into()

@@ -81,10 +81,15 @@ fn generate_dark(input: ThemeInput) -> SemanticPalette {
         separator: Color::from_rgba(1.0, 1.0, 1.0, 0.04 + c * 0.02),
         fill_hover: Color::from_rgba(1.0, 1.0, 1.0, 0.04 + c * 0.02),
         fill_active: Color::from_rgba(1.0, 1.0, 1.0, 0.06 + c * 0.03),
-        fill_selected: Color::from_rgba(1.0, 1.0, 1.0, 0.08 + c * 0.04),
-        danger: Color::from_rgb8(0xeb, 0x57, 0x57),
-        success: Color::from_rgb8(0x4c, 0xb7, 0x82),
-        warning: Color::from_rgb8(0xf2, 0xc9, 0x4c),
+        fill_selected: Color::from_rgba(accent.r, accent.g, accent.b, 0.14),
+        danger: Color::from_rgb8(0xef, 0x44, 0x44),
+        success: Color::from_rgb8(0x3e, 0xb3, 0x75),
+        warning: Color::from_rgb8(0xf5, 0xc2, 0x2b),
+        success_surface: Color::from_rgba(0.243, 0.702, 0.459, 0.08),
+        warning_surface: Color::from_rgba(0.961, 0.761, 0.169, 0.10),
+        danger_surface: Color::from_rgba(0.937, 0.267, 0.267, 0.10),
+        scrollbar_thumb: Color::from_rgba(1.0, 1.0, 1.0, 0.08),
+        scrollbar_thumb_hover: Color::from_rgba(1.0, 1.0, 1.0, 0.15),
     }
 }
 
@@ -129,6 +134,11 @@ fn generate_light(input: ThemeInput) -> SemanticPalette {
         danger: Color::from_rgb8(0xd9, 0x3c, 0x3c),
         success: Color::from_rgb8(0x2e, 0xa0, 0x5a),
         warning: Color::from_rgb8(0xc9, 0x8a, 0x1a),
+        success_surface: Color::from_rgba(0.18, 0.63, 0.35, 0.08),
+        warning_surface: Color::from_rgba(0.79, 0.54, 0.04, 0.10),
+        danger_surface: Color::from_rgba(0.85, 0.24, 0.24, 0.10),
+        scrollbar_thumb: Color::from_rgba(0.0, 0.0, 0.0, 0.12),
+        scrollbar_thumb_hover: Color::from_rgba(0.0, 0.0, 0.0, 0.22),
     }
 }
 

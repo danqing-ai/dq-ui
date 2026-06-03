@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dq-linear-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DanQing UI — Theme Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link id="theme-css" rel="stylesheet" href="../src/dq-linear-dark.css">
+  <link rel="stylesheet" href="../src/dq-glass.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      color: var(--dq-label-primary);
+      font-family: var(--dq-font-sans);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .layout {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    .hero {
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: var(--dq-label-secondary);
+      max-width: 640px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .theme-btn {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: var(--dq-radius-button);
+      border: 1px solid var(--dq-border);
+      background: var(--dq-fill-control);
+      color: var(--dq-label-secondary);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--dq-transition-hover);
+    }
+
+    .theme-btn:hover {
+      background: var(--dq-fill-secondary);
+      color: var(--dq-label-primary);
+    }
+
+    .theme-btn.is-active {
+      background: var(--dq-accent-surface);
+      border-color: var(--dq-accent-surface-border);
+      color: var(--dq-accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      border: 1px solid var(--dq-border);
+      border-radius: var(--dq-radius-group);
+      background: var(--dq-bg-elevated);
+      padding: 16px;
+    }
+
+    .panel h2 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--dq-label-tertiary);
+      margin-bottom: 12px;
+    }
+
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--dq-border);
+      flex-shrink: 0;
+    }
+
+    .swatch-label {
+      font-size: 12px;
+      color: var(--dq-label-secondary);
+      font-family: var(--dq-font-mono);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: var(--dq-radius-button);
+      border: 1px solid transparent;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--dq-transition-hover), var(--dq-transition-active);
+    }
+
+    .demo-btn:active { transform: scale(0.97); }
+
+    .demo-btn--default {
+      background: var(--dq-fill-control);
+      color: var(--dq-label-primary);
+      border-color: var(--dq-border);
+    }
+
+    .demo-btn--primary {
+      background: var(--dq-accent);
+      color: #fff;
+    }
+
+    .demo-btn--ghost {
+      background: transparent;
+      color: var(--dq-label-secondary);
+    }
+
+    .demo-input {
+      width: 100%;
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: var(--dq-radius-input);
+      border: 1px solid var(--dq-border);
+      background: var(--dq-glass-control-bg);
+      color: var(--dq-label-primary);
+      font: inherit;
+      font-size: 13px;
+      transition: var(--dq-transition-field);
+    }
+
+    .demo-input:focus {
+      outline: none;
+      border-color: var(--dq-accent);
+      box-shadow: var(--dq-focus-ring);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--dq-radius-control-sm);
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--dq-fill-secondary);
+      color: var(--dq-label-secondary);
+    }
+
+    .tag--success {
+      color: var(--dq-success);
+      background: var(--dq-success-surface);
+      border: 1px solid var(--dq-success-surface-border);
+    }
+
+    .tag--warning {
+      color: var(--dq-warning);
+      background: var(--dq-warning-surface);
+      border: 1px solid var(--dq-warning-surface-border);
+    }
+
+    .tag--danger {
+      color: var(--dq-danger);
+      background: var(--dq-danger-surface);
+      border: 1px solid var(--dq-danger-surface-border);
+    }
+
+    .tag--accent {
+      color: var(--dq-accent);
+      background: var(--dq-accent-surface);
+      border: 1px solid var(--dq-accent-surface-border);
+    }
+
+    .glass-demo {
+      margin-top: 8px;
+      padding: 14px;
+    }
+
+    .links {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--dq-label-secondary);
+    }
+
+    .links a {
+      color: var(--dq-accent);
+      text-decoration: none;
+    }
+
+    .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header class="hero">
+      <h1 id="hero-title">DanQing UI Themes</h1>
+      <p id="hero-desc">
+        Linear Dark productivity theme — indigo accent, cool depth layers, aligned with Iced
+        <code>SemanticPalette::dark()</code>.
+      </p>
+    </header>
+
+    <div class="toolbar">
+      <button class="theme-btn is-active" data-theme="linearDark" type="button">Linear Dark</button>
+      <button class="theme-btn" data-theme="chinaRedDark" type="button">China Red Dark</button>
+    </div>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Surfaces</h2>
+        <div class="swatch-row"><div class="swatch" style="background: var(--dq-bg-page)"></div><span class="swatch-label">--dq-bg-page</span></div>
+        <div class="swatch-row"><div class="swatch" style="background: var(--dq-bg-base)"></div><span class="swatch-label">--dq-bg-base</span></div>
+        <div class="swatch-row"><div class="swatch" style="background: var(--dq-bg-elevated)"></div><span class="swatch-label">--dq-bg-elevated</span></div>
+        <div class="swatch-row"><div class="swatch" style="background: var(--dq-accent)"></div><span class="swatch-label">--dq-accent</span></div>
+      </section>
+
+      <section class="panel">
+        <h2>Buttons</h2>
+        <div class="btn-row">
+          <button class="demo-btn demo-btn--default" type="button">Default</button>
+          <button class="demo-btn demo-btn--primary" type="button">Primary</button>
+          <button class="demo-btn demo-btn--ghost" type="button">Ghost</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Input</h2>
+        <input class="demo-input" placeholder="Focus to preview ring…">
+      </section>
+
+      <section class="panel">
+        <h2>Semantic Tags</h2>
+        <div class="tag-row">
+          <span class="tag tag--accent">Accent</span>
+          <span class="tag tag--success">Success</span>
+          <span class="tag tag--warning">Warning</span>
+          <span class="tag tag--danger">Danger</span>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2>Glass Panel</h2>
+      <div class="dq-glass--panel glass-demo">
+        Popover / dialog surface using <code>.dq-glass--panel</code> utilities from
+        <code>dq-glass.css</code>.
+      </div>
+    </section>
+
+    <p class="links">
+      Full layouts:
+      <a href="./linear-dark.html">Linear Dark demo</a> ·
+      <a href="./china-red-dark.html">China Red Dark demo</a>
+    </p>
+  </div>
+
+  <script type="module">
+    const THEMES = {
+      linearDark: {
+        className: 'dq-linear-dark',
+        css: '../src/dq-linear-dark.css',
+        title: 'DanQing UI Themes',
+        desc: 'Linear Dark productivity theme — indigo accent, cool depth layers, aligned with Iced SemanticPalette::dark().',
+      },
+      chinaRedDark: {
+        className: 'dq-china-red-dark',
+        css: '../src/dq-china-red-dark.css',
+        title: '丹青 UI 主题',
+        desc: '中国红暗黑主题 — 玄黑为底，朱砂为韵，与 Iced SemanticPalette::china_red_dark() 对齐。',
+      },
+    };
+
+    const html = document.documentElement;
+    const themeCss = document.getElementById('theme-css');
+    const buttons = document.querySelectorAll('.theme-btn');
+
+    function applyTheme(id) {
+      const theme = THEMES[id];
+      if (!theme) return;
+
+      Object.values(THEMES).forEach((entry) => html.classList.remove(entry.className));
+      html.classList.add(theme.className);
+      themeCss.href = theme.css;
+
+      document.getElementById('hero-title').textContent = theme.title;
+      document.getElementById('hero-desc').textContent = theme.desc;
+
+      buttons.forEach((btn) => {
+        btn.classList.toggle('is-active', btn.dataset.theme === id);
+      });
+
+      localStorage.setItem('dq-demo-theme', id);
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
+    });
+
+    applyTheme(localStorage.getItem('dq-demo-theme') || 'linearDark');
+  </script>
+</body>
+</html>

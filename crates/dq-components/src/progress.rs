@@ -4,12 +4,12 @@ use iced::{Element, Length};
 
 /// Linear-style thin progress track with accent fill.
 pub fn dq_progress_bar<'a, Message: 'a>(ratio: f32, height: f32) -> Element<'a, Message> {
-    dq_progress_bar_colored(ratio, height, color::ACCENT)
+    dq_progress_bar_colored(ratio, height, color::accent())
 }
 
 /// Muted track — secondary metrics (VRAM, etc.).
 pub fn dq_progress_bar_muted<'a, Message: 'a>(ratio: f32, height: f32) -> Element<'a, Message> {
-    dq_progress_bar_colored(ratio, height, color::BG_SURFACE)
+    dq_progress_bar_colored(ratio, height, color::bg_surface())
 }
 
 fn dq_progress_bar_colored<'a, Message: 'a>(
@@ -46,7 +46,7 @@ fn dq_progress_bar_colored<'a, Message: 'a>(
     .width(Length::Fill)
     .height(Length::Fixed(height))
     .style(move |_theme| container::Style {
-        background: Some(iced::Background::Color(color::BG_SURFACE)),
+        background: Some(iced::Background::Color(color::bg_surface())),
         border: iced::Border {
             radius,
             ..Default::default()

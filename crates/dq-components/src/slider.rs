@@ -38,7 +38,7 @@ pub fn dq_slider_with_input<'a, Message: Clone + 'a>(
     let min = *range.start();
     let max = *range.end();
     let minus_btn = button(
-        container(phosphor_icon(PhosphorIcon::Minus, 10.0, color::TEXT_SECONDARY))
+        container(phosphor_icon(PhosphorIcon::Minus, 10.0, color::text_secondary()))
             .width(Length::Fixed(20.0))
             .height(Length::Fixed(20.0))
             .align_x(Alignment::Center)
@@ -54,7 +54,7 @@ pub fn dq_slider_with_input<'a, Message: Clone + 'a>(
 
     // Plus button
     let plus_btn = button(
-        container(phosphor_icon(PhosphorIcon::Plus, 10.0, color::TEXT_SECONDARY))
+        container(phosphor_icon(PhosphorIcon::Plus, 10.0, color::text_secondary()))
             .width(Length::Fixed(20.0))
             .height(Length::Fixed(20.0))
             .align_x(Alignment::Center)
@@ -72,18 +72,18 @@ pub fn dq_slider_with_input<'a, Message: Clone + 'a>(
     let value_display = container(
         text(format_value(value, step))
             .size(typography::CAPTION)
-            .color(color::TEXT_PRIMARY),
+            .color(color::text_primary()),
     )
     .width(Length::Fixed(48.0))
     .height(Length::Fixed(24.0))
     .align_x(Alignment::Center)
     .align_y(Alignment::Center)
     .style(|_theme: &iced::Theme| iced::widget::container::Style {
-        background: Some(iced::Background::Color(color::BG_INSET)),
+        background: Some(iced::Background::Color(color::bg_inset())),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
-            radius: spacing::RADIUS_SM.into(),
+            radius: spacing::radius_control_sm().into(),
         },
         ..Default::default()
     });
@@ -115,28 +115,28 @@ fn format_value(value: f32, step: f32) -> String {
 /// Stepper button style — subtle circle buttons for +/-
 fn stepper_button_style(_theme: &iced::Theme, status: iced::widget::button::Status) -> iced::widget::button::Style {
     let base = iced::widget::button::Style {
-        background: Some(iced::Background::Color(color::BG_INSET)),
+        background: Some(iced::Background::Color(color::bg_inset())),
         border: iced::Border {
-            color: color::BORDER_SUBTLE,
+            color: color::border_subtle(),
             width: 1.0,
             radius: 999.0.into(),
         },
-        text_color: color::TEXT_SECONDARY,
+        text_color: color::text_secondary(),
         ..Default::default()
     };
 
     match status {
         iced::widget::button::Status::Hovered => iced::widget::button::Style {
-            background: Some(iced::Background::Color(color::FILL_HOVER)),
+            background: Some(iced::Background::Color(color::fill_hover())),
             border: iced::Border {
-                color: color::BORDER_STRONG,
+                color: color::border_strong(),
                 width: 1.0,
                 radius: 999.0.into(),
             },
             ..base
         },
         iced::widget::button::Status::Pressed => iced::widget::button::Style {
-            background: Some(iced::Background::Color(color::FILL_SELECTED)),
+            background: Some(iced::Background::Color(color::fill_selected())),
             ..base
         },
         _ => base,

@@ -1,75 +1,140 @@
-//! Semantic color palette — LCH-based, 3-variable generation (base + accent + contrast).
-//!
-//! Linear derives all surfaces, labels, and borders from **base**, **accent**, and
-//! **contrast** (see <https://linear.app/now/how-we-redesigned-the-linear-ui>).
-//! Surfaces stay neutral; accent is reserved for interactive chrome.
+//! Semantic tokens — values sourced from `packages/tokens/src/dq-*-dark.css` (web UI baseline).
 
 use iced::Color;
+use std::sync::{OnceLock, RwLock};
+
+/// Layout metrics mirrored from web `--dq-radius-*` / `--dq-row-gutter`.
+#[derive(Debug, Clone, Copy)]
+pub struct ThemeMetrics {
+    pub radius_group: f32,
+    pub radius_control: f32,
+    pub radius_control_sm: f32,
+    pub radius_button: f32,
+    pub radius_input: f32,
+    pub row_gutter: f32,
+}
 
 /// Full semantic token set consumed by `dq-theme` and `dq-components`.
 #[derive(Debug, Clone, Copy)]
 pub struct SemanticPalette {
-    // Surfaces — deepest to shallowest (luminance increases)
     pub bg_base: Color,
     pub bg_page: Color,
     pub bg_panel: Color,
     pub bg_elevated: Color,
     pub bg_surface: Color,
     pub bg_inset: Color,
-    // Overlays & effects
     pub bg_overlay: Color,
     pub bg_translucent: Color,
-    // Accent (interactive only — never mixed into surfaces)
     pub accent: Color,
     pub accent_hover: Color,
     pub accent_muted: Color,
     pub accent_tint: Color,
-    // Labels
     pub text_primary: Color,
     pub text_secondary: Color,
     pub text_tertiary: Color,
     pub text_quaternary: Color,
-    // Icons (slightly dimmer than labels at same tier)
     pub icon_primary: Color,
     pub icon_secondary: Color,
     pub icon_tertiary: Color,
-    // Borders & separators — minimal, used only when necessary
     pub border_subtle: Color,
     pub border_strong: Color,
     pub border_focus: Color,
     pub separator: Color,
-    // Fills (hover / selected / active)
     pub fill_hover: Color,
     pub fill_active: Color,
     pub fill_selected: Color,
-    // Status
     pub danger: Color,
     pub success: Color,
     pub warning: Color,
+    pub success_surface: Color,
+    pub warning_surface: Color,
+    pub danger_surface: Color,
+    pub scrollbar_thumb: Color,
+    pub scrollbar_thumb_hover: Color,
+}
+
+#[derive(Debug, Clone, Copy)]
+struct ActiveTheme {
+    palette: SemanticPalette,
+    metrics: ThemeMetrics,
+}
+
+static ACTIVE: OnceLock<RwLock<ActiveTheme>> = OnceLock::new();
+
+fn active_store() -> &'static RwLock<ActiveTheme> {
+    ACTIVE.get_or_init(|| {
+        RwLock::new(ActiveTheme {
+            palette: SemanticPalette::linear_dark(),
+            metrics: ThemeMetrics::linear_dark(),
+        })
+    })
+}
+
+/// Install palette + layout metrics (call from `dq_theme::theme_from_palette`).
+pub fn set_active_theme(palette: SemanticPalette, metrics: ThemeMetrics) {
+    *active_store().write().expect("theme lock poisoned") = ActiveTheme { palette, metrics };
+}
+
+pub fn active_palette() -> SemanticPalette {
+    active_store().read().expect("theme lock poisoned").palette
+}
+
+pub fn active_metrics() -> ThemeMetrics {
+    active_store().read().expect("theme lock poisoned").metrics
+}
+
+impl ThemeMetrics {
+    /// `dq-linear-dark.css`
+    pub const fn linear_dark() -> Self {
+        Self {
+            radius_group: 10.0,
+            radius_control: 8.0,
+            radius_control_sm: 6.0,
+            radius_button: 6.0,
+            radius_input: 6.0,
+            row_gutter: 16.0,
+        }
+    }
+
+    /// `dq-china-red-dark.css`
+    pub const fn china_red_dark() -> Self {
+        Self {
+            radius_group: 8.0,
+            radius_control: 6.0,
+            radius_control_sm: 4.0,
+            radius_button: 4.0,
+            radius_input: 4.0,
+            row_gutter: 16.0,
+        }
+    }
 }
 
 impl SemanticPalette {
-    /// Linear dark theme — dramatic depth layers for hierarchy.
-    pub const fn dark() -> Self {
+    /// Linear dark — `packages/tokens/src/dq-linear-dark.css`
+    pub const fn linear_dark() -> Self {
         Self {
-            // Deepest layer — sidebar, pure void with cool undertone
+            // --dq-material-chrome / --dq-bg-base
             bg_base: Color::from_rgb8(0x07, 0x07, 0x0b),
-            // Page background — subtle lift from sidebar
+            // --dq-bg-page
             bg_page: Color::from_rgb8(0x0a, 0x0a, 0x0f),
-            // Panel/card surface — workhorse container, barely elevated
+            // --dq-bg-elevated
             bg_panel: Color::from_rgb8(0x10, 0x10, 0x16),
-            // Elevated — hover states, active items
+            // --dq-surface-elevated
             bg_elevated: Color::from_rgb8(0x18, 0x18, 0x20),
-            // Surface — inputs, controls, wells
+            // --dq-fill-control
             bg_surface: Color::from_rgb8(0x20, 0x20, 0x2a),
-            // Inset — recessed areas, deeper than page
+            // --dq-fill-dim
             bg_inset: Color::from_rgb8(0x08, 0x08, 0x0c),
+            // --dq-glass-scrim
             bg_overlay: Color::from_rgba(0.0, 0.0, 0.0, 0.70),
-            bg_translucent: Color::from_rgba(0.16, 0.16, 0.22, 0.90),
+            // --dq-glass-bar-bg
+            bg_translucent: Color::from_rgba(0.027, 0.027, 0.043, 0.85),
+            // --dq-accent
             accent: Color::from_rgb8(0x63, 0x70, 0xd2),
             accent_hover: Color::from_rgb8(0x7d, 0x87, 0xdb),
             accent_muted: Color::from_rgb8(0x55, 0x60, 0xbe),
-            accent_tint: Color::from_rgba(0.39, 0.44, 0.82, 0.10),
+            accent_tint: Color::from_rgba(0.388, 0.439, 0.824, 0.10),
+            // --dq-label-*
             text_primary: Color::from_rgba(1.0, 1.0, 1.0, 0.95),
             text_secondary: Color::from_rgba(1.0, 1.0, 1.0, 0.65),
             text_tertiary: Color::from_rgba(1.0, 1.0, 1.0, 0.45),
@@ -77,20 +142,32 @@ impl SemanticPalette {
             icon_primary: Color::from_rgba(1.0, 1.0, 1.0, 0.85),
             icon_secondary: Color::from_rgba(1.0, 1.0, 1.0, 0.55),
             icon_tertiary: Color::from_rgba(1.0, 1.0, 1.0, 0.38),
+            // --dq-border-* / --dq-separator
             border_subtle: Color::from_rgba(1.0, 1.0, 1.0, 0.10),
             border_strong: Color::from_rgba(1.0, 1.0, 1.0, 0.18),
             border_focus: Color::from_rgb8(0x63, 0x70, 0xd2),
             separator: Color::from_rgba(1.0, 1.0, 1.0, 0.08),
-            fill_hover: Color::from_rgba(1.0, 1.0, 1.0, 0.05),
-            fill_active: Color::from_rgba(1.0, 1.0, 1.0, 0.08),
-            fill_selected: Color::from_rgba(1.0, 1.0, 1.0, 0.11),
+            // --dq-fill-on-glass-hover / pressed / control-selected
+            fill_hover: Color::from_rgba(1.0, 1.0, 1.0, 0.09),
+            fill_active: Color::from_rgba(1.0, 1.0, 1.0, 0.11),
+            fill_selected: Color::from_rgba(0.388, 0.439, 0.824, 0.14),
             danger: Color::from_rgb8(0xef, 0x44, 0x44),
             success: Color::from_rgb8(0x3e, 0xb3, 0x75),
             warning: Color::from_rgb8(0xf5, 0xc2, 0x2b),
+            success_surface: Color::from_rgba(0.243, 0.702, 0.459, 0.08),
+            warning_surface: Color::from_rgba(0.961, 0.761, 0.169, 0.10),
+            danger_surface: Color::from_rgba(0.937, 0.267, 0.267, 0.10),
+            scrollbar_thumb: Color::from_rgba(1.0, 1.0, 1.0, 0.08),
+            scrollbar_thumb_hover: Color::from_rgba(1.0, 1.0, 1.0, 0.15),
         }
     }
 
-    /// Linear light theme preset.
+    /// Back-compat alias.
+    pub const fn dark() -> Self {
+        Self::linear_dark()
+    }
+
+    /// Linear light theme preset (web light theme not shipped yet).
     pub const fn light() -> Self {
         Self {
             bg_base: Color::from_rgb8(0xfc, 0xfc, 0xfc),
@@ -122,57 +199,62 @@ impl SemanticPalette {
             danger: Color::from_rgb8(0xd9, 0x3c, 0x3c),
             success: Color::from_rgb8(0x2e, 0xa0, 0x5a),
             warning: Color::from_rgb8(0xc9, 0x8a, 0x1a),
+            success_surface: Color::from_rgba(0.18, 0.63, 0.35, 0.08),
+            warning_surface: Color::from_rgba(0.79, 0.54, 0.04, 0.10),
+            danger_surface: Color::from_rgba(0.85, 0.24, 0.24, 0.10),
+            scrollbar_thumb: Color::from_rgba(0.0, 0.0, 0.0, 0.12),
+            scrollbar_thumb_hover: Color::from_rgba(0.0, 0.0, 0.0, 0.22),
         }
     }
 
-    /// China Red Dark — inspired by traditional Chinese aesthetics.
-    /// 玄黑为底，朱砂为韵，琥珀点缀。
+    /// China Red dark — `packages/tokens/src/dq-china-red-dark.css`
     pub const fn china_red_dark() -> Self {
         Self {
-            // 玄黑 — deepest cosmic black
-            bg_base: Color::from_rgb8(0x0c, 0x0a, 0x0a),
-            // 墨黑 — page background
-            bg_page: Color::from_rgb8(0x14, 0x10, 0x10),
-            // 漆灰 — panel surface
+            // --dq-material-chrome / --dq-bg-base (sidebar chrome)
+            bg_base: Color::from_rgb8(0x14, 0x10, 0x10),
+            // --dq-bg-page (page void)
+            bg_page: Color::from_rgb8(0x0c, 0x0a, 0x0a),
+            // --dq-bg-elevated
             bg_panel: Color::from_rgb8(0x1c, 0x16, 0x16),
-            // 檀木 — elevated hover
+            // --dq-surface-elevated
             bg_elevated: Color::from_rgb8(0x24, 0x1c, 0x1c),
-            // 暗红灰 — inputs, controls
+            // --dq-fill-control
             bg_surface: Color::from_rgb8(0x2c, 0x22, 0x22),
-            // 深墨 — inset recessed
+            // --dq-fill-dim
             bg_inset: Color::from_rgb8(0x10, 0x0c, 0x0c),
-            bg_overlay: Color::from_rgba(0.0, 0.0, 0.0, 0.65),
-            bg_translucent: Color::from_rgba(0.20, 0.14, 0.14, 0.92),
-            // 朱砂红 — cinnabar accent
+            // --dq-glass-scrim
+            bg_overlay: Color::from_rgba(0.047, 0.039, 0.039, 0.65),
+            // --dq-glass-bar-bg
+            bg_translucent: Color::from_rgba(0.078, 0.063, 0.063, 0.88),
             accent: Color::from_rgb8(0xc9, 0x37, 0x56),
             accent_hover: Color::from_rgb8(0xd8, 0x4a, 0x68),
             accent_muted: Color::from_rgb8(0xe0, 0x60, 0x7e),
-            accent_tint: Color::from_rgba(0.79, 0.22, 0.34, 0.12),
-            // 暖白 — warm ivory text
-            text_primary: Color::from_rgba(1.0, 0.98, 0.96, 0.92),
-            text_secondary: Color::from_rgba(1.0, 0.96, 0.93, 0.62),
-            text_tertiary: Color::from_rgba(1.0, 0.94, 0.91, 0.40),
-            text_quaternary: Color::from_rgba(1.0, 0.92, 0.89, 0.26),
-            icon_primary: Color::from_rgba(1.0, 0.98, 0.96, 0.82),
-            icon_secondary: Color::from_rgba(1.0, 0.96, 0.93, 0.55),
-            icon_tertiary: Color::from_rgba(1.0, 0.94, 0.91, 0.38),
-            // 暗红边框 — like lacquerware patterns
-            border_subtle: Color::from_rgba(0.79, 0.22, 0.34, 0.10),
-            border_strong: Color::from_rgba(0.79, 0.22, 0.34, 0.18),
+            accent_tint: Color::from_rgba(0.788, 0.216, 0.337, 0.12),
+            text_primary: Color::from_rgba(1.0, 0.980, 0.961, 0.92),
+            text_secondary: Color::from_rgba(1.0, 0.961, 0.933, 0.62),
+            text_tertiary: Color::from_rgba(1.0, 0.941, 0.910, 0.40),
+            text_quaternary: Color::from_rgba(1.0, 0.922, 0.886, 0.26),
+            icon_primary: Color::from_rgba(1.0, 0.980, 0.961, 0.82),
+            icon_secondary: Color::from_rgba(1.0, 0.961, 0.933, 0.55),
+            icon_tertiary: Color::from_rgba(1.0, 0.941, 0.910, 0.38),
+            border_subtle: Color::from_rgba(0.788, 0.216, 0.337, 0.05),
+            border_strong: Color::from_rgba(0.788, 0.216, 0.337, 0.14),
             border_focus: Color::from_rgb8(0xc9, 0x37, 0x56),
-            separator: Color::from_rgba(0.79, 0.22, 0.34, 0.10),
-            fill_hover: Color::from_rgba(0.79, 0.22, 0.34, 0.06),
-            fill_active: Color::from_rgba(0.79, 0.22, 0.34, 0.10),
-            fill_selected: Color::from_rgba(0.79, 0.22, 0.34, 0.14),
-            // 绛红 — danger
+            separator: Color::from_rgba(0.788, 0.216, 0.337, 0.10),
+            fill_hover: Color::from_rgba(0.788, 0.216, 0.337, 0.08),
+            fill_active: Color::from_rgba(0.788, 0.216, 0.337, 0.12),
+            fill_selected: Color::from_rgba(0.788, 0.216, 0.337, 0.18),
             danger: Color::from_rgb8(0xb4, 0x3c, 0x3c),
-            // 竹青 — success
             success: Color::from_rgb8(0x5b, 0x8c, 0x5a),
-            // 琥珀 — warning
             warning: Color::from_rgb8(0xd4, 0xa5, 0x74),
+            success_surface: Color::from_rgba(0.357, 0.549, 0.353, 0.10),
+            warning_surface: Color::from_rgba(0.831, 0.647, 0.455, 0.12),
+            danger_surface: Color::from_rgba(0.706, 0.235, 0.235, 0.12),
+            scrollbar_thumb: Color::from_rgba(0.788, 0.216, 0.337, 0.12),
+            scrollbar_thumb_hover: Color::from_rgba(0.788, 0.216, 0.337, 0.22),
         }
     }
 }
 
-/// Default active palette (Linear dark).
-pub const LINEAR_DARK: SemanticPalette = SemanticPalette::dark();
+/// Default preset (Linear dark).
+pub const LINEAR_DARK: SemanticPalette = SemanticPalette::linear_dark();

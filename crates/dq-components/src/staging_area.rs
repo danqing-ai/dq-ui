@@ -29,10 +29,10 @@ pub fn staging_area<'a, Message: Clone + 'a>(
             column![
                 text("暂存区")
                     .size(typography::LABEL)
-                    .color(color::TEXT_SECONDARY),
+                    .color(color::text_secondary()),
                 text("批量生成的图片将显示在这里")
                     .size(typography::CAPTION)
-                    .color(color::TEXT_TERTIARY),
+                    .color(color::text_tertiary()),
             ]
             .spacing(spacing::XS)
             .align_x(Alignment::Center),
@@ -42,11 +42,11 @@ pub fn staging_area<'a, Message: Clone + 'a>(
         .align_x(Alignment::Center)
         .align_y(Alignment::Center)
         .style(|_theme| iced::widget::container::Style {
-            background: Some(iced::Background::Color(color::BG_INSET)),
+            background: Some(iced::Background::Color(color::bg_inset())),
             border: iced::Border {
-                color: color::BORDER_SUBTLE,
+                color: color::border_subtle(),
                 width: 1.0,
-                radius: spacing::RADIUS_MD.into(),
+                radius: spacing::radius_control().into(),
             },
             ..Default::default()
         })
@@ -62,12 +62,12 @@ pub fn staging_area<'a, Message: Clone + 'a>(
     let header = row![
         text(format!("暂存区 · {} 张", results.len()))
             .size(typography::LABEL)
-            .color(color::TEXT_SECONDARY),
+            .color(color::text_secondary()),
         Space::new().width(Length::Fill),
         button(
             text("清空")
                 .size(typography::CAPTION)
-                .color(color::TEXT_TERTIARY),
+                .color(color::text_tertiary()),
         )
         .padding([2.0, 8.0])
         .style(|_theme, _status| iced::widget::button::Style {
@@ -95,18 +95,18 @@ fn staging_item<'a, Message: Clone + 'a>(
     use crate::phosphor::{phosphor_icon, PhosphorIcon};
 
     let border_color = if result.selected {
-        color::ACCENT
+        color::accent()
     } else {
-        color::BORDER_SUBTLE
+        color::border_subtle()
     };
 
     container(
         button(
             column![
-                phosphor_icon(PhosphorIcon::Image, 24.0, color::TEXT_QUATERNARY),
+                phosphor_icon(PhosphorIcon::Image, 24.0, color::text_quaternary()),
                 text(result.title.as_str())
                     .size(typography::MINI)
-                    .color(color::TEXT_TERTIARY),
+                    .color(color::text_tertiary()),
             ]
             .spacing(spacing::XS)
             .align_x(Alignment::Center),
@@ -115,11 +115,11 @@ fn staging_item<'a, Message: Clone + 'a>(
         .width(Length::Fill)
         .height(Length::Fixed(100.0))
         .style(move |_theme, _status| iced::widget::button::Style {
-            background: Some(iced::Background::Color(color::BG_INSET)),
+            background: Some(iced::Background::Color(color::bg_inset())),
             border: iced::Border {
                 color: border_color,
                 width: if result.selected { 2.0 } else { 1.0 },
-                radius: spacing::RADIUS_SM.into(),
+                radius: spacing::radius_control_sm().into(),
             },
             ..Default::default()
         })

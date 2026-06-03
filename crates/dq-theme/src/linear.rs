@@ -1,12 +1,13 @@
-use dq_tokens::{generate, semantic::SemanticPalette, ThemeInput};
+use dq_tokens::{generate, semantic::{SemanticPalette, ThemeMetrics, set_active_theme}, ThemeInput};
 use iced::theme::{Custom, Palette, Theme};
 use iced::widget::container;
 use iced::Color;
 use std::sync::Arc;
 
-/// Build an Iced theme from a semantic palette.
-/// Uses all 6 palette slots for richer built-in widget styling.
-pub fn theme_from_palette(palette: SemanticPalette, name: impl Into<String>) -> Theme {
+/// Build an Iced theme from a semantic palette (web CSS is the source of truth).
+pub fn theme_from_palette(palette: SemanticPalette, metrics: ThemeMetrics, name: impl Into<String>) -> Theme {
+    set_active_theme(palette, metrics);
+
     let iced_palette = Palette {
         background: palette.bg_page,
         text: palette.text_primary,
@@ -21,17 +22,29 @@ pub fn theme_from_palette(palette: SemanticPalette, name: impl Into<String>) -> 
 
 /// Linear dark theme (default).
 pub fn linear_theme() -> Theme {
-    theme_from_palette(SemanticPalette::dark(), "Linear Dark")
+    theme_from_palette(
+        SemanticPalette::linear_dark(),
+        ThemeMetrics::linear_dark(),
+        "Linear Dark",
+    )
 }
 
 /// Linear light theme.
 pub fn linear_light_theme() -> Theme {
-    theme_from_palette(SemanticPalette::light(), "Linear Light")
+    theme_from_palette(
+        SemanticPalette::light(),
+        ThemeMetrics::linear_dark(),
+        "Linear Light",
+    )
 }
 
 /// China Red Dark theme — traditional Chinese aesthetics.
 pub fn china_red_dark_theme() -> Theme {
-    theme_from_palette(SemanticPalette::china_red_dark(), "China Red Dark")
+    theme_from_palette(
+        SemanticPalette::china_red_dark(),
+        ThemeMetrics::china_red_dark(),
+        "China Red Dark",
+    )
 }
 
 /// Custom Linear-style theme from base + accent + contrast knobs.
@@ -42,7 +55,7 @@ pub fn linear_theme_custom(input: ThemeInput) -> Theme {
     } else {
         "Linear Light (custom)"
     };
-    theme_from_palette(palette, name)
+    theme_from_palette(palette, ThemeMetrics::linear_dark(), name)
 }
 
 fn hairline_bottom(separator: Color) -> container::Style {
@@ -64,15 +77,15 @@ fn hairline_bottom(separator: Color) -> container::Style {
 /// Sidebar shell — deepest chrome layer (inverted-L vertical arm).
 pub fn sidebar_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_BASE)),
-        ..hairline_bottom(dq_tokens::color::SEPARATOR)
+        background: Some(iced::Background::Color(dq_tokens::color::bg_base())),
+        ..hairline_bottom(dq_tokens::color::separator())
     }
 }
 
 /// Main content area background.
 pub fn page_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_PAGE)),
+        background: Some(iced::Background::Color(dq_tokens::color::bg_page())),
         ..Default::default()
     }
 }
@@ -82,15 +95,15 @@ pub fn page_container(_theme: &Theme) -> container::Style {
 /// Top navigation bar for Studio shell.
 pub fn studio_nav_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_BASE)),
-        ..hairline_bottom(dq_tokens::color::SEPARATOR)
+        background: Some(iced::Background::Color(dq_tokens::color::bg_base())),
+        ..hairline_bottom(dq_tokens::color::separator())
     }
 }
 
 /// Mode tabs row — clean, no hairline (pill tabs float on page background).
 pub fn mode_tabs_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_PAGE)),
+        background: Some(iced::Background::Color(dq_tokens::color::bg_page())),
         ..Default::default()
     }
 }
@@ -98,7 +111,7 @@ pub fn mode_tabs_container(_theme: &Theme) -> container::Style {
 /// Hairline between section header and body.
 pub fn section_divider(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::SEPARATOR)),
+        background: Some(iced::Background::Color(dq_tokens::color::separator())),
         ..Default::default()
     }
 }
@@ -107,11 +120,11 @@ pub fn section_divider(_theme: &Theme) -> container::Style {
 /// Linear style: depth comes from subtle luminance lift + whisper shadow.
 pub fn panel_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_PANEL)),
+        background: Some(iced::Background::Color(dq_tokens::color::bg_panel())),
         border: iced::Border {
-            color: dq_tokens::color::BORDER_SUBTLE,
+            color: dq_tokens::color::border_subtle(),
             width: 1.0,
-            radius: dq_tokens::spacing::RADIUS_LG.into(),
+            radius: dq_tokens::spacing::radius_group().into(),
         },
         shadow: iced::Shadow {
             color: iced::Color::from_rgba(0.0, 0.0, 0.0, 0.25),
@@ -125,15 +138,15 @@ pub fn panel_container(_theme: &Theme) -> container::Style {
 /// Top navigation bar with bottom hairline.
 pub fn topnav_container(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_PAGE)),
-        ..hairline_bottom(dq_tokens::color::SEPARATOR)
+        background: Some(iced::Background::Color(dq_tokens::color::bg_page())),
+        ..hairline_bottom(dq_tokens::color::separator())
     }
 }
 
 /// Vertical divider between columns.
 pub fn vertical_divider(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::SEPARATOR)),
+        background: Some(iced::Background::Color(dq_tokens::color::separator())),
         ..Default::default()
     }
 }
@@ -147,11 +160,11 @@ pub fn elevated_container(_theme: &Theme) -> container::Style {
 /// Linear style: barely-there border, deeper background creates the recess.
 pub fn inset_panel(_theme: &Theme) -> container::Style {
     container::Style {
-        background: Some(iced::Background::Color(dq_tokens::color::BG_INSET)),
+        background: Some(iced::Background::Color(dq_tokens::color::bg_inset())),
         border: iced::Border {
-            color: dq_tokens::color::BORDER_SUBTLE,
+            color: dq_tokens::color::border_subtle(),
             width: 1.0,
-            radius: dq_tokens::spacing::RADIUS_MD.into(),
+            radius: dq_tokens::spacing::radius_control().into(),
         },
         ..Default::default()
     }
@@ -160,7 +173,7 @@ pub fn inset_panel(_theme: &Theme) -> container::Style {
 /// Brand row bottom separator in sidebar.
 pub fn sidebar_header_divider(_theme: &Theme) -> container::Style {
     container::Style {
-        ..hairline_bottom(dq_tokens::color::SEPARATOR)
+        ..hairline_bottom(dq_tokens::color::separator())
     }
 }
 
@@ -168,7 +181,7 @@ pub fn inset_border(color: Color) -> iced::Border {
     iced::Border {
         color,
         width: 1.0,
-        radius: dq_tokens::spacing::RADIUS_MD.into(),
+        radius: dq_tokens::spacing::radius_control().into(),
     }
 }
 
@@ -178,8 +191,18 @@ pub fn surface_container(theme: &Theme) -> container::Style {
 }
 
 /// Subtle scrollbar — thin, dark, minimal (Linear/Figma style).
-pub fn subtle_scrollbar(_theme: &Theme, _status: iced::widget::scrollable::Status) -> iced::widget::scrollable::Style {
-    let scroller_bg = iced::Background::Color(Color::from_rgba(1.0, 1.0, 1.0, 0.12));
+pub fn subtle_scrollbar(_theme: &Theme, status: iced::widget::scrollable::Status) -> iced::widget::scrollable::Style {
+    let thumb = match status {
+        iced::widget::scrollable::Status::Hovered {
+            is_vertical_scrollbar_hovered,
+            is_horizontal_scrollbar_hovered,
+            ..
+        } if is_vertical_scrollbar_hovered || is_horizontal_scrollbar_hovered => {
+            dq_tokens::color::scrollbar_thumb_hover()
+        }
+        _ => dq_tokens::color::scrollbar_thumb(),
+    };
+    let scroller_bg = iced::Background::Color(thumb);
     
     iced::widget::scrollable::Style {
         container: container::Style {
