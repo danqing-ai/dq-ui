@@ -1,5 +1,5 @@
 use dq_tokens::color;
-use iced::widget::{column, container, row, Space};
+use iced::widget::container;
 use iced::{Alignment, Element, Length};
 
 use crate::phosphor::{phosphor_icon, phosphor_icon_box, PhosphorIcon};

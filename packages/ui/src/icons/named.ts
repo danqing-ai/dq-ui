@@ -22,6 +22,7 @@ export {
   Key,
   Library,
   Loader2 as Loading,
+  ListOrdered,
   Menu,
   Mic as Microphone,
   Monitor,

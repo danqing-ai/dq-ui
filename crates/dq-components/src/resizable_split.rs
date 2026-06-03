@@ -1,5 +1,5 @@
 use dq_tokens::color;
-use iced::widget::{container, row, Space};
+use iced::widget::{container, row};
 use iced::{Alignment, Element, Length, Point, Rectangle, Renderer, Size, Theme};
 use iced::widget::canvas::{self, Canvas};
 

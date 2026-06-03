@@ -1,7 +1,7 @@
 use dq_tokens::color;
 use iced::widget::canvas::{self, Canvas, Frame, Geometry, Path, Stroke};
 use iced::widget::{container, row, text};
-use iced::{Alignment, Color, Element, Length, Point, Rectangle, Renderer, Size, Theme, Vector};
+use iced::{Alignment, Color, Element, Length, Point, Rectangle, Renderer, Size, Theme};
 
 /// State for the before/after slider.
 #[derive(Debug, Clone)]
@@ -94,6 +94,7 @@ pub fn before_after_slider<'a, Message: Clone + 'a>(
         .into()
 }
 
+#[allow(dead_code)]
 struct BeforeAfterProgram<'a, Message> {
     state: &'a BeforeAfterState,
     before_label: &'static str,
@@ -182,7 +183,7 @@ impl<'a, Message: Clone + 'a> canvas::Program<Message> for BeforeAfterProgram<'a
         );
 
         // Draw labels
-        let label_color = Color::from_rgba(0.7, 0.7, 0.7, 0.8);
+        let _label_color = Color::from_rgba(0.7, 0.7, 0.7, 0.8);
         // We can't easily draw text in canvas Frame in iced 0.14 without a font,
         // so we'll skip text rendering in the canvas and use overlay widgets instead
 

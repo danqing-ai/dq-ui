@@ -17,12 +17,14 @@ const props = withDefaults(
     center?: boolean;
     destroyOnClose?: boolean;
     closable?: boolean;
+    variant?: 'glass' | 'solid';
   }>(),
   {
     width: '500px',
     center: false,
     destroyOnClose: false,
     closable: true,
+    variant: 'glass',
   },
 );
 
@@ -47,7 +49,10 @@ const contentStyle = computed(() => ({
       <DialogOverlay class="dq-dialog-overlay" />
       <DialogContent
         class="dq-dialog-content"
-        :class="{ 'dq-dialog-content--center': center }"
+        :class="{
+          'dq-dialog-content--center': center,
+          'dq-dialog-content--solid': variant === 'solid',
+        }"
         :style="contentStyle"
         :aria-modal="true"
         :aria-labelledby="title ? titleId : undefined"

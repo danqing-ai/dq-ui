@@ -98,6 +98,7 @@ export {
   FolderChecked,
   Grid,
   Headset,
+  ListOrdered,
   Loading,
   MagicStick,
   Menu,

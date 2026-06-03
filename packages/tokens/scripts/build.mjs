@@ -9,7 +9,13 @@ const distDir = resolve(packageDir, 'dist');
 
 await mkdir(distDir, { recursive: true });
 
-for (const name of ['dq-mac.css', 'dq-glass.css', 'dq-tauri-macos.css']) {
+for (const name of [
+  'dq-mac.css',
+  'dq-glass.css',
+  'dq-linear-dark.css',
+  'dq-china-red-dark.css',
+  'dq-tauri-macos.css',
+]) {
   await copyFile(resolve(srcDir, name), resolve(distDir, name));
 }
 

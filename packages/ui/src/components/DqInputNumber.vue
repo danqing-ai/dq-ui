@@ -43,6 +43,16 @@ const controlsClass = computed(() =>
 );
 
 const isDisabled = computed(() => props.disabled ?? Boolean(attrs.disabled));
+
+const inputPlaceholder = computed(() => {
+  const raw = attrs.placeholder;
+  return typeof raw === 'string' ? raw : undefined;
+});
+
+const rootAttrs = computed(() => {
+  const { placeholder: _placeholder, ...rest } = attrs;
+  return rest;
+});
 </script>
 
 <template>
@@ -55,7 +65,7 @@ const isDisabled = computed(() => props.disabled ?? Boolean(attrs.disabled));
     :format-options="formatOptions"
     class="dq-input-number"
     :class="controlsClass"
-    v-bind="attrs"
+    v-bind="rootAttrs"
   >
     <NumberFieldDecrement
       class="dq-input-number__btn dq-input-number__btn--dec"
@@ -63,7 +73,7 @@ const isDisabled = computed(() => props.disabled ?? Boolean(attrs.disabled));
     >
       <Minus aria-hidden="true" />
     </NumberFieldDecrement>
-    <NumberFieldInput class="dq-input-number__input" />
+    <NumberFieldInput class="dq-input-number__input" :placeholder="inputPlaceholder" />
     <NumberFieldIncrement
       class="dq-input-number__btn dq-input-number__btn--inc"
       aria-label="Increase"

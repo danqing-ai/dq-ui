@@ -1,5 +1,5 @@
 use dq_tokens::{color, spacing, typography};
-use iced::widget::{container, image, text, column, row, Space};
+use iced::widget::{container, image, text, column};
 use iced::{Alignment, Element, Length};
 use std::path::PathBuf;
 

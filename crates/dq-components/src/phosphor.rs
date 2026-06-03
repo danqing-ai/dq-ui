@@ -1,5 +1,5 @@
 use iced::{Color, Font, Length};
-use iced::widget::{container, text, Text};
+use iced::widget::{container, text};
 use iced::Element;
 
 // ─── Font Loading ────────────────────────────────────────────────────────────

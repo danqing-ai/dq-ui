@@ -244,6 +244,13 @@
   text-align: center;
 }
 
+.dq-dialog-content--solid {
+  background: var(--dq-surface-elevated, var(--dq-bg-base));
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-color: var(--dq-border-subtle);
+}
+
 .dq-dialog-header {
   display: flex;
   align-items: center;

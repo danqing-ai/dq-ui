@@ -5,6 +5,7 @@ use iced::Color;
 use std::sync::Arc;
 
 /// Build an Iced theme from a semantic palette.
+/// Uses all 6 palette slots for richer built-in widget styling.
 pub fn theme_from_palette(palette: SemanticPalette, name: impl Into<String>) -> Theme {
     let iced_palette = Palette {
         background: palette.bg_page,
@@ -26,6 +27,11 @@ pub fn linear_theme() -> Theme {
 /// Linear light theme.
 pub fn linear_light_theme() -> Theme {
     theme_from_palette(SemanticPalette::light(), "Linear Light")
+}
+
+/// China Red Dark theme — traditional Chinese aesthetics.
+pub fn china_red_dark_theme() -> Theme {
+    theme_from_palette(SemanticPalette::china_red_dark(), "China Red Dark")
 }
 
 /// Custom Linear-style theme from base + accent + contrast knobs.

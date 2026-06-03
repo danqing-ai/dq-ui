@@ -1,6 +1,6 @@
 use dq_tokens::color;
 use iced::widget::canvas::{self, Cache, Canvas, Geometry, Path, Stroke};
-use iced::widget::{button, container, row, text};
+use iced::widget::{button, row, text};
 use iced::{Alignment, Color, Length, Point, Rectangle, Renderer, Size, Theme, Vector};
 
 /// Tool mode for the canvas editor.

@@ -166,13 +166,17 @@ impl ApiClient {
     // ------------------------------------------------------------------
 
     pub async fn download_file(&self, url: &str, dest: &std::path::Path) -> Result<(), ApiError> {
+        let bytes = self.download_bytes(url).await?;
+        tokio::fs::write(dest, bytes).await.map_err(|e| ApiError::Http(0, e.to_string()))?;
+        Ok(())
+    }
+
+    pub async fn download_bytes(&self, url: &str) -> Result<Vec<u8>, ApiError> {
         let resp = self.http.get(url).send().await?;
         if !resp.status().is_success() {
             return Err(ApiError::Http(resp.status().as_u16(), resp.text().await.unwrap_or_default()));
         }
-        let bytes = resp.bytes().await?;
-        tokio::fs::write(dest, bytes).await.map_err(|e| ApiError::Http(0, e.to_string()))?;
-        Ok(())
+        Ok(resp.bytes().await?.to_vec())
     }
 
     // ------------------------------------------------------------------
