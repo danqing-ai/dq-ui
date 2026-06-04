@@ -32,7 +32,7 @@ html.dq-linear-dark,
   --dq-font-weight-medium: 500;
 
   /* ─── Background Hierarchy ───
-   * Source of truth for Iced `SemanticPalette::linear_dark()`.
+   * Web CSS is the source of truth.
    */
   --dq-material-chrome: #07070b;
   --dq-material-elevated: #181820;

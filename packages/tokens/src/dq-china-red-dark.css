@@ -46,7 +46,7 @@ html.dq-china-red-dark,
 
   /* ═══ 背景层次 (Background Hierarchy) ═══
    * 玄黑 → 墨黑 → 漆灰 → 檀木
-   * Aligned with Iced `SemanticPalette::china_red_dark()` (web CSS is source of truth).
+   * Web CSS is the source of truth.
    */
   --dq-material-chrome: #141010;
   --dq-material-elevated: #241c1c;

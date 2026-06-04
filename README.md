@@ -56,9 +56,6 @@ applyDqTheme('chinaRedDark');
 
 Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-theme demo pages in the same folder.
 
-Iced (`dq-tokens` / `dq-theme`) reads the same values at runtime via `theme_from_palette()` — **web CSS is the source of truth**; call `dq_theme::china_red_dark_theme()` or `dq_theme::linear_theme()` to install the matching palette.
-
-
 - Product apps: `@/utils/feedback` for toasts/confirms; `Dq*` in templates only.
 - Only `packages/ui` may import `reka-ui` directly.
 - Style changes: tokens + `Dq*`, not third-party component-library overrides.

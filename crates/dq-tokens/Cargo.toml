@@ -1,9 +1,0 @@
-[package]
-name = "dq-tokens"
-description = "Design tokens for DanQing Iced UI (Linear aesthetic)"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-
-[dependencies]
-iced.workspace = true
