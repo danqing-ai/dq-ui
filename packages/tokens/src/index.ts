@@ -8,6 +8,7 @@ export const themes = {
   tauriMacos: 'dq-tauri-macos.css',
   linearDark: 'dq-linear-dark.css',
   chinaRedDark: 'dq-china-red-dark.css',
+  shadcnDark: 'dq-shadcn-dark.css',
 } as const;
 
 export type DqThemeId = keyof typeof themes;
@@ -19,6 +20,7 @@ export const themeRootClasses: Record<DqThemeId, string | null> = {
   tauriMacos: 'dq-tauri-macos',
   linearDark: 'dq-linear-dark',
   chinaRedDark: 'dq-china-red-dark',
+  shadcnDark: 'dq-shadcn-dark',
 };
 
 /** npm import paths for theme CSS bundles. */
@@ -28,6 +30,7 @@ export const themeImportPaths: Record<DqThemeId, string> = {
   tauriMacos: '@danqing/dq-tokens/dq-tauri-macos.css',
   linearDark: '@danqing/dq-tokens/dq-linear-dark.css',
   chinaRedDark: '@danqing/dq-tokens/dq-china-red-dark.css',
+  shadcnDark: '@danqing/dq-tokens/dq-shadcn-dark.css',
 };
 
 const ALL_THEME_ROOT_CLASSES = Object.values(themeRootClasses).filter(

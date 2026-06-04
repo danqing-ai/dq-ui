@@ -18,6 +18,7 @@
     "./dq-glass.css": "./dist/dq-glass.css",
     "./dq-linear-dark.css": "./dist/dq-linear-dark.css",
     "./dq-china-red-dark.css": "./dist/dq-china-red-dark.css",
+    "./dq-shadcn-dark.css": "./dist/dq-shadcn-dark.css",
     "./dq-tauri-macos.css": "./dist/dq-tauri-macos.css"
   },
   "files": ["dist"]

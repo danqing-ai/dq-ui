@@ -15,6 +15,7 @@ for (const name of [
   'dq-glass.css',
   'dq-linear-dark.css',
   'dq-china-red-dark.css',
+  'dq-shadcn-dark.css',
   'dq-tauri-macos.css',
 ]) {
   await copyFile(resolve(srcDir, name), resolve(distDir, name));

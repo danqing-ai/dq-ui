@@ -29,18 +29,19 @@ npm run typecheck
 
 ## Themes
 
-`@danqing/dq-tokens` ships macOS defaults plus two productivity dark themes for web apps:
+`@danqing/dq-tokens` ships macOS defaults plus productivity dark themes for web apps:
 
 | Theme | CSS import | `<html>` class |
 |-------|------------|----------------|
 | macOS (default) | `@danqing/dq-tokens/dq-mac.css` | — (also set `dq-mac-ui` on `<html>` for font) |
 | Linear Dark | `@danqing/dq-tokens/dq-linear-dark.css` | `dq-linear-dark` |
 | China Red Dark | `@danqing/dq-tokens/dq-china-red-dark.css` | `dq-china-red-dark` |
+| shadcn/ui Dark | `@danqing/dq-tokens/dq-shadcn-dark.css` | `dq-shadcn-dark` |
 
 Import glass surface utilities after the base theme:
 
 ```ts
-import '@danqing/dq-tokens/dq-linear-dark.css';
+import '@danqing/dq-tokens/dq-linear-dark.css'; // or dq-shadcn-dark.css, dq-china-red-dark.css
 import '@danqing/dq-tokens/dq-glass.css';
 import '@danqing/dq-ui/style.css';
 ```
@@ -52,6 +53,7 @@ import { applyDqTheme } from '@danqing/dq-tokens';
 
 applyDqTheme('linearDark');
 applyDqTheme('chinaRedDark');
+applyDqTheme('shadcnDark');
 ```
 
 Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-theme demo pages in the same folder.
