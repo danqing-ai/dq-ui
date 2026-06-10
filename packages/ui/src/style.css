@@ -1653,6 +1653,8 @@
   padding: 4px;
   max-height: 240px;
   overflow-y: auto;
+  height: auto !important;
+  flex: none !important;
 }
 
 .dq-select__option {
