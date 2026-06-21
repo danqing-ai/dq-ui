@@ -365,7 +365,7 @@
   gap: 2px;
   border-radius: var(--dq-radius-control);
   background: var(--dq-fill-on-glass-subtle);
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
 }
 
 .dq-segmented--block {
@@ -1278,7 +1278,7 @@
   height: 18px;
   margin-top: 1px;
   border-radius: 5px;
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   background: var(--dq-glass-control-bg);
   flex-shrink: 0;
   transition: var(--dq-transition-field);
@@ -1396,9 +1396,14 @@
   line-height: 1.45;
   color: var(--dq-label-primary);
   background: var(--dq-glass-control-bg);
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   border-radius: var(--dq-radius-input);
   transition: var(--dq-transition-field);
+}
+
+.dq-input:hover:not(:disabled):not(:focus):not(:focus-visible) {
+  border-color: var(--dq-glass-control-border-hover, var(--dq-glass-border));
+  background: var(--dq-glass-control-bg-hover, var(--dq-glass-control-bg));
 }
 
 .dq-input--textarea {
@@ -1406,10 +1411,12 @@
   resize: vertical;
 }
 
-.dq-input:focus {
+.dq-input:focus,
+.dq-input:focus-visible {
   outline: none;
-  border-color: var(--dq-accent);
-  box-shadow: var(--dq-focus-ring);
+  border-color: var(--dq-glass-control-border-focus, var(--dq-accent));
+  background: var(--dq-glass-control-bg-focus, var(--dq-glass-control-bg));
+  box-shadow: var(--dq-glass-control-focus-ring, var(--dq-focus-ring));
 }
 
 .dq-input:disabled {
@@ -1423,9 +1430,15 @@
   width: 100%;
   min-height: 32px;
   border-radius: var(--dq-radius-input);
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   background: var(--dq-glass-control-bg);
   overflow: hidden;
+}
+
+.dq-input-number:focus-within {
+  border-color: var(--dq-glass-control-border-focus, var(--dq-accent));
+  background: var(--dq-glass-control-bg-focus, var(--dq-glass-control-bg));
+  box-shadow: var(--dq-glass-control-focus-ring, var(--dq-focus-ring));
 }
 
 .dq-input-number__input {
@@ -1537,7 +1550,7 @@
   min-height: 32px;
   padding: 4px 10px;
   border-radius: var(--dq-radius-input);
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   background: var(--dq-glass-control-bg);
   color: var(--dq-label-primary);
   cursor: pointer;
@@ -1550,14 +1563,15 @@
 }
 
 .dq-select__trigger:hover:not([data-disabled]) {
-  border-color: var(--dq-glass-border-strong);
-  background: var(--dq-glass-control-bg-solid);
+  border-color: var(--dq-glass-control-border-hover, var(--dq-glass-border-strong));
+  background: var(--dq-glass-control-bg-hover, var(--dq-glass-control-bg-solid));
 }
 
 .dq-select__trigger:focus-visible {
   outline: none;
-  border-color: var(--dq-accent);
-  box-shadow: var(--dq-focus-ring);
+  border-color: var(--dq-glass-control-border-focus, var(--dq-accent));
+  background: var(--dq-glass-control-bg-focus, var(--dq-glass-control-bg));
+  box-shadow: var(--dq-glass-control-focus-ring, var(--dq-focus-ring));
 }
 
 .dq-select__trigger[data-disabled] {
@@ -1644,7 +1658,7 @@
   font: inherit;
   font-size: 13px;
   border-radius: 6px;
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   background: var(--dq-glass-control-bg);
   color: var(--dq-label-primary);
 }
@@ -1797,16 +1811,18 @@
   font-size: 13px;
   color: var(--dq-label-primary);
   background: var(--dq-glass-control-bg);
-  border: 1px solid var(--dq-glass-border);
+  border: 1px solid var(--dq-glass-control-border, var(--dq-glass-border));
   border-radius: var(--dq-radius-input);
   color-scheme: dark;
   transition: var(--dq-transition-field);
 }
 
-.dq-date-picker__input:focus {
+.dq-date-picker__input:focus,
+.dq-date-picker__input:focus-visible {
   outline: none;
-  border-color: var(--dq-accent);
-  box-shadow: var(--dq-focus-ring);
+  border-color: var(--dq-glass-control-border-focus, var(--dq-accent));
+  background: var(--dq-glass-control-bg-focus, var(--dq-glass-control-bg));
+  box-shadow: var(--dq-glass-control-focus-ring, var(--dq-focus-ring));
 }
 
 .dq-date-picker__sep {

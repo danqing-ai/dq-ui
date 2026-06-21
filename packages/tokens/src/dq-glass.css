@@ -1,5 +1,6 @@
 /**
  * Liquid Glass surface utilities — opt-in after dq-mac.css.
+ * Form controls use --dq-glass-control-* tokens from dq-mac.css (inset fields).
  * Use on chrome (bars, sidebars, grouped panels) where backdrop-filter is supported.
  */
 
