@@ -11,6 +11,7 @@ export {
   Crosshair,
   Download,
   FileText as Document,
+  Film,
   Copy as DocumentCopy,
   Copy as CopyDocument,
   FolderCheck,

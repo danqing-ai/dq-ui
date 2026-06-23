@@ -97,6 +97,7 @@ export {
   DocumentCopy,
   Download,
   Filter,
+  Film,
   FolderChecked,
   Grid,
   Headset,
