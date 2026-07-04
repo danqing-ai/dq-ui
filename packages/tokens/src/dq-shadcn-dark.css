@@ -12,6 +12,7 @@
  * Usage: Add `class="dq-shadcn-dark"` on <html> or <body>.
  * Import with `@danqing/dq-tokens/dq-glass.css` for glass surface utilities.
  */
+@import url('./dq-typography.css');
 
 html.dq-shadcn-dark,
 .dq-shadcn-dark {
@@ -359,7 +360,7 @@ html.dq-shadcn-dark .dq-shadcn-kbd,
   height: 20px;
   padding: 0 6px;
   font-family: var(--dq-font-mono);
-  font-size: 11px;
+  font-size: var(--dq-font-size-caption);
   font-weight: 500;
   color: var(--dq-label-secondary);
   background: var(--dq-fill-secondary);
@@ -392,7 +393,7 @@ html.dq-shadcn-dark .dq-shadcn-badge,
   align-items: center;
   padding: 2px 10px;
   border-radius: var(--dq-radius-pill);
-  font-size: 12px;
+  font-size: var(--dq-font-size-caption);
   font-weight: 500;
   line-height: 1.4;
   background: var(--dq-fill-secondary);

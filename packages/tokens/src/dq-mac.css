@@ -3,6 +3,8 @@
  * macOS 26 (Tahoe) Liquid Glass semantics + Sequoia-compatible solids.
  * Import once in app entry before product styles.
  */
+@import url('./dq-typography.css');
+
 :root,
 html.dark {
   accent-color: var(--dq-accent);

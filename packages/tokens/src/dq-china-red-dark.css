@@ -17,6 +17,7 @@
  * 
  * 使用方式: 在 <html> 或 <body> 上添加 class="dq-china-red-dark"
  */
+@import url('./dq-typography.css');
 
 html.dq-china-red-dark,
 .dq-china-red-dark {
@@ -371,7 +372,7 @@ html.dq-china-red-dark .dq-china-kbd,
   height: 22px;
   padding: 0 7px;
   font-family: var(--dq-font-mono);
-  font-size: 11px;
+  font-size: var(--dq-font-size-caption);
   font-weight: 500;
   color: var(--dq-label-secondary);
   background: var(--dq-fill-secondary);
@@ -408,7 +409,7 @@ html.dq-china-red-dark .dq-china-seal,
   display: inline-flex;
   align-items: center;
   padding: 3px 10px;
-  font-size: 12px;
+  font-size: var(--dq-font-size-caption);
   font-weight: 600;
   color: var(--dq-accent);
   background: transparent;
