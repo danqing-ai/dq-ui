@@ -45,6 +45,7 @@ import {
   Tags,
   Trash2,
   Upload,
+  UserRound,
   Video,
   Wand2,
   Wrench,
@@ -112,6 +113,7 @@ export const dqIconComponents: Record<string, Component> = {
   ...aliases(Filter, ['Filter']),
   ...aliases(ArrowLeft, ['ArrowLeft']),
   ...aliases(ArrowRight, ['ArrowRight']),
+  ...aliases(UserRound, ['UserRound', 'user-round']),
 };
 
 export function registerDqIcons(app: App) {
