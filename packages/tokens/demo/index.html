@@ -16,8 +16,8 @@
       min-height: 100vh;
       color: var(--dq-label-primary);
       font-family: var(--dq-font-sans);
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: var(--dq-font-size-secondary);
+      line-height: var(--dq-line-height-relaxed);
     }
 
     .layout {
@@ -31,9 +31,9 @@
     }
 
     .hero h1 {
-      font-size: 28px;
+      font-size: var(--dq-font-size-page);
       font-weight: 700;
-      letter-spacing: -0.4px;
+      letter-spacing: var(--dq-tracking-tighter);
       margin-bottom: 8px;
     }
 
@@ -57,7 +57,7 @@
       background: var(--dq-fill-control);
       color: var(--dq-label-secondary);
       font: inherit;
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       font-weight: 500;
       cursor: pointer;
       transition: var(--dq-transition-hover);
@@ -89,9 +89,9 @@
     }
 
     .panel h2 {
-      font-size: 12px;
+      font-size: var(--dq-font-size-footnote);
       font-weight: 600;
-      letter-spacing: 0.04em;
+      letter-spacing: var(--dq-tracking-wider);
       text-transform: uppercase;
       color: var(--dq-label-tertiary);
       margin-bottom: 12px;
@@ -113,7 +113,7 @@
     }
 
     .swatch-label {
-      font-size: 12px;
+      font-size: var(--dq-font-size-footnote);
       color: var(--dq-label-secondary);
       font-family: var(--dq-font-mono);
     }
@@ -133,7 +133,7 @@
       border-radius: var(--dq-radius-button);
       border: 1px solid transparent;
       font: inherit;
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       font-weight: 500;
       cursor: pointer;
       transition: var(--dq-transition-hover), var(--dq-transition-active);
@@ -166,7 +166,7 @@
       background: var(--dq-glass-control-bg);
       color: var(--dq-label-primary);
       font: inherit;
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       transition: var(--dq-transition-field);
     }
 
@@ -187,7 +187,7 @@
       align-items: center;
       padding: 2px 8px;
       border-radius: var(--dq-radius-control-sm);
-      font-size: 11px;
+      font-size: var(--dq-font-size-caption);
       font-weight: 500;
       background: var(--dq-fill-secondary);
       color: var(--dq-label-secondary);
@@ -224,7 +224,7 @@
 
     .links {
       margin-top: 8px;
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       color: var(--dq-label-secondary);
     }
 

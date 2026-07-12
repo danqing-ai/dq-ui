@@ -21,8 +21,8 @@
       background: var(--dq-bg-page);
       color: var(--dq-label-primary);
       font-family: var(--dq-font-sans);
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: var(--dq-font-size-secondary);
+      line-height: var(--dq-line-height-relaxed);
       overflow-x: hidden;
     }
     
@@ -67,13 +67,13 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 14px;
+      font-size: var(--dq-font-size-secondary);
       color: white;
     }
     
     .sidebar__brand-text {
       font-weight: 600;
-      font-size: 15px;
+      font-size: var(--dq-font-size-callout);
       letter-spacing: -0.3px;
     }
     
@@ -82,7 +82,7 @@
     }
     
     .sidebar__section-title {
-      font-size: 11px;
+      font-size: var(--dq-font-size-caption);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -99,7 +99,7 @@
       color: var(--dq-label-secondary);
       cursor: pointer;
       transition: var(--dq-transition-hover);
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
     }
     
     .sidebar__item:hover {
@@ -152,7 +152,7 @@
     }
     
     .topbar__breadcrumb {
-      font-size: 14px;
+      font-size: var(--dq-font-size-secondary);
       font-weight: 500;
       color: var(--dq-label-primary);
     }
@@ -174,15 +174,15 @@
     }
     
     .page-header h1 {
-      font-size: 24px;
+      font-size: var(--dq-font-size-hero);
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: var(--dq-tracking-tighter);
       margin-bottom: 6px;
     }
     
     .page-header p {
       color: var(--dq-label-secondary);
-      font-size: 14px;
+      font-size: var(--dq-font-size-secondary);
     }
     
     /* Cards */
@@ -215,12 +215,12 @@
     
     .card__title {
       font-weight: 600;
-      font-size: 14px;
+      font-size: var(--dq-font-size-secondary);
       margin-bottom: 4px;
     }
     
     .card__meta {
-      font-size: 12px;
+      font-size: var(--dq-font-size-footnote);
       color: var(--dq-label-tertiary);
     }
     
@@ -246,8 +246,8 @@
     
     .card__body {
       color: var(--dq-label-secondary);
-      font-size: 13px;
-      line-height: 1.55;
+      font-size: var(--dq-font-size-body);
+      line-height: var(--dq-line-height-relaxed);
     }
     
     .card__footer {
@@ -264,7 +264,7 @@
       align-items: center;
       padding: 2px 8px;
       border-radius: 4px;
-      font-size: 11px;
+      font-size: var(--dq-font-size-caption);
       font-weight: 500;
       background: var(--dq-fill-secondary);
       color: var(--dq-label-secondary);
@@ -283,7 +283,7 @@
       gap: 6px;
       height: 32px;
       padding: 0 14px;
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       font-weight: 500;
       border-radius: var(--dq-radius-button);
       border: 1px solid transparent;
@@ -325,7 +325,7 @@
     .btn--sm {
       height: 28px;
       padding: 0 10px;
-      font-size: 12px;
+      font-size: var(--dq-font-size-footnote);
     }
     
     /* Inputs */
@@ -335,8 +335,8 @@
       min-height: 36px;
       padding: 8px 12px;
       font: inherit;
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: var(--dq-font-size-body);
+      line-height: var(--dq-line-height-normal);
       color: var(--dq-label-primary);
       background: var(--dq-glass-control-bg);
       border: 1px solid var(--dq-border);
@@ -372,7 +372,7 @@
     
     .progress-section__title {
       font-weight: 600;
-      font-size: 14px;
+      font-size: var(--dq-font-size-secondary);
     }
     
     .progress-bar {
@@ -393,7 +393,7 @@
     .progress-stats {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: var(--dq-font-size-footnote);
       color: var(--dq-label-tertiary);
     }
     
@@ -412,12 +412,12 @@
     
     .command-bar__icon {
       color: var(--dq-label-tertiary);
-      font-size: 16px;
+      font-size: var(--dq-font-size-title);
     }
     
     .command-bar__text {
       color: var(--dq-label-secondary);
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
     }
     
     .command-bar__kbd {
@@ -443,7 +443,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: var(--dq-font-size-heading);
       box-shadow: var(--dq-shadow-md);
       transition: var(--dq-transition-hover);
     }
@@ -466,10 +466,10 @@
     }
     
     .section__title {
-      font-size: 13px;
+      font-size: var(--dq-font-size-body);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: var(--dq-tracking-wider);
       color: var(--dq-label-tertiary);
     }
     
@@ -549,10 +549,10 @@
       
       <div style="margin-top: auto; padding: 12px;">
         <div style="display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: var(--dq-radius-control-sm); background: var(--dq-fill-dim);">
-          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--dq-accent), var(--dq-accent-hover)); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">NL</div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--dq-accent), var(--dq-accent-hover)); display: flex; align-items: center; justify-content: center; font-size: var(--dq-font-size-footnote); font-weight: 600;">NL</div>
           <div>
-            <div style="font-size: 13px; font-weight: 500;">Nil Luo</div>
-            <div style="font-size: 11px; color: var(--dq-label-tertiary);">Pro Plan</div>
+            <div style="font-size: var(--dq-font-size-body); font-weight: 500;">Nil Luo</div>
+            <div style="font-size: var(--dq-font-size-caption); color: var(--dq-label-tertiary);">Pro Plan</div>
           </div>
         </div>
       </div>
@@ -565,7 +565,7 @@
         <div class="topbar__left">
           <span class="topbar__breadcrumb">Dashboard</span>
           <span style="color: var(--dq-label-tertiary);">/</span>
-          <span style="color: var(--dq-label-secondary); font-size: 14px;">Overview</span>
+          <span style="color: var(--dq-label-secondary); font-size: var(--dq-font-size-secondary);">Overview</span>
         </div>
         <div class="topbar__right">
           <button class="btn btn--ghost btn--sm">
@@ -597,7 +597,7 @@
         <div class="progress-section">
           <div class="progress-section__header">
             <span class="progress-section__title">Project Progress</span>
-            <span style="font-size: 13px; color: var(--dq-accent-muted); font-weight: 500;">78%</span>
+            <span style="font-size: var(--dq-font-size-body); color: var(--dq-accent-muted); font-weight: 500;">78%</span>
           </div>
           <div class="progress-bar">
             <div class="progress-bar__fill" style="width: 78%;"></div>
@@ -726,15 +726,15 @@
               <div style="display: flex; gap: 16px; align-items: center;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <div class="dq-linear-indicator"></div>
-                  <span style="font-size: 13px; color: var(--dq-label-secondary);">Active</span>
+                  <span style="font-size: var(--dq-font-size-body); color: var(--dq-label-secondary);">Active</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <div class="dq-linear-indicator dq-linear-indicator--success"></div>
-                  <span style="font-size: 13px; color: var(--dq-label-secondary);">Done</span>
+                  <span style="font-size: var(--dq-font-size-body); color: var(--dq-label-secondary);">Done</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <div class="dq-linear-indicator dq-linear-indicator--warning"></div>
-                  <span style="font-size: 13px; color: var(--dq-label-secondary);">Warning</span>
+                  <span style="font-size: var(--dq-font-size-body); color: var(--dq-label-secondary);">Warning</span>
                 </div>
               </div>
             </div>
@@ -749,13 +749,13 @@
           
           <div class="card">
             <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">Heading 1 — Bold, tight tracking</div>
-              <div style="font-size: 18px; font-weight: 600; letter-spacing: -0.3px; color: var(--dq-label-secondary);">Heading 2 — Semi-bold, secondary</div>
-              <div style="font-size: 15px; font-weight: 600;">Heading 3 — Section title</div>
-              <div style="font-size: 14px; font-weight: 400; color: var(--dq-label-primary);">Body text — Primary content at 14px with comfortable line height</div>
-              <div style="font-size: 13px; font-weight: 400; color: var(--dq-label-secondary);">Secondary — Supporting text, metadata, descriptions</div>
-              <div style="font-size: 12px; font-weight: 400; color: var(--dq-label-tertiary);">Tertiary — Timestamps, hints, placeholders</div>
-              <div style="font-family: var(--dq-font-mono); font-size: 12px; color: var(--dq-accent-muted);">monospace — Code, keyboard shortcuts, technical data</div>
+              <div style="font-size: var(--dq-font-size-hero); font-weight: 700; letter-spacing: var(--dq-tracking-tighter);">Heading 1 — Bold, tight tracking</div>
+              <div style="font-size: var(--dq-font-size-heading); font-weight: 600; letter-spacing: var(--dq-tracking-tight); color: var(--dq-label-secondary);">Heading 2 — Semi-bold, secondary</div>
+              <div style="font-size: var(--dq-font-size-callout); font-weight: 600;">Heading 3 — Section title</div>
+              <div style="font-size: var(--dq-font-size-secondary); font-weight: 400; color: var(--dq-label-primary);">Body text — Primary content at 14px with comfortable line height</div>
+              <div style="font-size: var(--dq-font-size-body); font-weight: 400; color: var(--dq-label-secondary);">Secondary — Supporting text, metadata, descriptions</div>
+              <div style="font-size: var(--dq-font-size-footnote); font-weight: 400; color: var(--dq-label-tertiary);">Tertiary — Timestamps, hints, placeholders</div>
+              <div style="font-family: var(--dq-font-mono); font-size: var(--dq-font-size-footnote); color: var(--dq-accent-muted);">monospace — Code, keyboard shortcuts, technical data</div>
             </div>
           </div>
         </div>

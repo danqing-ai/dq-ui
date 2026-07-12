@@ -160,7 +160,8 @@ html.dark {
 
   --dq-bg-page-glow: radial-gradient(
     ellipse 130% 240px at 50% -4%,
-    rgba(255, 255, 255, 0.03) 0%,
+    rgba(10, 132, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
     transparent 58%
   );
 
@@ -173,11 +174,11 @@ html.dark {
   --dq-radius-menu: 12px;
   --dq-radius-glass: 12px;
 
-  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
-  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.32);
-  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4);
-  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45);
-  --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.36);
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(255, 255, 255, 0.04) inset;
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.32), 0 0 0 0.5px rgba(255, 255, 255, 0.04) inset;
+  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.06) inset;
+  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 0.5px rgba(255, 255, 255, 0.08) inset;
+  --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.36), 0 0 0 0.5px rgba(255, 255, 255, 0.06) inset;
   --dq-shadow-popover-elevated:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.15),
@@ -217,8 +218,128 @@ html.dark {
   --dq-system-orange: var(--dq-warning);
   --dq-system-red: var(--dq-danger);
   --dq-system-blue: var(--dq-accent);
+
+  --dq-row-gutter: 16px;
+
+  /* Selection & scrollbar — macOS native feel */
+  --dq-selection-bg: rgba(10, 132, 255, 0.28);
+  --dq-selection-color: inherit;
+  --dq-scrollbar-size: 6px;
+  --dq-scrollbar-size-hover: 8px;
 }
 
+/* ─── Base typography ─── */
 html.dq-mac-ui {
   font-family: var(--dq-font-sans);
+  font-size: var(--dq-font-size-body);
+  line-height: var(--dq-line-height-normal);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
+  color: var(--dq-label-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dq-mac-ui body {
+  background-color: var(--dq-bg-page);
+}
+
+/* ─── Selection — macOS blue tint ─── */
+html.dq-mac-ui ::selection,
+.dq-mac-ui ::selection {
+  background: var(--dq-selection-bg);
+  color: var(--dq-label-primary);
+}
+
+/* ─── Scrollbar — macOS auto-hiding style ─── */
+html.dq-mac-ui ::-webkit-scrollbar,
+.dq-mac-ui ::-webkit-scrollbar {
+  width: var(--dq-scrollbar-size);
+  height: var(--dq-scrollbar-size);
+}
+
+html.dq-mac-ui ::-webkit-scrollbar-track,
+.dq-mac-ui ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dq-mac-ui ::-webkit-scrollbar-thumb,
+.dq-mac-ui ::-webkit-scrollbar-thumb {
+  background: var(--dq-scrollbar-thumb);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+html.dq-mac-ui ::-webkit-scrollbar-thumb:hover,
+.dq-mac-ui ::-webkit-scrollbar-thumb:hover {
+  background: var(--dq-scrollbar-thumb-hover);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  html.dark,
+  .dq-mac-ui {
+    --dq-transition-hover: none;
+    --dq-transition-field: none;
+    --dq-transition-active: none;
+    --dq-transition-panel: none;
+    --dq-transition-switch: none;
+  }
+}
+
+/* ─── High contrast mode ─── */
+@media (prefers-contrast: high) {
+  :root,
+  html.dark,
+  .dq-mac-ui {
+    --dq-label-primary: rgba(255, 255, 255, 0.98);
+    --dq-label-secondary: rgba(255, 255, 255, 0.85);
+    --dq-label-tertiary: rgba(255, 255, 255, 0.65);
+    --dq-border: rgba(255, 255, 255, 0.18);
+    --dq-border-strong: rgba(255, 255, 255, 0.28);
+    --dq-focus-ring: 0 0 0 4px rgba(10, 132, 255, 0.5);
+  }
+}
+
+/* ─── Reduced transparency ─── */
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-mac-ui .dq-glass--bar,
+  html.dq-mac-ui .dq-glass--bar-strong,
+  html.dq-mac-ui .dq-glass--sidebar,
+  html.dq-mac-ui .dq-glass--grouped,
+  html.dq-mac-ui .dq-glass--popover,
+  html.dq-mac-ui .dq-glass--panel,
+  .dq-mac-ui .dq-glass--bar,
+  .dq-mac-ui .dq-glass--bar-strong,
+  .dq-mac-ui .dq-glass--sidebar,
+  .dq-mac-ui .dq-glass--grouped,
+  .dq-mac-ui .dq-glass--popover,
+  .dq-mac-ui .dq-glass--panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  html.dq-mac-ui .dq-glass--bar,
+  html.dq-mac-ui .dq-glass--bar-strong,
+  .dq-mac-ui .dq-glass--bar,
+  .dq-mac-ui .dq-glass--bar-strong {
+    background: var(--dq-glass-bar-bg-strong);
+  }
+
+  html.dq-mac-ui .dq-glass--sidebar,
+  .dq-mac-ui .dq-glass--sidebar {
+    background: var(--dq-bg-base);
+  }
+
+  html.dq-mac-ui .dq-glass--popover,
+  html.dq-mac-ui .dq-glass--panel,
+  .dq-mac-ui .dq-glass--popover,
+  .dq-mac-ui .dq-glass--panel {
+    background: var(--dq-bg-elevated);
+  }
 }

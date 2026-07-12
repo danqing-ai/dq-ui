@@ -4,29 +4,52 @@
  *
  * Base: 16px (browser default) so 1rem == 16px.
  *
- * Public API: only the four semantic aliases below. Numeric steps are
+ * Public API: only the semantic aliases below. Numeric steps are
  * implementation detail and should only be used to define aliases.
+ *
+ * Scale (10 steps):
+ *   11 · 12 · 13 · 14 · 15 · 16 · 18 · 20 · 24 · 28
  */
 
 :root,
 html {
-  /* Numeric scale (1rem = 16px). Do not use directly. */
-  --dq-font-size-xs:  0.6875rem;  /* 11px */
-  --dq-font-size-md:  0.8125rem;  /* 13px */
+  /* ── Numeric scale (1rem = 16px). Do not use directly. ── */
+  --dq-font-size-2xs: 0.6875rem;  /* 11px */
+  --dq-font-size-xs:  0.75rem;    /* 12px */
+  --dq-font-size-sm:  0.8125rem;  /* 13px */
+  --dq-font-size-base:0.875rem;   /* 14px */
+  --dq-font-size-md:  0.9375rem;  /* 15px */
   --dq-font-size-lg:  1rem;       /* 16px */
+  --dq-font-size-xl:  1.125rem;   /* 18px */
   --dq-font-size-2xl: 1.25rem;    /* 20px */
+  --dq-font-size-3xl: 1.5rem;     /* 24px */
+  --dq-font-size-4xl: 1.75rem;    /* 28px */
 
-  /* Semantic aliases — use these in components and product styles */
-  --dq-font-size-caption: var(--dq-font-size-xs);  /* 11px: badges, kbd, hints, tiny metadata */
-  --dq-font-size-body:    var(--dq-font-size-md);  /* 13px: default body / control text */
-  --dq-font-size-title:   var(--dq-font-size-lg);  /* 16px: card / dialog titles */
-  --dq-font-size-display: var(--dq-font-size-2xl); /* 20px: page headings / hero */
+  /* ── Semantic aliases — use these in components and product styles ── */
+  --dq-font-size-caption:  var(--dq-font-size-2xs); /* 11px: badges, kbd, hints, tiny metadata */
+  --dq-font-size-footnote: var(--dq-font-size-xs);  /* 12px: timestamps, footnotes, secondary labels */
+  --dq-font-size-body:     var(--dq-font-size-sm);  /* 13px: default body / control text */
+  --dq-font-size-secondary:var(--dq-font-size-base); /* 14px: supporting text, descriptions */
+  --dq-font-size-callout:  var(--dq-font-size-md);  /* 15px: emphasized body, card subtitles */
+  --dq-font-size-title:    var(--dq-font-size-lg);  /* 16px: card / dialog titles, h3 */
+  --dq-font-size-heading:  var(--dq-font-size-xl);  /* 18px: section headings, h2 */
+  --dq-font-size-display:  var(--dq-font-size-2xl); /* 20px: page headings / hero */
+  --dq-font-size-hero:     var(--dq-font-size-3xl); /* 24px: large hero titles */
+  --dq-font-size-page:     var(--dq-font-size-4xl); /* 28px: largest page titles */
 
-  /* Line-height tokens */
+  /* ── Line-height tokens ── */
   --dq-line-height-none:   1;
   --dq-line-height-tight:  1.25;
   --dq-line-height-snug:   1.35;
   --dq-line-height-normal: 1.45;
   --dq-line-height-relaxed:1.55;
   --dq-line-height-loose:  1.7;
+
+  /* ── Letter-spacing tokens ── */
+  --dq-tracking-tighter: -0.02em;
+  --dq-tracking-tight:   -0.01em;
+  --dq-tracking-normal:   0;
+  --dq-tracking-wide:     0.02em;
+  --dq-tracking-wider:    0.04em;
+  --dq-tracking-widest:   0.06em;
 }
