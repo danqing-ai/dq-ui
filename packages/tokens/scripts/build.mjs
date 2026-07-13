@@ -16,6 +16,7 @@ for (const name of [
   'dq-linear-dark.css',
   'dq-china-red-dark.css',
   'dq-shadcn-dark.css',
+  'dq-shadcn-light.css',
   'dq-tauri-macos.css',
   'dq-typography.css',
 ]) {

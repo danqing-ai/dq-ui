@@ -19,6 +19,7 @@
     "./dq-linear-dark.css": "./dist/dq-linear-dark.css",
     "./dq-china-red-dark.css": "./dist/dq-china-red-dark.css",
     "./dq-shadcn-dark.css": "./dist/dq-shadcn-dark.css",
+    "./dq-shadcn-light.css": "./dist/dq-shadcn-light.css",
     "./dq-tauri-macos.css": "./dist/dq-tauri-macos.css",
     "./dq-typography.css": "./dist/dq-typography.css"
   },

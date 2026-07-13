@@ -100,7 +100,14 @@ html.dq-china-red-dark,
   --dq-glass-grouped-bg: rgba(30, 24, 24, 0.92);
   --dq-glass-grouped-bg-solid: var(--dq-bg-base);
   --dq-glass-panel-bg: rgba(28, 22, 22, 0.96);
-  --dq-glass-control-bg: rgba(36, 28, 28, 0.85);
+  /* Form controls — inset on glass */
+  --dq-glass-control-bg: transparent;
+  --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  --dq-glass-control-bg-focus: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
+  --dq-glass-control-border: color-mix(in srgb, var(--dq-label-primary) 14%, transparent);
+  --dq-glass-control-border-hover: color-mix(in srgb, var(--dq-label-primary) 18%, transparent);
+  --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
+  --dq-glass-control-focus-ring: none;
   --dq-glass-control-bg-solid: var(--dq-fill-control);
   --dq-glass-tooltip-bg: rgba(28, 22, 22, 0.98);
   --dq-glass-scrim: rgba(12, 10, 10, 0.65);
@@ -123,6 +130,10 @@ html.dq-china-red-dark,
   --dq-success-surface-border: rgba(91, 140, 90, 0.25);
   --dq-scrollbar-thumb: rgba(201, 55, 86, 0.12);
   --dq-scrollbar-thumb-hover: rgba(201, 55, 86, 0.22);
+
+  /* Selection & scrollbar */
+  --dq-selection-bg: rgba(201, 55, 86, 0.35);
+  --dq-selection-color: var(--dq-label-primary);
 
   /* ═══ 遮罩 (Overlays) ═══ */
   --dq-overlay-light: rgba(12, 10, 10, 0.35);
@@ -280,6 +291,7 @@ html.dq-china-red-dark,
 }
 
 html.dq-china-red-dark body {
+  font-size: var(--dq-font-size-body);
   background-color: var(--dq-bg-page);
   background-image: var(--dq-bg-page-glow);
   background-repeat: no-repeat;
