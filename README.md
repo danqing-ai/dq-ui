@@ -29,32 +29,48 @@ npm run typecheck
 
 ## Themes
 
-`@danqing/dq-tokens` ships macOS defaults plus productivity dark themes for web apps:
+`@danqing/dq-tokens` ships a shared spacing/typography base (`dq-typography.css` → `--dq-space-*`, `--dq-font-size-*`, `--dq-scrollbar-size*`) plus selectable product palettes:
 
-| Theme | CSS import | `<html>` class |
-|-------|------------|----------------|
-| macOS (default) | `@danqing/dq-tokens/dq-mac.css` | — (also set `dq-mac-ui` on `<html>` for font) |
-| Linear Dark | `@danqing/dq-tokens/dq-linear-dark.css` | `dq-linear-dark` |
-| China Red Dark | `@danqing/dq-tokens/dq-china-red-dark.css` | `dq-china-red-dark` |
-| shadcn/ui Dark | `@danqing/dq-tokens/dq-shadcn-dark.css` | `dq-shadcn-dark` |
+| Theme | Slug | CSS import | `<html>` class | Dark |
+|-------|------|------------|----------------|------|
+| macOS | `mac` | `dq-mac.css` | `dq-mac` | yes |
+| Linear Dark | `linear-dark` | `dq-linear-dark.css` | `dq-linear-dark` | yes |
+| China Red Dark | `china-red-dark` | `dq-china-red-dark.css` | `dq-china-red-dark` | yes |
+| shadcn/ui Dark | `shadcn-dark` | `dq-shadcn-dark.css` | `dq-shadcn-dark` | yes |
+| shadcn/ui Light | `shadcn-light` | `dq-shadcn-light.css` | `dq-shadcn-light` | no |
+| Catppuccin Mocha | `catppuccin` | `dq-catppuccin.css` | `dq-catppuccin` | yes |
+| Tokyo Night | `tokyo-night` | `dq-tokyo-night.css` | `dq-tokyo-night` | yes |
+| Minimal Light | `minimal-light` | `dq-minimal-light.css` | `dq-minimal-light` | no |
+| Dracula | `dracula` | `dq-dracula.css` | `dq-dracula` | yes |
+| Nord Dark | `nord-dark` | `dq-nord-dark.css` | `dq-nord-dark` | yes |
+| Catppuccin Latte | `catppuccin-latte` | `dq-catppuccin-latte.css` | `dq-catppuccin-latte` | no |
+| Nord Light | `nord-light` | `dq-nord-light.css` | `dq-nord-light` | no |
+| GitHub Light | `github-light` | `dq-github-light.css` | `dq-github-light` | no |
 
 Import glass surface utilities after the base theme:
 
 ```ts
-import '@danqing/dq-tokens/dq-linear-dark.css'; // or dq-shadcn-dark.css, dq-china-red-dark.css
+import '@danqing/dq-tokens/dq-shadcn-light.css';
 import '@danqing/dq-tokens/dq-glass.css';
 import '@danqing/dq-ui/style.css';
 ```
 
-Programmatic theme switching:
+Programmatic theme switching (camelCase id **or** kebab slug; toggles `dark` automatically):
 
 ```ts
-import { applyDqTheme } from '@danqing/dq-tokens';
+import { applyDqTheme, THEME_OPTIONS } from '@danqing/dq-tokens';
 
-applyDqTheme('linearDark');
-applyDqTheme('chinaRedDark');
-applyDqTheme('shadcnDark');
+applyDqTheme('shadcnLight');
+applyDqTheme('linear-dark'); // slug also works
+// Settings UI: iterate THEME_OPTIONS for label / accent / dark
 ```
+
+**Studio / product migration notes**
+
+- Prefer `--dq-space-xs…xl` over local `--space-*` aliases.
+- Use `applyDqTheme` / `THEME_OPTIONS` instead of maintaining a private theme class list.
+- Focus rings: `--dq-focus-ring`; hover fills: `.dq-hoverable` — do not invent `0 0 0 2px` rings in product CSS.
+- Management tabs: `DqSectionTabs` / `DqSegmented`; selects: `DqSelect` (`size="small"` for compact chips).
 
 Local previews: open `packages/tokens/demo/index.html` (gallery) or the per-theme demo pages in the same folder.
 

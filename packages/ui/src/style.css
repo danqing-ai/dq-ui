@@ -1,4 +1,15 @@
-/* @danqing/dq-ui base component styles */
+/* @danqing/dq-ui base component styles
+ *
+ * Interaction contract (product apps must follow):
+ * - Hover fill: `.dq-hoverable` → `--dq-fill-on-glass-hover`
+ * - Focus ring: `.dq-focusable` / control `:focus-visible` → `--dq-focus-ring`
+ * - Press scale: `.dq-pressable` / `.dq-btn:active`
+ * - Selected row: `.dq-selected` → `--dq-accent-surface`
+ * Do not invent custom `0 0 0 2px` focus rings or ad-hoc hover fills in product CSS.
+ *
+ * Management tabs: prefer `DqSectionTabs` / `DqSegmented` over custom tab buttons.
+ * Compact selects (composer chips): `<DqSelect size="small" />`.
+ */
 
 .dq-btn {
   display: inline-flex;
@@ -1627,8 +1638,27 @@
 }
 
 .dq-select--sm .dq-select__trigger {
-  min-height: 28px;
-  font-size: var(--dq-font-size-caption);
+  min-height: 26px;
+  height: 26px;
+  padding: 0 8px;
+  gap: 4px;
+  font-size: var(--dq-font-size-footnote);
+  border-radius: var(--dq-radius-button);
+}
+
+.dq-select--sm .dq-select__chevron svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dq-select--sm .dq-select__clear {
+  width: 16px;
+  height: 16px;
+}
+
+.dq-select--sm .dq-select__clear svg {
+  width: 12px;
+  height: 12px;
 }
 
 .dq-select--lg .dq-select__trigger {

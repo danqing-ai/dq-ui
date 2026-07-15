@@ -42,7 +42,8 @@ const props = withDefaults(
     multiple?: boolean;
     filterable?: boolean;
     clearable?: boolean;
-    size?: 'small' | 'large';
+    /** `small` / `sm` for compact chips (composer, toolbars); `large` for forms */
+    size?: 'small' | 'sm' | 'large';
   }>(),
   {},
 );
@@ -67,7 +68,7 @@ watch(model, (value) => {
 
 const sizeClass = computed(() => {
   const s = props.size ?? (attrs.size as string | undefined);
-  if (s === 'small') return 'dq-select--sm';
+  if (s === 'small' || s === 'sm') return 'dq-select--sm';
   if (s === 'large') return 'dq-select--lg';
   return '';
 });
