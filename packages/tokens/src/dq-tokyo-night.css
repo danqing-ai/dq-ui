@@ -1,0 +1,373 @@
+/**
+ * DanQing Tokyo Night theme — neon cyberpunk dark aesthetic.
+ *
+ * Design philosophy:
+ * - Tokyo Night Storm palette: deep navy base with vibrant neon accents
+ * - Blue-purple accent (#7aa2f7) for primary actions
+ * - High contrast text with cool undertones
+ * - Neon glow effects for status indicators
+ * - Inspired by the popular Tokyo Night VSCode theme
+ *
+ * Usage: Add `class="dq-tokyo-night"` on <html> or <body>.
+ */
+@import url('./dq-typography.css');
+
+html.dq-tokyo-night,
+.dq-tokyo-night {
+  accent-color: var(--dq-accent);
+
+  --dq-accent: #7aa2f7;
+  --dq-accent-hover: #9db6f9;
+  --dq-accent-muted: #7dcfff;
+  --dq-accent-tint: rgba(122, 162, 247, 0.14);
+  --dq-accent-tint-strong: rgba(122, 162, 247, 0.22);
+
+  --dq-font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --dq-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --dq-font-weight-medium: 500;
+
+  --dq-material-chrome: #1a1b26;
+  --dq-material-elevated: #24283b;
+  --dq-material-grouped: #16161e;
+
+  --dq-bg-page: #1a1b26;
+  --dq-bg-base: var(--dq-material-chrome);
+  --dq-bg-elevated: #24283b;
+  --dq-surface-elevated: #24283b;
+  --dq-surface-grouped: var(--dq-material-grouped);
+
+  --dq-fill-control: #24283b;
+  --dq-fill-secondary: #16161e;
+  --dq-fill-tertiary: #414868;
+  --dq-fill-quaternary: #565f89;
+  --dq-fill-control-hover: rgba(122, 162, 247, 0.12);
+  --dq-fill-control-selected: rgba(122, 162, 247, 0.18);
+  --dq-fill-dim: #13141d;
+  --dq-fill-dimmer: #0e0f16;
+  --dq-fill-grouped: var(--dq-surface-grouped);
+
+  --dq-label-primary: rgba(192, 202, 245, 0.95);
+  --dq-label-secondary: rgba(192, 202, 245, 0.68);
+  --dq-label-tertiary: rgba(192, 202, 245, 0.44);
+  --dq-label-quaternary: rgba(192, 202, 245, 0.28);
+  --dq-label-disabled: rgba(192, 202, 245, 0.17);
+
+  --dq-border: rgba(192, 202, 245, 0.10);
+  --dq-border-subtle: rgba(192, 202, 245, 0.06);
+  --dq-border-strong: rgba(192, 202, 245, 0.16);
+  --dq-border-hairline: rgba(192, 202, 245, 0.06);
+  --dq-separator: rgba(65, 72, 104, 0.50);
+  --dq-separator-strong: rgba(65, 72, 104, 0.60);
+  --dq-separator-light: rgba(65, 72, 104, 0.36);
+
+  --dq-glass-bar-bg: rgba(26, 27, 38, 0.80);
+  --dq-glass-bar-bg-strong: rgba(26, 27, 38, 0.90);
+  --dq-glass-sidebar-bg: rgba(26, 27, 38, 0.74);
+  --dq-glass-popover-bg: rgba(36, 40, 59, 0.93);
+  --dq-glass-grouped-bg: rgba(22, 22, 30, 0.86);
+  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
+  --dq-glass-panel-bg: rgba(36, 40, 59, 0.95);
+  --dq-glass-control-bg: transparent;
+  --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 4%, transparent);
+  --dq-glass-control-bg-focus: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
+  --dq-glass-control-border: color-mix(in srgb, var(--dq-label-primary) 14%, transparent);
+  --dq-glass-control-border-hover: color-mix(in srgb, var(--dq-label-primary) 18%, transparent);
+  --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
+  --dq-glass-control-focus-ring: none;
+  --dq-glass-control-bg-solid: var(--dq-fill-secondary);
+  --dq-glass-tooltip-bg: rgba(26, 27, 38, 0.96);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.42);
+  --dq-glass-floating-bar-bg: rgba(36, 40, 59, 0.95);
+
+  --dq-surface-inset: rgba(192, 202, 245, 0.03);
+  --dq-surface-inset-hover: rgba(192, 202, 245, 0.06);
+  --dq-surface-inset-pressed: rgba(192, 202, 245, 0.04);
+  --dq-surface-list-selected: rgba(122, 162, 247, 0.12);
+  --dq-surface-list-selected-strong: rgba(122, 162, 247, 0.18);
+  --dq-fill-muted-surface: rgba(86, 95, 137, 0.14);
+  --dq-fill-muted-surface-hover: rgba(86, 95, 137, 0.20);
+  --dq-fill-muted-control: rgba(86, 95, 137, 0.26);
+  --dq-fill-muted-control-hover: rgba(86, 95, 137, 0.38);
+  --dq-fill-muted-control-active: rgba(86, 95, 137, 0.54);
+  --dq-accent-surface: rgba(122, 162, 247, 0.08);
+  --dq-accent-surface-border: rgba(122, 162, 247, 0.28);
+  --dq-success-surface: rgba(158, 206, 106, 0.07);
+  --dq-success-surface-border: rgba(158, 206, 106, 0.26);
+  --dq-scrollbar-thumb: rgba(192, 202, 245, 0.10);
+  --dq-scrollbar-thumb-hover: rgba(192, 202, 245, 0.20);
+
+  --dq-overlay-light: rgba(0, 0, 0, 0.32);
+  --dq-overlay-medium: rgba(0, 0, 0, 0.42);
+  --dq-overlay-heavy: rgba(0, 0, 0, 0.72);
+  --dq-overlay-scrim: rgba(0, 0, 0, 0.90);
+  --dq-overlay-card: rgba(0, 0, 0, 0.62);
+  --dq-overlay-gradient-end: rgba(0, 0, 0, 0.84);
+
+  --dq-accent-glow: rgba(122, 162, 247, 0.35);
+  --dq-accent-glow-strong: rgba(122, 162, 247, 0.50);
+  --dq-accent-ring-subtle: rgba(122, 162, 247, 0.20);
+  --dq-accent-border-hover: rgba(122, 162, 247, 0.42);
+  --dq-accent-shadow-cta: rgba(122, 162, 247, 0.28);
+
+  --dq-warning-surface: rgba(224, 175, 104, 0.10);
+  --dq-warning-surface-strong: rgba(224, 175, 104, 0.14);
+  --dq-warning-surface-border: rgba(224, 175, 104, 0.20);
+  --dq-warning-border-hover: rgba(224, 175, 104, 0.32);
+
+  --dq-danger-surface: rgba(247, 118, 142, 0.10);
+  --dq-danger-surface-strong: rgba(247, 118, 142, 0.12);
+  --dq-danger-surface-border: rgba(247, 118, 142, 0.20);
+  --dq-danger-border-hover: rgba(247, 118, 142, 0.32);
+  --dq-danger-icon-muted: rgba(247, 118, 142, 0.45);
+
+  --dq-success-surface-strong: rgba(158, 206, 106, 0.12);
+  --dq-success-border: rgba(158, 206, 106, 0.20);
+  --dq-success-tag: rgba(158, 206, 106, 0.12);
+
+  --dq-tag-neutral-bg: rgba(192, 202, 245, 0.10);
+  --dq-fill-control-strong: rgba(192, 202, 245, 0.14);
+  --dq-label-on-media: rgba(192, 202, 245, 0.90);
+  --dq-label-footnote: rgba(192, 202, 245, 0.40);
+  --dq-label-chevron: rgba(192, 202, 245, 0.25);
+  --dq-label-block-title: rgba(192, 202, 245, 0.48);
+  --dq-label-desc: rgba(192, 202, 245, 0.54);
+  --dq-label-emphasis: rgba(192, 202, 245, 0.96);
+  --dq-label-muted-strong: rgba(192, 202, 245, 0.54);
+
+  --dq-fill-faint: rgba(192, 202, 245, 0.05);
+  --dq-fill-faint-hover: rgba(192, 202, 245, 0.09);
+  --dq-fill-subtle: rgba(192, 202, 245, 0.18);
+  --dq-fill-muted-row: rgba(86, 95, 137, 0.18);
+  --dq-fill-muted-surface-light: rgba(86, 95, 137, 0.07);
+  --dq-fill-muted-surface-medium: rgba(86, 95, 137, 0.09);
+  --dq-overlay-deep: rgba(0, 0, 0, 0.76);
+  --dq-accent-gradient-start: rgba(122, 162, 247, 0.04);
+  --dq-success-highlight: rgba(158, 206, 106, 0.16);
+  --dq-warning-highlight: rgba(224, 175, 104, 0.16);
+  --dq-lightbox-info-bg: rgba(26, 27, 38, 0.90);
+
+  --dq-glass-border: var(--dq-border-hairline);
+  --dq-glass-border-strong: rgba(192, 202, 245, 0.12);
+  --dq-glass-highlight: rgba(122, 162, 247, 0.04);
+
+  --dq-glass-blur: saturate(190%) blur(20px);
+  --dq-glass-blur-light: saturate(190%) blur(12px);
+  --dq-glass-blur-heavy: saturate(190%) blur(24px);
+
+  --dq-fill-on-glass: rgba(192, 202, 245, 0.06);
+  --dq-fill-on-glass-hover: rgba(192, 202, 245, 0.10);
+  --dq-fill-on-glass-pressed: rgba(192, 202, 245, 0.14);
+  --dq-fill-on-glass-subtle: rgba(192, 202, 245, 0.04);
+
+  --dq-bg-page-glow: radial-gradient(
+    ellipse 130% 220px at 50% -4%,
+    rgba(122, 162, 247, 0.05) 0%,
+    rgba(125, 207, 255, 0.02) 30%,
+    transparent 58%
+  );
+
+  --dq-radius-group: 12px;
+  --dq-radius-control: 10px;
+  --dq-radius-control-sm: 8px;
+  --dq-radius-button: 8px;
+  --dq-radius-pill: 9999px;
+  --dq-radius-input: 8px;
+  --dq-radius-menu: 12px;
+  --dq-radius-glass: 12px;
+
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.34), 0 0 0 0.5px rgba(122, 162, 247, 0.04) inset;
+  --dq-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.38), 0 0 0 0.5px rgba(122, 162, 247, 0.04) inset;
+  --dq-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.46), 0 0 0 0.5px rgba(122, 162, 247, 0.06) inset;
+  --dq-shadow-popover: 0 12px 40px rgba(0, 0, 0, 0.52), 0 0 0 0.5px rgba(122, 162, 247, 0.08) inset;
+  --dq-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.42), 0 0 0 0.5px rgba(122, 162, 247, 0.06) inset;
+  --dq-shadow-popover-elevated:
+    0 0 0 1px rgba(122, 162, 247, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.22),
+    0 16px 48px rgba(0, 0, 0, 0.32);
+  --dq-shadow-modal:
+    0 0 0 1px rgba(122, 162, 247, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.28),
+    0 32px 64px rgba(0, 0, 0, 0.38);
+  --dq-shadow-toast: 0 4px 16px rgba(0, 0, 0, 0.26), 0 12px 32px rgba(0, 0, 0, 0.22);
+
+  --dq-transition-hover: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  --dq-transition-field: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  --dq-transition-active: transform 0.08s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dq-transition-panel: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  --dq-transition-switch: background 0.18s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.18s cubic-bezier(0.32, 0.72, 0, 1);
+
+  --dq-switch-thumb-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10), 0 1px 3px rgba(0, 0, 0, 0.30);
+  --dq-mask: rgba(0, 0, 0, 0.54);
+  --dq-mask-light: rgba(0, 0, 0, 0.32);
+
+  --dq-focus-ring: 0 0 0 3px rgba(122, 162, 247, 0.32);
+
+  --dq-success: #9ece6a;
+  --dq-warning: #e0af68;
+  --dq-danger: #f7768e;
+  --dq-danger-hover: #f98ca0;
+  --dq-info: #7dcfff;
+  --dq-color-white: #c0caf5;
+
+  --dq-system-green: var(--dq-success);
+  --dq-system-orange: var(--dq-warning);
+  --dq-system-red: var(--dq-danger);
+  --dq-system-blue: var(--dq-info);
+
+  --dq-row-gutter: 16px;
+  --dq-selection-bg: rgba(122, 162, 247, 0.30);
+  --dq-selection-color: inherit;
+
+  font-family: var(--dq-font-sans);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
+  color: var(--dq-label-primary);
+}
+
+html.dq-tokyo-night body {
+  font-size: var(--dq-font-size-body);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
+}
+
+html.dq-tokyo-night .dq-btn--primary,
+.dq-tokyo-night .dq-btn--primary { color: #1a1b26; }
+html.dq-tokyo-night .dq-btn--primary.dq-btn--plain,
+html.dq-tokyo-night .dq-btn--primary.is-plain,
+.dq-tokyo-night .dq-btn--primary.dq-btn--plain,
+.dq-tokyo-night .dq-btn--primary.is-plain { color: var(--dq-accent); }
+html.dq-tokyo-night .dq-icon-btn--primary,
+.dq-tokyo-night .dq-icon-btn--primary { color: #1a1b26; }
+
+html.dq-tokyo-night .dq-shadcn-sidebar,
+.dq-tokyo-night .dq-shadcn-sidebar {
+  background: var(--dq-glass-sidebar-bg); border-right: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+html.dq-tokyo-night .dq-shadcn-topbar,
+.dq-tokyo-night .dq-shadcn-topbar {
+  background: var(--dq-glass-bar-bg); border-bottom: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+html.dq-tokyo-night .dq-shadcn-command-bar,
+.dq-tokyo-night .dq-shadcn-command-bar {
+  background: var(--dq-glass-floating-bar-bg); border: 1px solid var(--dq-border-strong);
+  box-shadow: var(--dq-shadow-lg); border-radius: var(--dq-radius-control);
+}
+
+html.dq-tokyo-night .dq-shadcn-indicator,
+.dq-tokyo-night .dq-shadcn-indicator {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--dq-accent); box-shadow: 0 0 8px var(--dq-accent-glow-strong);
+}
+html.dq-tokyo-night .dq-shadcn-indicator--success,
+.dq-tokyo-night .dq-shadcn-indicator--success { background: var(--dq-success); box-shadow: 0 0 8px rgba(158, 206, 106, 0.30); }
+html.dq-tokyo-night .dq-shadcn-indicator--warning,
+.dq-tokyo-night .dq-shadcn-indicator--warning { background: var(--dq-warning); box-shadow: 0 0 8px rgba(224, 175, 104, 0.30); }
+html.dq-tokyo-night .dq-shadcn-indicator--danger,
+.dq-tokyo-night .dq-shadcn-indicator--danger { background: var(--dq-danger); box-shadow: 0 0 8px rgba(247, 118, 142, 0.30); }
+
+html.dq-tokyo-night .dq-shadcn-kbd,
+.dq-tokyo-night .dq-shadcn-kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  font-family: var(--dq-font-mono); font-size: var(--dq-font-size-caption); font-weight: 500;
+  color: var(--dq-label-secondary); background: var(--dq-fill-secondary);
+  border: 1px solid var(--dq-border); border-radius: var(--dq-radius-control-sm);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+html.dq-tokyo-night .dq-shadcn-track,
+.dq-tokyo-night .dq-shadcn-track { height: 3px; background: var(--dq-fill-tertiary); border-radius: 999px; overflow: hidden; }
+html.dq-tokyo-night .dq-shadcn-track__fill,
+.dq-tokyo-night .dq-shadcn-track__fill {
+  height: 100%; background: linear-gradient(90deg, #7aa2f7, #7dcfff);
+  border-radius: inherit; transition: width 0.3s ease;
+}
+
+html.dq-tokyo-night .dq-shadcn-badge,
+.dq-tokyo-night .dq-shadcn-badge {
+  display: inline-flex; align-items: center; padding: 2px 10px;
+  border-radius: var(--dq-radius-pill); font-size: var(--dq-font-size-caption);
+  font-weight: 500; line-height: 1.4;
+  background: var(--dq-fill-secondary); color: var(--dq-label-secondary);
+  border: 1px solid var(--dq-border);
+}
+html.dq-tokyo-night .dq-shadcn-badge--accent,
+.dq-tokyo-night .dq-shadcn-badge--accent {
+  background: var(--dq-accent-surface); color: var(--dq-label-primary);
+  border-color: var(--dq-accent-surface-border);
+}
+
+html.dq-tokyo-night ::selection,
+.dq-tokyo-night ::selection { background: rgba(122, 162, 247, 0.26); color: var(--dq-label-primary); }
+
+html.dq-tokyo-night ::-webkit-scrollbar,
+.dq-tokyo-night ::-webkit-scrollbar { width: 8px; height: 8px; }
+html.dq-tokyo-night ::-webkit-scrollbar-track,
+.dq-tokyo-night ::-webkit-scrollbar-track { background: transparent; }
+html.dq-tokyo-night ::-webkit-scrollbar-thumb,
+.dq-tokyo-night ::-webkit-scrollbar-thumb {
+  background: var(--dq-scrollbar-thumb); border-radius: 4px;
+  border: 2px solid transparent; background-clip: padding-box;
+}
+html.dq-tokyo-night ::-webkit-scrollbar-thumb:hover,
+.dq-tokyo-night ::-webkit-scrollbar-thumb:hover {
+  background: var(--dq-scrollbar-thumb-hover); border: 2px solid transparent; background-clip: padding-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dq-tokyo-night, .dq-tokyo-night {
+    --dq-transition-hover: none; --dq-transition-field: none;
+    --dq-transition-active: none; --dq-transition-panel: none; --dq-transition-switch: none;
+  }
+}
+@media (prefers-contrast: high) {
+  html.dq-tokyo-night, .dq-tokyo-night {
+    --dq-label-primary: rgba(192, 202, 245, 0.98);
+    --dq-label-secondary: rgba(192, 202, 245, 0.85);
+    --dq-label-tertiary: rgba(192, 202, 245, 0.65);
+    --dq-border: rgba(192, 202, 245, 0.18); --dq-border-strong: rgba(192, 202, 245, 0.28);
+    --dq-focus-ring: 0 0 0 4px rgba(122, 162, 247, 0.48);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-tokyo-night .dq-glass,
+  html.dq-tokyo-night .dq-glass--bar,
+  html.dq-tokyo-night .dq-glass--bar-strong,
+  html.dq-tokyo-night .dq-glass--sidebar,
+  html.dq-tokyo-night .dq-glass--grouped,
+  html.dq-tokyo-night .dq-glass--popover,
+  html.dq-tokyo-night .dq-glass--panel,
+  html.dq-tokyo-night .dq-shadcn-sidebar,
+  html.dq-tokyo-night .dq-shadcn-topbar,
+  .dq-tokyo-night .dq-glass,
+  .dq-tokyo-night .dq-glass--bar,
+  .dq-tokyo-night .dq-glass--bar-strong,
+  .dq-tokyo-night .dq-glass--sidebar,
+  .dq-tokyo-night .dq-glass--grouped,
+  .dq-tokyo-night .dq-glass--popover,
+  .dq-tokyo-night .dq-glass--panel,
+  .dq-tokyo-night .dq-shadcn-sidebar,
+  .dq-tokyo-night .dq-shadcn-topbar {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  html.dq-tokyo-night .dq-glass--bar,
+  html.dq-tokyo-night .dq-glass--bar-strong,
+  html.dq-tokyo-night .dq-shadcn-topbar,
+  .dq-tokyo-night .dq-glass--bar,
+  .dq-tokyo-night .dq-glass--bar-strong,
+  .dq-tokyo-night .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); }
+  html.dq-tokyo-night .dq-glass--sidebar,
+  html.dq-tokyo-night .dq-shadcn-sidebar,
+  .dq-tokyo-night .dq-glass--sidebar,
+  .dq-tokyo-night .dq-shadcn-sidebar { background: var(--dq-bg-base); }
+  html.dq-tokyo-night .dq-glass--popover,
+  html.dq-tokyo-night .dq-glass--panel,
+  .dq-tokyo-night .dq-glass--popover,
+  .dq-tokyo-night .dq-glass--panel { background: var(--dq-bg-elevated); }
+}

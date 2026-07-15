@@ -1,4 +1,4 @@
-import { mkdir, copyFile } from 'node:fs/promises';
+import { mkdir, copyFile, readdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -10,17 +10,12 @@ const distDir = resolve(packageDir, 'dist');
 
 await mkdir(distDir, { recursive: true });
 
-for (const name of [
-  'dq-mac.css',
-  'dq-glass.css',
-  'dq-linear-dark.css',
-  'dq-china-red-dark.css',
-  'dq-shadcn-dark.css',
-  'dq-shadcn-light.css',
-  'dq-tauri-macos.css',
-  'dq-typography.css',
-]) {
-  await copyFile(resolve(srcDir, name), resolve(distDir, name));
+// Copy all CSS files from src to dist
+const srcFiles = await readdir(srcDir);
+for (const name of srcFiles) {
+  if (name.endsWith('.css')) {
+    await copyFile(resolve(srcDir, name), resolve(distDir, name));
+  }
 }
 
 execSync('tsc -p tsconfig.json', { cwd: packageDir, stdio: 'inherit' });

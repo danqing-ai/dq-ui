@@ -1,0 +1,370 @@
+/**
+ * DanQing Minimal Light theme — clean, distraction-free light mode.
+ *
+ * Design philosophy:
+ * - Pure white base (#fafafa) for maximum focus
+ * - Blue accent (#0066cc) — classic, professional
+ * - Minimal glass effects — clean solid surfaces
+ * - High contrast text for readability
+ * - Designed for productivity and long coding sessions
+ * - No visual noise — let content be the hero
+ *
+ * Usage: Add `class="dq-minimal-light"` on <html> or <body>.
+ */
+@import url('./dq-typography.css');
+
+html.dq-minimal-light,
+.dq-minimal-light {
+  accent-color: var(--dq-accent);
+
+  --dq-accent: #0066cc;
+  --dq-accent-hover: #0052a3;
+  --dq-accent-muted: #4d94e0;
+  --dq-accent-tint: rgba(0, 102, 204, 0.08);
+  --dq-accent-tint-strong: rgba(0, 102, 204, 0.14);
+
+  --dq-font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --dq-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --dq-font-weight-medium: 500;
+
+  --dq-material-chrome: #ffffff;
+  --dq-material-elevated: #f5f5f5;
+  --dq-material-grouped: #fafafa;
+
+  --dq-bg-page: #fafafa;
+  --dq-bg-base: var(--dq-material-chrome);
+  --dq-bg-elevated: #f5f5f5;
+  --dq-surface-elevated: #f5f5f5;
+  --dq-surface-grouped: var(--dq-material-grouped);
+
+  --dq-fill-control: #ffffff;
+  --dq-fill-secondary: #f5f5f5;
+  --dq-fill-tertiary: #e8e8e8;
+  --dq-fill-quaternary: #d4d4d4;
+  --dq-fill-control-hover: rgba(0, 0, 0, 0.04);
+  --dq-fill-control-selected: rgba(0, 102, 204, 0.10);
+  --dq-fill-dim: #f5f5f5;
+  --dq-fill-dimmer: #fafafa;
+  --dq-fill-grouped: var(--dq-surface-grouped);
+
+  --dq-label-primary: rgba(0, 0, 0, 0.90);
+  --dq-label-secondary: rgba(0, 0, 0, 0.60);
+  --dq-label-tertiary: rgba(0, 0, 0, 0.40);
+  --dq-label-quaternary: rgba(0, 0, 0, 0.25);
+  --dq-label-disabled: rgba(0, 0, 0, 0.15);
+
+  --dq-border: rgba(0, 0, 0, 0.08);
+  --dq-border-subtle: rgba(0, 0, 0, 0.05);
+  --dq-border-strong: rgba(0, 0, 0, 0.14);
+  --dq-border-hairline: rgba(0, 0, 0, 0.04);
+  --dq-separator: rgba(0, 0, 0, 0.06);
+  --dq-separator-strong: rgba(0, 0, 0, 0.10);
+  --dq-separator-light: rgba(0, 0, 0, 0.04);
+
+  --dq-glass-bar-bg: rgba(255, 255, 255, 0.85);
+  --dq-glass-bar-bg-strong: rgba(255, 255, 255, 0.92);
+  --dq-glass-sidebar-bg: rgba(250, 250, 250, 0.82);
+  --dq-glass-popover-bg: rgba(255, 255, 255, 0.96);
+  --dq-glass-grouped-bg: rgba(245, 245, 245, 0.88);
+  --dq-glass-grouped-bg-solid: var(--dq-bg-base);
+  --dq-glass-panel-bg: rgba(255, 255, 255, 0.97);
+  --dq-glass-control-bg: transparent;
+  --dq-glass-control-bg-hover: color-mix(in srgb, var(--dq-label-primary) 3%, transparent);
+  --dq-glass-control-bg-focus: color-mix(in srgb, var(--dq-label-primary) 5%, transparent);
+  --dq-glass-control-border: color-mix(in srgb, var(--dq-label-primary) 12%, transparent);
+  --dq-glass-control-border-hover: color-mix(in srgb, var(--dq-label-primary) 16%, transparent);
+  --dq-glass-control-border-focus: color-mix(in srgb, var(--dq-accent) 65%, var(--dq-glass-control-border));
+  --dq-glass-control-focus-ring: none;
+  --dq-glass-control-bg-solid: var(--dq-fill-control);
+  --dq-glass-tooltip-bg: rgba(30, 30, 30, 0.96);
+  --dq-glass-scrim: rgba(0, 0, 0, 0.38);
+  --dq-glass-floating-bar-bg: rgba(255, 255, 255, 0.96);
+
+  --dq-surface-inset: rgba(0, 0, 0, 0.02);
+  --dq-surface-inset-hover: rgba(0, 0, 0, 0.04);
+  --dq-surface-inset-pressed: rgba(0, 0, 0, 0.03);
+  --dq-surface-list-selected: rgba(0, 102, 204, 0.08);
+  --dq-surface-list-selected-strong: rgba(0, 102, 204, 0.12);
+  --dq-fill-muted-surface: rgba(0, 0, 0, 0.03);
+  --dq-fill-muted-surface-hover: rgba(0, 0, 0, 0.06);
+  --dq-fill-muted-control: rgba(0, 0, 0, 0.06);
+  --dq-fill-muted-control-hover: rgba(0, 0, 0, 0.10);
+  --dq-fill-muted-control-active: rgba(0, 0, 0, 0.14);
+  --dq-accent-surface: rgba(0, 102, 204, 0.05);
+  --dq-accent-surface-border: rgba(0, 102, 204, 0.15);
+  --dq-success-surface: rgba(52, 199, 89, 0.06);
+  --dq-success-surface-border: rgba(52, 199, 89, 0.20);
+  --dq-scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --dq-scrollbar-thumb-hover: rgba(0, 0, 0, 0.20);
+
+  --dq-overlay-light: rgba(0, 0, 0, 0.12);
+  --dq-overlay-medium: rgba(0, 0, 0, 0.28);
+  --dq-overlay-heavy: rgba(0, 0, 0, 0.52);
+  --dq-overlay-scrim: rgba(0, 0, 0, 0.68);
+  --dq-overlay-card: rgba(0, 0, 0, 0.36);
+  --dq-overlay-gradient-end: rgba(0, 0, 0, 0.56);
+
+  --dq-accent-glow: rgba(0, 102, 204, 0.12);
+  --dq-accent-glow-strong: rgba(0, 102, 204, 0.20);
+  --dq-accent-ring-subtle: rgba(0, 102, 204, 0.10);
+  --dq-accent-border-hover: rgba(0, 102, 204, 0.22);
+  --dq-accent-shadow-cta: rgba(0, 102, 204, 0.14);
+
+  --dq-warning-surface: rgba(255, 149, 0, 0.08);
+  --dq-warning-surface-strong: rgba(255, 149, 0, 0.12);
+  --dq-warning-surface-border: rgba(255, 149, 0, 0.18);
+  --dq-warning-border-hover: rgba(255, 149, 0, 0.28);
+
+  --dq-danger-surface: rgba(255, 59, 48, 0.06);
+  --dq-danger-surface-strong: rgba(255, 59, 48, 0.10);
+  --dq-danger-surface-border: rgba(255, 59, 48, 0.16);
+  --dq-danger-border-hover: rgba(255, 59, 48, 0.26);
+  --dq-danger-icon-muted: rgba(255, 59, 48, 0.55);
+
+  --dq-success-surface-strong: rgba(52, 199, 89, 0.10);
+  --dq-success-border: rgba(52, 199, 89, 0.18);
+  --dq-success-tag: rgba(52, 199, 89, 0.08);
+
+  --dq-tag-neutral-bg: rgba(0, 0, 0, 0.05);
+  --dq-fill-control-strong: rgba(0, 0, 0, 0.08);
+  --dq-label-on-media: rgba(255, 255, 255, 0.94);
+  --dq-label-footnote: rgba(0, 0, 0, 0.38);
+  --dq-label-chevron: rgba(0, 0, 0, 0.22);
+  --dq-label-block-title: rgba(0, 0, 0, 0.44);
+  --dq-label-desc: rgba(0, 0, 0, 0.50);
+  --dq-label-emphasis: rgba(0, 0, 0, 0.95);
+  --dq-label-muted-strong: rgba(0, 0, 0, 0.45);
+
+  --dq-fill-faint: rgba(0, 0, 0, 0.02);
+  --dq-fill-faint-hover: rgba(0, 0, 0, 0.04);
+  --dq-fill-subtle: rgba(0, 0, 0, 0.06);
+  --dq-fill-muted-row: rgba(0, 0, 0, 0.03);
+  --dq-fill-muted-surface-light: rgba(0, 0, 0, 0.02);
+  --dq-fill-muted-surface-medium: rgba(0, 0, 0, 0.04);
+  --dq-overlay-deep: rgba(0, 0, 0, 0.58);
+  --dq-accent-gradient-start: rgba(0, 102, 204, 0.02);
+  --dq-success-highlight: rgba(52, 199, 89, 0.10);
+  --dq-warning-highlight: rgba(255, 149, 0, 0.10);
+  --dq-lightbox-info-bg: rgba(255, 255, 255, 0.96);
+
+  --dq-glass-border: var(--dq-border-hairline);
+  --dq-glass-border-strong: rgba(0, 0, 0, 0.08);
+  --dq-glass-highlight: rgba(255, 255, 255, 0.60);
+
+  --dq-glass-blur: saturate(180%) blur(14px);
+  --dq-glass-blur-light: saturate(180%) blur(8px);
+  --dq-glass-blur-heavy: saturate(180%) blur(18px);
+
+  --dq-fill-on-glass: rgba(0, 0, 0, 0.03);
+  --dq-fill-on-glass-hover: rgba(0, 0, 0, 0.06);
+  --dq-fill-on-glass-pressed: rgba(0, 0, 0, 0.08);
+  --dq-fill-on-glass-subtle: rgba(0, 0, 0, 0.02);
+
+  --dq-bg-page-glow: none;
+
+  --dq-radius-group: 10px;
+  --dq-radius-control: 8px;
+  --dq-radius-control-sm: 6px;
+  --dq-radius-button: 8px;
+  --dq-radius-pill: 9999px;
+  --dq-radius-input: 8px;
+  --dq-radius-menu: 10px;
+  --dq-radius-glass: 10px;
+
+  --dq-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --dq-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --dq-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.03);
+  --dq-shadow-popover: 0 12px 36px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --dq-shadow-glass: 0 8px 28px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+  --dq-shadow-popover-elevated:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.08);
+  --dq-shadow-modal:
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 32px 64px rgba(0, 0, 0, 0.10);
+  --dq-shadow-toast: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.04);
+
+  --dq-transition-hover: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  --dq-transition-field: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  --dq-transition-active: transform 0.08s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dq-transition-panel: opacity 0.2s cubic-bezier(0.32, 0.72, 0, 1), transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+  --dq-transition-switch: background 0.15s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.15s cubic-bezier(0.32, 0.72, 0, 1);
+
+  --dq-switch-thumb-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.10);
+  --dq-mask: rgba(0, 0, 0, 0.40);
+  --dq-mask-light: rgba(0, 0, 0, 0.20);
+
+  --dq-focus-ring: 0 0 0 3px rgba(0, 102, 204, 0.18);
+
+  --dq-success: #34c759;
+  --dq-warning: #ff9500;
+  --dq-danger: #ff3b30;
+  --dq-danger-hover: #e0352b;
+  --dq-info: #007aff;
+  --dq-color-white: #ffffff;
+
+  --dq-system-green: var(--dq-success);
+  --dq-system-orange: var(--dq-warning);
+  --dq-system-red: var(--dq-danger);
+  --dq-system-blue: var(--dq-info);
+
+  --dq-row-gutter: 16px;
+  --dq-selection-bg: rgba(0, 102, 204, 0.16);
+  --dq-selection-color: inherit;
+
+  font-family: var(--dq-font-sans);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
+  color: var(--dq-label-primary);
+}
+
+html.dq-minimal-light body {
+  font-size: var(--dq-font-size-body);
+  background-color: var(--dq-bg-page);
+  background-image: var(--dq-bg-page-glow);
+  background-repeat: no-repeat;
+}
+
+html.dq-minimal-light .dq-btn--primary,
+.dq-minimal-light .dq-btn--primary { color: #ffffff; }
+html.dq-minimal-light .dq-btn--primary.dq-btn--plain,
+html.dq-minimal-light .dq-btn--primary.is-plain,
+.dq-minimal-light .dq-btn--primary.dq-btn--plain,
+.dq-minimal-light .dq-btn--primary.is-plain { color: var(--dq-accent); }
+html.dq-minimal-light .dq-icon-btn--primary,
+.dq-minimal-light .dq-icon-btn--primary { color: #ffffff; }
+
+html.dq-minimal-light .dq-shadcn-sidebar,
+.dq-minimal-light .dq-shadcn-sidebar {
+  background: var(--dq-glass-sidebar-bg); border-right: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+html.dq-minimal-light .dq-shadcn-topbar,
+.dq-minimal-light .dq-shadcn-topbar {
+  background: var(--dq-glass-bar-bg); border-bottom: 1px solid var(--dq-border);
+  backdrop-filter: var(--dq-glass-blur); -webkit-backdrop-filter: var(--dq-glass-blur);
+}
+html.dq-minimal-light .dq-shadcn-command-bar,
+.dq-minimal-light .dq-shadcn-command-bar {
+  background: var(--dq-glass-floating-bar-bg); border: 1px solid var(--dq-border-strong);
+  box-shadow: var(--dq-shadow-lg); border-radius: var(--dq-radius-control);
+}
+
+html.dq-minimal-light .dq-shadcn-indicator,
+.dq-minimal-light .dq-shadcn-indicator {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--dq-accent); box-shadow: 0 0 4px var(--dq-accent-glow);
+}
+html.dq-minimal-light .dq-shadcn-indicator--success,
+.dq-minimal-light .dq-shadcn-indicator--success { background: var(--dq-success); box-shadow: 0 0 4px rgba(52, 199, 89, 0.20); }
+html.dq-minimal-light .dq-shadcn-indicator--warning,
+.dq-minimal-light .dq-shadcn-indicator--warning { background: var(--dq-warning); box-shadow: 0 0 4px rgba(255, 149, 0, 0.20); }
+html.dq-minimal-light .dq-shadcn-indicator--danger,
+.dq-minimal-light .dq-shadcn-indicator--danger { background: var(--dq-danger); box-shadow: 0 0 4px rgba(255, 59, 48, 0.20); }
+
+html.dq-minimal-light .dq-shadcn-kbd,
+.dq-minimal-light .dq-shadcn-kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  font-family: var(--dq-font-mono); font-size: var(--dq-font-size-caption); font-weight: 500;
+  color: var(--dq-label-secondary); background: var(--dq-fill-secondary);
+  border: 1px solid var(--dq-border); border-radius: var(--dq-radius-control-sm);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+html.dq-minimal-light .dq-shadcn-track,
+.dq-minimal-light .dq-shadcn-track { height: 3px; background: var(--dq-fill-tertiary); border-radius: 999px; overflow: hidden; }
+html.dq-minimal-light .dq-shadcn-track__fill,
+.dq-minimal-light .dq-shadcn-track__fill {
+  height: 100%; background: var(--dq-accent); border-radius: inherit; transition: width 0.3s ease;
+}
+
+html.dq-minimal-light .dq-shadcn-badge,
+.dq-minimal-light .dq-shadcn-badge {
+  display: inline-flex; align-items: center; padding: 2px 10px;
+  border-radius: var(--dq-radius-pill); font-size: var(--dq-font-size-caption);
+  font-weight: 500; line-height: 1.4;
+  background: var(--dq-fill-secondary); color: var(--dq-label-secondary);
+  border: 1px solid var(--dq-border);
+}
+html.dq-minimal-light .dq-shadcn-badge--accent,
+.dq-minimal-light .dq-shadcn-badge--accent {
+  background: var(--dq-accent); color: #ffffff; border-color: var(--dq-accent);
+}
+
+html.dq-minimal-light .dq-glass--tooltip,
+.dq-minimal-light .dq-glass--tooltip { color: rgba(255, 255, 255, 0.94); }
+
+html.dq-minimal-light ::selection,
+.dq-minimal-light ::selection { background: rgba(0, 102, 204, 0.14); color: var(--dq-label-primary); }
+
+html.dq-minimal-light ::-webkit-scrollbar,
+.dq-minimal-light ::-webkit-scrollbar { width: 8px; height: 8px; }
+html.dq-minimal-light ::-webkit-scrollbar-track,
+.dq-minimal-light ::-webkit-scrollbar-track { background: transparent; }
+html.dq-minimal-light ::-webkit-scrollbar-thumb,
+.dq-minimal-light ::-webkit-scrollbar-thumb {
+  background: var(--dq-scrollbar-thumb); border-radius: 4px;
+  border: 2px solid transparent; background-clip: padding-box;
+}
+html.dq-minimal-light ::-webkit-scrollbar-thumb:hover,
+.dq-minimal-light ::-webkit-scrollbar-thumb:hover {
+  background: var(--dq-scrollbar-thumb-hover); border: 2px solid transparent; background-clip: padding-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dq-minimal-light, .dq-minimal-light {
+    --dq-transition-hover: none; --dq-transition-field: none;
+    --dq-transition-active: none; --dq-transition-panel: none; --dq-transition-switch: none;
+  }
+}
+@media (prefers-contrast: high) {
+  html.dq-minimal-light, .dq-minimal-light {
+    --dq-label-primary: rgba(0, 0, 0, 0.96);
+    --dq-label-secondary: rgba(0, 0, 0, 0.75);
+    --dq-label-tertiary: rgba(0, 0, 0, 0.55);
+    --dq-border: rgba(0, 0, 0, 0.14); --dq-border-strong: rgba(0, 0, 0, 0.22);
+    --dq-focus-ring: 0 0 0 4px rgba(0, 102, 204, 0.28);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  html.dq-minimal-light .dq-glass,
+  html.dq-minimal-light .dq-glass--bar,
+  html.dq-minimal-light .dq-glass--bar-strong,
+  html.dq-minimal-light .dq-glass--sidebar,
+  html.dq-minimal-light .dq-glass--grouped,
+  html.dq-minimal-light .dq-glass--popover,
+  html.dq-minimal-light .dq-glass--panel,
+  html.dq-minimal-light .dq-shadcn-sidebar,
+  html.dq-minimal-light .dq-shadcn-topbar,
+  .dq-minimal-light .dq-glass,
+  .dq-minimal-light .dq-glass--bar,
+  .dq-minimal-light .dq-glass--bar-strong,
+  .dq-minimal-light .dq-glass--sidebar,
+  .dq-minimal-light .dq-glass--grouped,
+  .dq-minimal-light .dq-glass--popover,
+  .dq-minimal-light .dq-glass--panel,
+  .dq-minimal-light .dq-shadcn-sidebar,
+  .dq-minimal-light .dq-shadcn-topbar {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  html.dq-minimal-light .dq-glass--bar,
+  html.dq-minimal-light .dq-glass--bar-strong,
+  html.dq-minimal-light .dq-shadcn-topbar,
+  .dq-minimal-light .dq-glass--bar,
+  .dq-minimal-light .dq-glass--bar-strong,
+  .dq-minimal-light .dq-shadcn-topbar { background: var(--dq-glass-bar-bg-strong); }
+  html.dq-minimal-light .dq-glass--sidebar,
+  html.dq-minimal-light .dq-shadcn-sidebar,
+  .dq-minimal-light .dq-glass--sidebar,
+  .dq-minimal-light .dq-shadcn-sidebar { background: var(--dq-bg-base); }
+  html.dq-minimal-light .dq-glass--popover,
+  html.dq-minimal-light .dq-glass--panel,
+  .dq-minimal-light .dq-glass--popover,
+  .dq-minimal-light .dq-glass--panel { background: var(--dq-bg-elevated); }
+}
