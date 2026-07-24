@@ -159,6 +159,7 @@ html.dq-github-light,
   --dq-focus-ring: 0 0 0 3px rgba(9, 105, 218, 0.18);
   --dq-success: #1a7f37; --dq-warning: #9a6700; --dq-danger: #cf222e; --dq-danger-hover: #a40e26; --dq-info: #0969da;
   --dq-color-white: #ffffff;
+  --dq-color-black: #000000;
   --dq-system-green: var(--dq-success); --dq-system-orange: var(--dq-warning); --dq-system-red: var(--dq-danger); --dq-system-blue: var(--dq-info);
   --dq-row-gutter: 16px;
   --dq-selection-bg: rgba(9, 105, 218, 0.14); --dq-selection-color: inherit;

@@ -6,9 +6,11 @@ const props = withDefaults(
   defineProps<{
     options: Array<DqSegmentOption | string | number>;
     block?: boolean;
+    size?: 'default' | 'sm';
   }>(),
   {
     block: false,
+    size: 'default',
   },
 );
 
@@ -26,6 +28,7 @@ const normalized = computed(() =>
 const rootClass = computed(() => [
   'dq-segmented',
   props.block ? 'dq-segmented--block' : '',
+  props.size === 'sm' ? 'dq-segmented--sm' : '',
 ]);
 </script>
 

@@ -261,6 +261,7 @@ html.dq-shadcn-light,
   --dq-danger-hover: #dc2626;
   --dq-info: #2563eb;
   --dq-color-white: #ffffff;
+  --dq-color-black: #000000;
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

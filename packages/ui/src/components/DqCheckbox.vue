@@ -18,7 +18,7 @@ const props = withDefaults(
     label?: string | number | boolean;
     value?: string | number | boolean;
     disabled?: boolean;
-    size?: 'small' | 'large';
+    size?: 'sm' | 'large';
   }>(),
   {},
 );
@@ -35,7 +35,7 @@ const itemValue = computed((): AcceptableValue => {
 
 const sizeClass = computed(() => {
   const s = props.size ?? (attrs.size as string | undefined);
-  if (s === 'small') return 'dq-checkbox--sm';
+  if (s === 'sm') return 'dq-checkbox--sm';
   if (s === 'large') return 'dq-checkbox--lg';
   return '';
 });

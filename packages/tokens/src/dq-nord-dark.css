@@ -159,6 +159,7 @@ html.dq-nord-dark,
   --dq-focus-ring: 0 0 0 3px rgba(136, 192, 208, 0.28);
   --dq-success: #a3be8c; --dq-warning: #ebcb8b; --dq-danger: #bf616a; --dq-danger-hover: #d08770; --dq-info: #81a1c1;
   --dq-color-white: #eceff4;
+  --dq-color-black: #000000;
   --dq-system-green: var(--dq-success); --dq-system-orange: var(--dq-warning); --dq-system-red: var(--dq-danger); --dq-system-blue: var(--dq-info);
   --dq-row-gutter: 16px;
   --dq-selection-bg: rgba(136, 192, 208, 0.28); --dq-selection-color: inherit;

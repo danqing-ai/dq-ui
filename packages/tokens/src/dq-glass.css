@@ -58,6 +58,15 @@
   backdrop-filter: var(--dq-glass-blur-heavy);
 }
 
+.dq-glass--composer {
+  background: var(--dq-glass-floating-bar-bg, var(--dq-glass-panel-bg));
+  border: 1px solid var(--dq-glass-border);
+  border-radius: var(--dq-radius-menu);
+  box-shadow: var(--dq-shadow-glass);
+  -webkit-backdrop-filter: var(--dq-glass-blur-heavy);
+  backdrop-filter: var(--dq-glass-blur-heavy);
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .dq-glass,
   .dq-glass--bar,
@@ -65,7 +74,8 @@
   .dq-glass--sidebar,
   .dq-glass--grouped,
   .dq-glass--popover,
-  .dq-glass--panel {
+  .dq-glass--panel,
+  .dq-glass--composer {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
@@ -82,7 +92,8 @@
   }
 
   .dq-glass--grouped,
-  .dq-glass--panel {
+  .dq-glass--panel,
+  .dq-glass--composer {
     background: var(--dq-glass-grouped-bg-solid);
   }
 }

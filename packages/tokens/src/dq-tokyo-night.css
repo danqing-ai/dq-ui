@@ -210,6 +210,7 @@ html.dq-tokyo-night,
   --dq-danger-hover: #f98ca0;
   --dq-info: #7dcfff;
   --dq-color-white: #c0caf5;
+  --dq-color-black: #000000;
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

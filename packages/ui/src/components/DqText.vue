@@ -2,7 +2,7 @@
 withDefaults(
   defineProps<{
     type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | '';
-    size?: 'small' | 'default' | 'large';
+    size?: 'sm' | 'default' | 'large';
   }>(),
   {
     type: '',

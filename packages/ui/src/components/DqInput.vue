@@ -10,8 +10,9 @@ const props = withDefaults(
     type?: string;
     disabled?: boolean;
     readonly?: boolean;
+    size?: 'default' | 'sm';
   }>(),
-  { type: 'text' },
+  { type: 'text', size: 'default' },
 );
 
 const attrs = useAttrs();
@@ -27,6 +28,7 @@ const fieldAttrs = computed(() => {
 const fieldClass = computed(() => {
   const extra = attrs.class;
   const base = isTextarea.value ? ['dq-input', 'dq-input--textarea'] : ['dq-input'];
+  if (props.size === 'sm') base.push('dq-input--sm');
   if (!extra) return base;
   if (typeof extra === 'string') return [...base, extra];
   if (Array.isArray(extra)) return [...base, ...extra];

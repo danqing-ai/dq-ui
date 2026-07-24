@@ -10,7 +10,7 @@ const props = withDefaults(
     type?: string;
     startPlaceholder?: string;
     endPlaceholder?: string;
-    size?: 'small' | 'large';
+    size?: 'sm' | 'large';
     disabled?: boolean;
   }>(),
   { type: 'date' },
@@ -22,7 +22,7 @@ const isRange = computed(() => props.type === 'daterange' || attrs.type === 'dat
 
 const sizeClass = computed(() => {
   const s = props.size ?? (attrs.size as string | undefined);
-  if (s === 'small') return 'dq-date-picker--sm';
+  if (s === 'sm') return 'dq-date-picker--sm';
   if (s === 'large') return 'dq-date-picker--lg';
   return '';
 });

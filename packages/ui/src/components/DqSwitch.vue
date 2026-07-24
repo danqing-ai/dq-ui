@@ -9,7 +9,7 @@ const model = defineModel<boolean | string | number | undefined>();
 const props = withDefaults(
   defineProps<{
     disabled?: boolean;
-    size?: 'small' | 'large';
+    size?: 'sm' | 'large';
   }>(),
   {},
 );
@@ -18,7 +18,7 @@ const attrs = useAttrs();
 
 const sizeClass = computed(() => {
   const s = props.size ?? (attrs.size as string | undefined);
-  if (s === 'small') return 'dq-switch--sm';
+  if (s === 'sm') return 'dq-switch--sm';
   if (s === 'large') return 'dq-switch--lg';
   return '';
 });

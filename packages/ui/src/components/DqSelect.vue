@@ -42,10 +42,14 @@ const props = withDefaults(
     multiple?: boolean;
     filterable?: boolean;
     clearable?: boolean;
-    /** `small` / `sm` for compact chips (composer, toolbars); `large` for forms */
-    size?: 'small' | 'sm' | 'large';
+    /** `sm` for compact chips (composer, toolbars); `large` for forms */
+    size?: 'sm' | 'large';
+    /** Ghost / borderless trigger for dense toolbars */
+    variant?: 'default' | 'ghost';
   }>(),
-  {},
+  {
+    variant: 'default',
+  },
 );
 
 const emit = defineEmits<{
@@ -68,10 +72,12 @@ watch(model, (value) => {
 
 const sizeClass = computed(() => {
   const s = props.size ?? (attrs.size as string | undefined);
-  if (s === 'small' || s === 'sm') return 'dq-select--sm';
+  if (s === 'sm') return 'dq-select--sm';
   if (s === 'large') return 'dq-select--lg';
   return '';
 });
+
+const variantClass = computed(() => (props.variant === 'ghost' ? 'dq-select--ghost' : ''));
 
 const isDisabled = computed(() => props.disabled ?? Boolean(attrs.disabled));
 const isMultiple = computed(() => props.multiple ?? Boolean(attrs.multiple));
@@ -93,50 +99,50 @@ function clearValue(event: MouseEvent) {
 </script>
 
 <template>
-  <SelectRoot
-    v-model="rootModel"
-    :multiple="isMultiple"
-    :disabled="isDisabled"
-    class="dq-select"
-    :class="sizeClass"
-    v-bind="attrs"
-  >
-    <SelectTrigger class="dq-select__trigger">
-      <SelectValue v-slot="valueSlot" class="dq-select__value" :placeholder="placeholder">
-        <slot name="value" v-bind="valueSlot">
-          {{ valueSlot.selectedLabel?.length ? valueSlot.selectedLabel.join(', ') : placeholder }}
-        </slot>
-      </SelectValue>
-      <button
-        v-if="isClearable && hasValue && !isDisabled"
-        type="button"
-        class="dq-select__clear"
-        :aria-label="'Clear'"
-        @pointerdown.stop.prevent
-        @click="clearValue"
-      >
-        <X aria-hidden="true" />
-      </button>
-      <SelectIcon class="dq-select__chevron" as-child>
-        <ChevronDown aria-hidden="true" />
-      </SelectIcon>
-    </SelectTrigger>
+  <!-- SelectRoot/PopperRoot render no DOM node; wrap so class/size land in the tree -->
+  <div class="dq-select" :class="[sizeClass, variantClass]" v-bind="attrs">
+    <SelectRoot
+      v-model="rootModel"
+      :multiple="isMultiple"
+      :disabled="isDisabled"
+    >
+      <SelectTrigger class="dq-select__trigger">
+        <SelectValue v-slot="valueSlot" class="dq-select__value" :placeholder="placeholder">
+          <slot name="value" v-bind="valueSlot">
+            {{ valueSlot.selectedLabel?.length ? valueSlot.selectedLabel.join(', ') : placeholder }}
+          </slot>
+        </SelectValue>
+        <button
+          v-if="isClearable && hasValue && !isDisabled"
+          type="button"
+          class="dq-select__clear"
+          :aria-label="'Clear'"
+          @pointerdown.stop.prevent
+          @click="clearValue"
+        >
+          <X aria-hidden="true" />
+        </button>
+        <SelectIcon class="dq-select__chevron" as-child>
+          <ChevronDown aria-hidden="true" />
+        </SelectIcon>
+      </SelectTrigger>
 
-    <SelectPortal>
-      <SelectContent class="dq-select__content" position="popper" :side-offset="4">
-        <input
-          v-if="isFilterable"
-          v-model="filterQuery"
-          type="search"
-          class="dq-select__filter"
-          autocomplete="off"
-          @keydown.stop
-          @click.stop
-        />
-        <SelectViewport class="dq-select__viewport">
-          <slot />
-        </SelectViewport>
-      </SelectContent>
-    </SelectPortal>
-  </SelectRoot>
+      <SelectPortal>
+        <SelectContent class="dq-select__content" position="popper" :side-offset="4">
+          <input
+            v-if="isFilterable"
+            v-model="filterQuery"
+            type="search"
+            class="dq-select__filter"
+            autocomplete="off"
+            @keydown.stop
+            @click.stop
+          />
+          <SelectViewport class="dq-select__viewport">
+            <slot />
+          </SelectViewport>
+        </SelectContent>
+      </SelectPortal>
+    </SelectRoot>
+  </div>
 </template>

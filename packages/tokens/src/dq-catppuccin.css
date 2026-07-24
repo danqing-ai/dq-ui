@@ -231,6 +231,7 @@ html.dq-catppuccin,
   --dq-danger-hover: #f5a0b8;
   --dq-info: #89b4fa;
   --dq-color-white: #cdd6f4;
+  --dq-color-black: #000000;
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

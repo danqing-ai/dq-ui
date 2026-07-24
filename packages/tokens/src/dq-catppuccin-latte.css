@@ -159,6 +159,7 @@ html.dq-catppuccin-latte,
   --dq-focus-ring: 0 0 0 3px rgba(30, 102, 245, 0.18);
   --dq-success: #40a02b; --dq-warning: #df8e1d; --dq-danger: #d20f39; --dq-danger-hover: #e64553; --dq-info: #04a5e5;
   --dq-color-white: #ffffff;
+  --dq-color-black: #000000;
   --dq-system-green: var(--dq-success); --dq-system-orange: var(--dq-warning); --dq-system-red: var(--dq-danger); --dq-system-blue: var(--dq-info);
   --dq-row-gutter: 16px;
   --dq-selection-bg: rgba(30, 102, 245, 0.14); --dq-selection-color: inherit;

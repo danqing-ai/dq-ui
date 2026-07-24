@@ -54,11 +54,13 @@ html {
   --dq-tracking-widest:   0.06em;
 
   /* ── Spacing scale (1rem = 16px). Prefer these over ad-hoc px/rem. ── */
-  --dq-space-xs: 0.25rem; /* 4px */
-  --dq-space-sm: 0.5rem;  /* 8px */
-  --dq-space-md: 1rem;    /* 16px */
-  --dq-space-lg: 1.5rem;  /* 24px */
-  --dq-space-xl: 2rem;    /* 32px */
+  --dq-space-2xs: 0.125rem; /* 2px */
+  --dq-space-xs: 0.25rem;   /* 4px */
+  --dq-space-sm: 0.5rem;    /* 8px */
+  --dq-space-md: 1rem;      /* 16px */
+  --dq-space-lg: 1.5rem;    /* 24px */
+  --dq-space-xl: 2rem;      /* 32px */
+  --dq-space-2xl: 3rem;     /* 48px */
 
   /* Scrollbar geometry — themes may override thumb color; size is shared. */
   --dq-scrollbar-size: 6px;

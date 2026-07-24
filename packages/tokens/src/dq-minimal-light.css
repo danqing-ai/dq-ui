@@ -206,6 +206,7 @@ html.dq-minimal-light,
   --dq-danger-hover: #e0352b;
   --dq-info: #007aff;
   --dq-color-white: #ffffff;
+  --dq-color-black: #000000;
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

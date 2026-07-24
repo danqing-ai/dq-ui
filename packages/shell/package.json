@@ -5,7 +5,7 @@
   "type": "module",
   "sideEffects": ["**/*.css"],
   "scripts": {
-    "build": "npm run clean && vite build && vue-tsc -p tsconfig.json --declaration --emitDeclarationOnly --outDir dist",
+    "build": "npm run clean && vite build && vue-tsc -p tsconfig.json --declaration --emitDeclarationOnly --outDir dist && printf \"%s\\n\" \"export * from './shell/src/index';\" > dist/index.d.ts",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist"
   },

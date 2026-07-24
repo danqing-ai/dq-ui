@@ -273,7 +273,8 @@ html.dq-china-red-dark,
   --dq-danger: #B43C3C;        /* 绛红 — 警示 */
   --dq-danger-hover: #C85050;
   --dq-info: #7BA7D9;          /* 靛青 — 信息 */
-  --dq-color-white: #FFFAF5;   /* 暖白 */
+  --dq-color-white: #FFFAF5;
+  --dq-color-black: #000000;   /* 暖白 */
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

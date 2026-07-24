@@ -170,6 +170,7 @@ html.dq-dracula,
   --dq-danger-hover: #ff7979;
   --dq-info: #8be9fd;
   --dq-color-white: #f8f8f2;
+  --dq-color-black: #000000;
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);
   --dq-system-red: var(--dq-danger);

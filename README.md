@@ -86,9 +86,13 @@ Primitives built on Reka UI + Lucide. Use `Dq*` in templates only; only this pac
 
 **Actions:** `DqButton`, `DqIconButton`, `DqDropdown` / `DqDropdownMenu` / `DqDropdownItem`
 
-**Forms:** `DqInput`, `DqSelect` / `DqOption` (`size="small"` for compact chips), `DqSlider`, `DqSwitch`, `DqCheckbox` / `DqCheckboxGroup`, `DqInputNumber`, `DqDatePicker`
+**Forms:** `DqInput`, `DqSelect` / `DqOption` (`size="sm"` for compact chips; `variant="ghost"` for borderless toolbars), `DqSlider`, `DqSwitch`, `DqCheckbox` / `DqCheckboxGroup`, `DqInputNumber`, `DqDatePicker`
 
-**Navigation:** `DqSegmented`, `DqSectionTabs` / `DqSectionTabTrigger` / `DqSectionTabPanel`
+**Size API:** compact controls use `size="sm"` only (not `small`). Applies to Button / Input / Select / Segmented / Tag / Switch / Checkbox / DatePicker / Text.
+
+**Navigation:** `DqSegmented` (`size="sm"`), `DqSectionTabs` / `DqSectionTabTrigger` / `DqSectionTabPanel`
+
+**Agent utilities (tokens):** import `@danqing/dq-tokens/dq-agent.css` for `.dq-prose`, `.dq-code-block`, `.dq-status-dot`, `.dq-kbd`, sidebar row helpers.
 
 **Overlays:** `DqDialog`, `DqDrawer`
 
@@ -100,6 +104,7 @@ App chrome on top of `@danqing/dq-ui` (re-exports primitives, icons, and feedbac
 
 - **Inspector:** `DqInspectorStack`, `DqInspectorSection`, `DqInspectorList` / `DqInspectorListItem`, `DqInspectorKv`, `DqInspectorCallout`, `DqInspectorEmpty`
 - **Preferences:** `DqPrefForm`, `DqPrefPane`, `DqPrefRow`, `DqSurfaceCard`
+- **Agent chrome:** `DqToolCard` (scannable tool rows), `DqPillTabs` (compact workspace tabs)
 - **Desktop:** `DqDesktopHost`, `DqCommandPalette`, `useDqDesktopExperience`, `useDqWindowActivity`
 - **Commands:** `useDqCommandActions` / `createDqDefaultCommandActions`, `createDqCommandRegistry` / `useDqCommandRegistry`, `useDqRegisterCommands`, `useDqRecentCommands`
 

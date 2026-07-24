@@ -29,7 +29,8 @@
     "./dq-nord-light.css": "./dist/dq-nord-light.css",
     "./dq-github-light.css": "./dist/dq-github-light.css",
     "./dq-tauri-macos.css": "./dist/dq-tauri-macos.css",
-    "./dq-typography.css": "./dist/dq-typography.css"
+    "./dq-typography.css": "./dist/dq-typography.css",
+    "./dq-agent.css": "./dist/dq-agent.css"
   },
   "files": ["dist"]
 }

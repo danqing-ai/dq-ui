@@ -12,6 +12,10 @@ export { default as DqPrefForm } from './components/DqPrefForm.vue';
 export { default as DqPrefPane } from './components/DqPrefPane.vue';
 export { default as DqPrefRow } from './components/DqPrefRow.vue';
 export { default as DqSurfaceCard } from './components/DqSurfaceCard.vue';
+export { default as DqToolCard } from './components/DqToolCard.vue';
+export type { DqToolCardStatus } from './components/DqToolCard.vue';
+export { default as DqPillTabs } from './components/DqPillTabs.vue';
+export type { DqPillTabItem } from './components/DqPillTabs.vue';
 export { default as DqCommandPalette } from './components/DqCommandPalette.vue';
 export { default as DqDesktopHost } from './components/DqDesktopHost.vue';
 export type { DqCommandAction } from './components/commandPaletteTypes';
@@ -89,6 +93,8 @@ export {
   Bot,
   Brush,
   Check,
+  ChevronDown,
+  CircleDot,
   Close,
   CopyDocument,
   Cpu,
@@ -96,11 +102,15 @@ export {
   Document,
   DocumentCopy,
   Download,
+  FileCode,
   Filter,
   Film,
   FolderChecked,
+  Globe,
   Grid,
   Headset,
+  Library,
+  Link,
   ListOrdered,
   Loading,
   MagicStick,
@@ -117,6 +127,8 @@ export {
   Search,
   Setting,
   Star,
+  StopCircle,
+  Terminal,
   Tools,
   Upload,
   VideoCamera,

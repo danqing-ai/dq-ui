@@ -213,6 +213,7 @@ html.dark {
   --dq-danger-hover: #ff6961;
   --dq-info: #64d2ff;
   --dq-color-white: #ffffff;
+  --dq-color-black: #000000;
 
   --dq-system-green: var(--dq-success);
   --dq-system-orange: var(--dq-warning);

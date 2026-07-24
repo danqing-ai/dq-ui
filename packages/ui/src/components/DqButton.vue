@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(
   defineProps<{
-    type?: 'default' | 'primary' | 'text' | 'danger';
+    type?: 'default' | 'primary' | 'text' | 'danger' | 'warning';
     size?: 'default' | 'sm';
     disabled?: boolean;
     loading?: boolean;
@@ -49,8 +49,10 @@ const cls = computed(() => {
     type="button"
     :class="cls"
     :disabled="disabled || loading"
+    :aria-busy="loading || undefined"
     v-bind="{ ...attrs, class: undefined }"
   >
+    <span v-if="loading" class="dq-btn__spinner" aria-hidden="true" />
     <slot />
   </button>
 </template>

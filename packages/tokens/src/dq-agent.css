@@ -1,0 +1,270 @@
+/**
+ * Agent / chat shared utilities — theme-neutral classes on top of --dq-* tokens.
+ * Import after a theme CSS (e.g. dq-mac.css) and alongside dq-glass.css.
+ */
+
+:root,
+html {
+  --dq-color-black: #000000;
+
+  --dq-font-size-prose: var(--dq-font-size-secondary); /* 14px reading body */
+  --dq-line-height-prose: 1.65;
+
+  --dq-code-bg: color-mix(in srgb, var(--dq-label-primary) 6%, transparent);
+  --dq-code-border: color-mix(in srgb, var(--dq-label-primary) 12%, transparent);
+  --dq-code-inline-bg: var(--dq-fill-tertiary);
+
+  --dq-sidebar-width-collapsed: 44px;
+  --dq-sidebar-row-height: 32px;
+  --dq-sidebar-row-padding-x: 10px;
+}
+
+/* ── Prose (chat / markdown reading column) ── */
+
+.dq-prose {
+  font-size: var(--dq-font-size-prose);
+  line-height: var(--dq-line-height-prose);
+  color: var(--dq-label-primary);
+  word-break: break-word;
+}
+
+.dq-prose :first-child {
+  margin-top: 0;
+}
+
+.dq-prose :last-child {
+  margin-bottom: 0;
+}
+
+.dq-prose h1,
+.dq-prose h2,
+.dq-prose h3,
+.dq-prose h4,
+.dq-prose h5,
+.dq-prose h6 {
+  margin: 1.15em 0 0.45em;
+  font-weight: 650;
+  line-height: var(--dq-line-height-snug);
+  letter-spacing: var(--dq-tracking-tight);
+  color: var(--dq-label-primary);
+}
+
+.dq-prose h1 { font-size: var(--dq-font-size-display); }
+.dq-prose h2 { font-size: var(--dq-font-size-heading); }
+.dq-prose h3 { font-size: var(--dq-font-size-title); }
+.dq-prose h4 { font-size: var(--dq-font-size-callout); font-weight: 600; }
+.dq-prose h5,
+.dq-prose h6 {
+  font-size: var(--dq-font-size-secondary);
+  font-weight: 600;
+}
+
+.dq-prose p {
+  margin: 0.65em 0;
+  font-size: inherit;
+  color: var(--dq-label-secondary);
+}
+
+.dq-prose ul,
+.dq-prose ol {
+  margin: 0.5em 0;
+  padding-left: 1.4em;
+  font-size: inherit;
+  color: var(--dq-label-secondary);
+}
+
+.dq-prose li + li {
+  margin-top: 0.25em;
+}
+
+.dq-prose blockquote {
+  margin: 0.65em 0;
+  padding: 0.35em 0 0.35em 12px;
+  border-left: 3px solid var(--dq-accent);
+  color: var(--dq-label-tertiary);
+  font-size: inherit;
+}
+
+.dq-prose a {
+  color: var(--dq-accent);
+  text-decoration: none;
+}
+
+.dq-prose a:hover {
+  text-decoration: underline;
+}
+
+.dq-prose strong {
+  font-weight: 600;
+  color: var(--dq-label-primary);
+}
+
+.dq-prose em {
+  font-style: italic;
+  color: var(--dq-label-secondary);
+}
+
+.dq-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75em 0;
+  font-size: var(--dq-font-size-body);
+  border: 1px solid var(--dq-code-border);
+  border-radius: var(--dq-radius-control, 8px);
+  overflow: hidden;
+}
+
+.dq-prose th,
+.dq-prose td {
+  border: 1px solid color-mix(in srgb, var(--dq-label-primary) 10%, transparent);
+  padding: 8px 12px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.dq-prose th {
+  background: color-mix(in srgb, var(--dq-label-primary) 8%, transparent);
+  font-weight: 600;
+  color: var(--dq-label-primary);
+}
+
+.dq-prose tr:hover td {
+  background: color-mix(in srgb, var(--dq-label-primary) 3%, transparent);
+}
+
+.dq-prose hr {
+  border: none;
+  border-top: 1px solid var(--dq-code-border);
+  margin: 1.2em 0;
+}
+
+.dq-prose img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0.5em 0;
+}
+
+.dq-prose code,
+.dq-code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--dq-code-inline-bg);
+  font-family: var(--dq-font-mono);
+  font-size: 0.92em;
+}
+
+.dq-prose pre,
+.dq-code-block {
+  margin: 0.75em 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--dq-code-border);
+  background: var(--dq-code-bg);
+  overflow-x: auto;
+  font-family: var(--dq-font-mono);
+  font-size: var(--dq-font-size-body);
+  line-height: var(--dq-line-height-relaxed);
+  color: var(--dq-label-primary);
+}
+
+.dq-prose pre code {
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* ── Status dots (Cursor-like scan affordance) ── */
+
+.dq-status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--dq-label-quaternary);
+}
+
+.dq-status-dot--pending {
+  background: var(--dq-label-tertiary);
+}
+
+.dq-status-dot--running {
+  background: var(--dq-accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--dq-accent) 55%, transparent);
+  animation: dq-status-pulse 1.4s ease-out infinite;
+}
+
+.dq-status-dot--success {
+  background: var(--dq-success);
+}
+
+.dq-status-dot--warning {
+  background: var(--dq-warning);
+}
+
+.dq-status-dot--danger {
+  background: var(--dq-danger);
+}
+
+@keyframes dq-status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--dq-accent) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dq-status-dot--running {
+    animation: none;
+  }
+}
+
+/* ── Keyboard hint ── */
+
+.dq-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--dq-border);
+  background: var(--dq-fill-secondary);
+  color: var(--dq-label-secondary);
+  font-family: var(--dq-font-sans);
+  font-size: var(--dq-font-size-caption);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ── Sidebar row density helpers ── */
+
+.dq-sidebar-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--dq-space-sm);
+  min-height: var(--dq-sidebar-row-height);
+  padding: 0 var(--dq-sidebar-row-padding-x);
+  border-radius: var(--dq-radius-control, 6px);
+  color: var(--dq-label-secondary);
+  font-size: var(--dq-font-size-body);
+  cursor: pointer;
+}
+
+.dq-sidebar-nav__item:hover {
+  background: var(--dq-surface-inset-hover);
+  color: var(--dq-label-primary);
+}
+
+.dq-sidebar-nav__item.is-active {
+  background: var(--dq-surface-list-selected);
+  color: var(--dq-label-primary);
+}

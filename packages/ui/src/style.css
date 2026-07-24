@@ -8,7 +8,7 @@
  * Do not invent custom `0 0 0 2px` focus rings or ad-hoc hover fills in product CSS.
  *
  * Management tabs: prefer `DqSectionTabs` / `DqSegmented` over custom tab buttons.
- * Compact selects (composer chips): `<DqSelect size="small" />`.
+ * Compact selects (composer chips): `<DqSelect size="sm" />`.
  */
 
 .dq-btn {
@@ -103,6 +103,31 @@
 
 .dq-btn--danger:hover:not(:disabled) {
   background: color-mix(in srgb, var(--dq-danger) 88%, #fff);
+}
+
+.dq-btn--warning {
+  color: #1a1200;
+  background: var(--dq-warning);
+}
+
+.dq-btn--warning:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--dq-warning) 88%, #fff);
+}
+
+.dq-btn__spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: dq-btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dq-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .dq-btn--round,
@@ -589,11 +614,28 @@
   vertical-align: middle;
 }
 
-.dq-tag--small {
+.dq-tag--sm {
   padding: 0 6px;
   font-size: var(--dq-font-size-caption);
   line-height: 18px;
   border-radius: 4px;
+}
+
+.dq-tag--with-dot {
+  gap: 6px;
+}
+
+.dq-tag--light.dq-tag--neutral,
+.dq-tag--plain.dq-tag--neutral {
+  color: var(--dq-label-secondary);
+  background: var(--dq-fill-muted-surface);
+  border-color: var(--dq-border-subtle);
+}
+
+.dq-tag--dark.dq-tag--neutral {
+  color: var(--dq-label-primary);
+  background: var(--dq-fill-tertiary);
+  border-color: transparent;
 }
 
 .dq-tag--large {
@@ -928,7 +970,7 @@
   color: var(--dq-label-primary);
 }
 
-.dq-text--small {
+.dq-text--sm {
   font-size: var(--dq-font-size-caption);
 }
 
@@ -1435,6 +1477,13 @@
   cursor: not-allowed;
 }
 
+.dq-input--sm {
+  min-height: 28px;
+  padding: 4px 9px;
+  font-size: var(--dq-font-size-footnote);
+  line-height: 1.35;
+}
+
 .dq-input-number {
   display: inline-flex;
   align-items: stretch;
@@ -1659,6 +1708,23 @@
 .dq-select--sm .dq-select__clear svg {
   width: 12px;
   height: 12px;
+}
+
+.dq-select--ghost .dq-select__trigger {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.dq-select--ghost .dq-select__trigger:hover:not([data-disabled]) {
+  background: var(--dq-fill-on-glass-subtle, var(--dq-fill-muted-surface));
+  border-color: transparent;
+}
+
+.dq-select--ghost .dq-select__trigger:focus-visible {
+  border-color: transparent;
+  background: var(--dq-fill-on-glass-subtle, var(--dq-fill-muted-surface));
+  box-shadow: none;
 }
 
 .dq-select--lg .dq-select__trigger {
